@@ -94,7 +94,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <option value="1">Informatika</option>
               <option value="2">Sistem Informasi</option>
               <option value="3">Teknik Komputer</option>
-              <option value="4">Ilmu Komunikasi</option>
+              <option value="4">Teknik Fisika</option>
+              <option value="5">Teknik Elektro</option>
+              <option value="6">Akuntansi</option>
+              <option value="7">Menejemen</option>
+              <option value="8">Design Komunikasi Visual</option>
+              <option value="9">Film</option>
+              <option value="10">Arsitektur</option>
+              <option value="11">Komunikasi Strategis</option>
+              <option value="12">Jurnalistik</option>
+              <option value="13">Double Degree</option>
             </select>
           </div>          
         </div>
@@ -102,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Academic Year</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="inputemail" placeholder="Enter academic year">
+            <input type="text" class="form-control" name="inputyear" placeholder="Enter academic year">
           </div>
         </div>
 
@@ -110,12 +119,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <label class="col-sm-2 col-form-label">Gender</label>
           <div class="col-sm-8">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="inputgender" value="option1">
+              <input class="form-check-input" type="checkbox" name="inputgender" value="M">
               <label class="form-check-label">Male</label>
             </div>
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="inputgender" value="option2">
+              <input class="form-check-input" type="checkbox" name="inputgender" value="F">
               <label class="form-check-label">Female</label>
             </div>
           </div>          
@@ -124,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-8">
-            <input type="password" class="form-control" name="inputemail" placeholder="Valuenya nanti diambil dari form birthday" value="">
+            <input type="password" class="form-control" name="inputpassword" placeholder="Valuenya nanti diambil dari form birthday" value="">
           </div>
         </div>
 
