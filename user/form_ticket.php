@@ -40,29 +40,29 @@
 
             <h3>Create New Ticket</h3>
             <br/>
-            <form action="/action_page.php">
+            <form action="action_page.php" method="post">
                 <div class="form-group">
                     <label for="nama">Nama :</label>
-                    <input type="text" class="form-control" id="nama" placeholder="Nama" required>
+                    <input type="text" class="form-control" name="nama" placeholder="Nama" required>
                 </div>
                 <div class="form-group">
                     <label for="student_id">Student ID :</label>
-                    <input type="text" class="form-control" id="student_id" placeholder="Student ID" required>
+                    <input type="text" class="form-control" name="student_id" placeholder="Student ID" required>
                 </div>
                 <div class="row">
                     <div class="col-9">
                         <div class="form-group">
                             <label for="subject">Subject :</label>
-                            <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                            <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="form-group">
                             <label for="category">Category :</label>
                             <select class="form-control">
-                            <option>Category 1</option>
-                            <option>Category 2</option>
-                            <option>Category 3</option>
+                            <option value="1">Category 1</option>
+                            <option value="2">Category 2</option>
+                            <option value="3">Category 3</option>
                             </select>
                         </div>
                     </div>
