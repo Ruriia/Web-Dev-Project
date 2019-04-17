@@ -70,9 +70,10 @@
       <div class="d-flex">
         <div class="mr-auto p-2"><h3>Make Your<br/>TICKETS!</h3>
           <p>There are 3 categories :</p>
-            <p>- Category 1<br/>
-            - Category 2<br/>
-            - Category 3
+            <p>- Problem Finding Class<br/>
+            - About the Professor<br/>
+            - About the Subject<br/>
+            - About the Schedule
         </div>
         <div class="p-2"><img src="images/ticket.jpg" alt="code" style="width:250px;height:130px">
         <br/>
@@ -92,16 +93,20 @@
 
     <div class="d-flex justify-content-around bg-2" style="padding-top:40px;padding-bottom:40px;">
       <div class="category text-center">
-        <img src="images/code.jpg" alt="code" style="width:250px;height:130px">
-        <p>Category 1</p>
+        <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
+        <p>Problem Finding Class</p>
       </div>
       <div class="category text-center">
-        <img src="images/code.jpg" alt="code" style="width:250px;height:130px">
-        <p>Category 2</p>
+        <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
+        <p>About the Professor</p>
       </div>
       <div class="category text-center">
-        <img src="images/code.jpg" alt="code" style="width:250px;height:130px">
-        <p>Category 3</p>
+        <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
+        <p>About the Subject</p>
+      </div>
+      <div class="category text-center">
+        <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
+        <p>About the Schedule</p>
       </div>
     </div>
 

@@ -60,9 +60,10 @@
                         <div class="form-group">
                             <label for="category">Category :</label>
                             <select class="form-control">
-                            <option value="1">Category 1</option>
-                            <option value="2">Category 2</option>
-                            <option value="3">Category 3</option>
+                            <option value="1">Problem Finding Class</option>
+                            <option value="2">About the Professor</option>
+                            <option value="3">About the Subject</option>
+                            <option value="4">About the Schedule</option>
                             </select>
                         </div>
                     </div>
@@ -84,7 +85,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" id="Textarea1" rows="5"></textarea>
+                    <textarea class="form-control" id="Textarea1" rows="6"></textarea>
                 </div>
                 <!--<div class="form-group">
                     <div class="custom-file">
