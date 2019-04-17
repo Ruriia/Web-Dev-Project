@@ -43,7 +43,7 @@
             <form action="action_page.php" method="post">
                 <div class="form-group">
                     <label for="nama">Email :</label>
-                    <input type="text" class="form-control" name="nama" placeholder="Email_Student" required>
+                    <input type="text" class="form-control" name="emailticket" placeholder="Email_Student" required>
                 </div>
                 <div class="form-group">
                     <label for="student_id">NIM :</label>
