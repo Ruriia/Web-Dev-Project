@@ -1,3 +1,15 @@
+<?php
+  require "action/databasekey.php";
+  $key = connection();
+
+  $sql = "select msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msgender.keterangan as 'gender',msdata.academic_year,
+  msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' from msdata,msgender,msmajor,msfaculty
+  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.gender = msgender.gender";
+
+  $result = $key->query($sql);
+  
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -45,7 +57,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <section class="content container-fluid">
 
-      Tabelnya taro sini
+      <div class="table-responsive mt-3">
+        <table class="table">
+          <tr>
+            <th>No.</th>
+            <th>Nim</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Tanggal lahir</th>
+            <th>Gender</th>
+            <th>Tahun Ajaran</th>
+            <th>Fakultas</th>
+            <th>Jurusan</th>
+          </tr>
+         <?php
+         $i = 0;
+         while($row = $result->fetch()):
+         $i++;
+         ?>
+          <tr>
+            <td><?=$i ?></td>
+            <td><?= $row['nim']; ?></td>
+            <td><?= $row['nama']; ?></td>
+            <td><?= $row['email']; ?></td>
+            <td><?= $row['birthdate']; ?></td>
+            <td><?= $row['gender']; ?></td>
+            <td><?= $row['academic_year']; ?></td>
+            <td><?= $row['fakultas']; ?></td>
+            <td><?= $row['jurusan']; ?></td>
+          </tr>
+         <?php endwhile;?>
+        </table>
+      </div>
 
     </section>
     <!-- /.content -->
