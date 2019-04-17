@@ -59,7 +59,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label for="category">Category :</label>
-                            <select class="form-control">
+                            <select class="form-control" name="category">
                             <option value="1">Problem Finding Class</option>
                             <option value="2">About the Professor</option>
                             <option value="3">About the Subject</option>
@@ -72,20 +72,20 @@
                     <label for="priority">Choose Your Priority :</label>
                     <br/>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="low_priority" value="low">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="low_priority" value="1">
                         <label class="form-check-label" for="low_priority">Low</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="medium_priority" value="medium">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="medium_priority" value="2">
                         <label class="form-check-label" for="medium_priority">Medium</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="high_priority" value="high">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="high_priority" value="3">
                         <label class="form-check-label" for="high_priority">High</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" id="Textarea1" rows="6"></textarea>
+                    <textarea class="form-control" id="Textarea1" rows="6" name="pertanyaan"></textarea>
                 </div>
                 <!--<div class="form-group">
                     <div class="custom-file">
