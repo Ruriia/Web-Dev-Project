@@ -26,7 +26,7 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">NIM</label>
           <div class="col-sm-8">
-            <input type="email" class="form-control" name="inputnim" placeholder="Enter NIM">    
+            <input type="text" class="form-control" name="inputnim" placeholder="Enter NIM">    
           </div>
         </div>
 
@@ -47,10 +47,10 @@
           <div class="col-sm-8">
             <select class="custom-select" name="inputfaculty">
               <option selected>Choose...</option>
-              <option value="1">Teknik Informatika</option>
-              <option value="2">Bisnis</option>
-              <option value="3">Seni & Desain</option>
-              <option value="4">Ilmu Komunikasi</option>
+              <option value="Teknik Informatika">Teknik Informatika</option>
+              <option value="Bisnis">Bisnis</option>
+              <option value="Seni & Desain">Seni & Desain</option>
+              <option value="Ilmu Komunikasi">Ilmu Komunikasi</option>
             </select>
           </div>          
         </div>
@@ -60,19 +60,19 @@
           <div class="col-sm-8">
             <select class="custom-select" name="inputmajor">
               <option selected>Choose...</option>
-              <option value="1">Informatika</option>
-              <option value="2">Sistem Informasi</option>
-              <option value="3">Teknik Komputer</option>
-              <option value="4">Teknik Fisika</option>
-              <option value="5">Teknik Elektro</option>
-              <option value="6">Akuntansi</option>
-              <option value="7">Menajemen</option>
-              <option value="8">Design Komunikasi Visual</option>
-              <option value="9">Film</option>
-              <option value="10">Arsitektur</option>
-              <option value="11">Komunikasi Strategis</option>
-              <option value="12">Jurnalistik</option>
-              <option value="13">Double Degree</option>
+              <option value="Informatika">Informatika</option>
+              <option value="Sistem Informasi">Sistem Informasi</option>
+              <option value="Teknik Komputer">Teknik Komputer</option>
+              <option value="Teknik Fisika">Teknik Fisika</option>
+              <option value="Teknik Elektro">Teknik Elektro</option>
+              <option value="Akuntansi">Akuntansi</option>
+              <option value="Manajemen">Manajemen</option>
+              <option value="DKV">Design Komunikasi Visual</option>
+              <option value="Film">Film</option>
+              <option value="Arsitektur">Arsitektur</option>
+              <option value="SC">Komunikasi Strategis</option>
+              <option value="Jurnalistik">Jurnalistik</option>
+              <option value="Double">Double Degree</option>
             </select>
           </div>          
         </div>
