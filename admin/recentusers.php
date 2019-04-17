@@ -47,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       Tabelnya taro sini
 
-
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
