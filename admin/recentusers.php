@@ -45,9 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <section class="content container-fluid">
 
-      <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
+      Tabelnya taro sini
 
 
     <!-- /.content -->
