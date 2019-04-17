@@ -70,7 +70,7 @@
       <div class="d-flex">
         <div class="mr-auto p-2"><h3>Make Your<br/>TICKETS!</h3>
           <p>There are 3 categories :</p>
-            <p>- Category 1<br/>
+            <p>- Find Class<br/>
             - Category 2<br/>
             - Category 3
         </div>
