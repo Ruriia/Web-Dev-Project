@@ -73,7 +73,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
   $('#inputpassword').focusin(function(){
     var pass = $('#inputbirthday').val();
-    $('#inputpassword').val(pass);
+    var tanggal = pass.substring(0,2);
+    var bulan = pass.substring(3,5);
+    var tahun = pass.substring(6);
+    var temp = tanggal.concat(bulan);
+    var temp1 = temp.concat(tahun);
+    $('#inputpassword').val(temp1);
   });
 </script>
 
