@@ -42,12 +42,12 @@
             <br/>
             <form action="action_page.php" method="post">
                 <div class="form-group">
-                    <label for="nama">Nama :</label>
-                    <input type="text" class="form-control" name="nama" placeholder="Nama" required>
+                    <label for="nama">Email :</label>
+                    <input type="text" class="form-control" name="nama" placeholder="Email_Student" required>
                 </div>
                 <div class="form-group">
-                    <label for="student_id">Student ID :</label>
-                    <input type="text" class="form-control" name="student_id" placeholder="Student ID" required>
+                    <label for="student_id">NIM :</label>
+                    <input type="text" class="form-control" name="student_id" placeholder="Nim" required>
                 </div>
                 <div class="row">
                     <div class="col-9">
