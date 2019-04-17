@@ -8,7 +8,7 @@
     <!-- Main content -->
     <div class="content container-fluid">
     <div class="bootstrap-iso">
-      <form action="action/insertStudentDB.php" method="post">
+      <form action="action/insertStudentDB.php" method="post" autocomplete="off">
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Full Name</label>
           <div class="col-sm-8">
@@ -37,7 +37,7 @@
               <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
               </div>
-                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+                <input class="form-control" id="inputbirthday" name="inputbirthday" placeholder="DD/MM/YYYY" type="text"/>
             </div>
           </div>
         </div>
@@ -84,57 +84,40 @@
           </div>
         </div>
 
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Gender</label>
+        <div class="form-group row" id="div_radio">
+          <label class="col-sm-2 col-form-label" for="radio">Gender</label>
+          
           <div class="col-sm-8">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="inputgender" value="M">
-              <label class="form-check-label">Male</label>
-            </div>
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="inputgender" value="F">
-              <label class="form-check-label">Female</label>
-            </div>
-          </div>          
+            <label class="radio-inline">
+              <input name="radio" type="radio" value="First Choice"/>
+              Male
+            </label>
+       
+            <label class="radio-inline">
+              <input name="radio" type="radio" value="Second Choice"/>
+              Female
+            </label>
+          </div>
         </div>
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-8">
-            <input type="password" class="form-control" name="inputpassword" placeholder="Valuenya nanti diambil dari form birthday" value="">
-          </div>
-        </div>
-
-        <div class="row mt-0">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-10">
-              <small id="emailHelp" class="form-text text-muted"><em>Password is birthday by default.</em></small>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="password" class="form-control" id="inputpassword" name="inputpassword" placeholder="Input password">
+              </div>
             </div>
+            <div class="row">
+              <div class="col-sm-12">
+              <small class="form-text text-muted"><em>Password is birthday by default ("dd/mm/yyyy").</em></small>
+              </div>
+            </div>
+          </div>
         </div>
 
         <button class="btn btn-primary mt-5">Submit</button>
       </form>
     </div>
     </div>
-
-<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-<!-- Include jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-<script>
-    $(document).ready(function(){
-        var date_input=$('input[name="date"]'); //our date input has the name "date"
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        date_input.datepicker({
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        })
-    })
-</script>
+    
