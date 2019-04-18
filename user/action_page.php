@@ -2,11 +2,20 @@
     require "../admin/action/databasekey.php";
 
     $key = connection();
-    $postnim = $_POST['student_id'];
-    $query = "SELECT * from msdata";
+    
+    $sql = "SELECT * from msdata where nim = ?";
      
-    $result = $key->query($query);
-    $i = 0;
+    $result = $key->prepare($sql);
+    $postnim = [$_POST['student_id']];
+    $result->execute($postnim);
+    $fetchdata = $result->fetch();
+
+    if($fetchdata['nim'] == $_POST['student_id'] && $fetchdata['email'] == $_POST['email']){
+        echo "nim atau email terdaftar!";
+    }else{
+        echo "nim atau email tidak terdaftar";
+    }
+    /*$i = 0;
     while($data = $result->fetch()){
         if($data['nim'] == $postnim){
         try{
@@ -36,7 +45,7 @@
         echo "NIM anda tidak terdaftar"; 
     else
         echo "Ticket Berhasil!!";
-
+    */
 
     
 

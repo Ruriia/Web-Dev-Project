@@ -20,7 +20,6 @@ $fetchdata = $result->fetch();
         }
     }
     else{
-        $error = "Your email or password is invalid!!!";
         header("location:form_login.php"); 
         
     }

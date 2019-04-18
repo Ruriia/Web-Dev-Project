@@ -110,7 +110,7 @@ li.dropdown {
             <br/>
             <form action="action_page.php" method="post">
                 <div class="form-group">
-                    <label for="nama">Email :</label>
+                    <label for="nama">Email (Gunakan email student):</label>
                     <input type="text" class="form-control" name="emailticket" placeholder="Email_Student" required>
                 </div>
                 <div class="form-group">
