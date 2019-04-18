@@ -1,38 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <title>Home</title>
+<head>
+    <title>Form Ticket</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel ="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    </head>
+</head>
+
+<style>
+body {
+  font: Montserrat, sans-serif;
+  line-height: 1.8;
+  color: black;
+}
+p {font-size: 16px;}
+.margin {margin-bottom: 45px;}
+.bg-1 {
+  background-color: #ffffff;
+  color: black;
+}
+.bg-2 {
+  background-color: lightgrey; 
+  color: black;
+}
+.bg-3 {
+  background-color: #ffffff;
+  color: #555555;
+}
+.bg-4 {
+  background-color: #2f2f2f; 
+  color: #fff;
+}
+.container-fluid {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+  color: #1abc9c !important;
+}
+
+.buttondown:hover {
+  color: white;
+}
+a {
+  color: white;
+}
+a:hover {
+  text-decoration: none;
+}
+
+li.dropdown {
+  list-style-type: none;
+}
+</style>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <a class="navbar-brand" href="#">KRS Guides</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="alamat.html">About</a>
+          <a class="nav-link" href="alamat.html">About</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Account
+            </a>
+            <div class="dropdown-menu" style="letter-spacing:0px;">
+                <a class="dropdown-item" href="#">Account Settings</a>
+                <a data-target="#modalLogout" data-toggle="modal" class="dropdown-item" id="navlogout" href="#modalLogout">Logout</a>
+            </div>
         </li>
         </ul>
+      </form>
     </div>
-    </nav>
+</nav>
 
     <div class="container-fluid">
 
@@ -95,12 +163,32 @@
                     </div>
                 </div>-->
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="index.html" id="cancel" name="cancel" class="btn btn-secondary">Cancel</a>
+                <a href="index.php" id="cancel" name="cancel" class="btn btn-secondary">Cancel</a>
             </form>
 
         </div>
 
     </div>
+
+<div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLogoutLabel">Notice</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to logout?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Yes, Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
