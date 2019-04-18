@@ -35,14 +35,14 @@
 </head>
 <body style="background-color:#3366ff;">
 <div class="login-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="login_validation.php" method="post">
         <h3 class="text-center">KRS Helpdesk Login</h3>
         <br/>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username/E-mail Student" required="required">
+            <input type="text" class="form-control" name="email" placeholder="Username/E-mail Student" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required">
+            <input type="password" class="form-control" name="katasandi" placeholder="Password" required="required">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success btn-block">Login</button>
