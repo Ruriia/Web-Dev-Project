@@ -89,12 +89,12 @@
           
           <div class="col-sm-8">
             <label class="radio-inline">
-              <input name="radio" type="radio" value="1"/>
+              <input name="radio" type="radio" value="M"/>
               Male
             </label>
        
             <label class="radio-inline">
-              <input name="radio" type="radio" value="2"/>
+              <input name="radio" type="radio" value="F"/>
               Female
             </label>
           </div>
