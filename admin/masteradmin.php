@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+  if(!isset($_SESSION['loginas'])){
+      header('location:login.php');
+  }else{
+      if($_SESSION['loginas'] != "admin"){
+          header('location:../user/index.php');
+      }
+  }
+?>
+
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from

@@ -1,5 +1,15 @@
 <?php
   require "action/databasekey.php";
+
+  session_start();
+  if(!isset($_SESSION['loginas'])){
+      header('location:login.php');
+  }else{
+      if($_SESSION['loginas'] != "admin"){
+          header('location:../user/index.php');
+      }
+  }
+
   $key = connection();
 
   $sql = "select msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msgender.keterangan as 'gender',msdata.academic_year,
