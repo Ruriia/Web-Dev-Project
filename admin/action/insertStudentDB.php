@@ -5,12 +5,12 @@ $key = connection();
 $query = "INSERT INTO msdata values (?,?,?,?,?,?,?,?,?,1)";
 
 $run = $key->prepare($query);
-
+$password = password_hash($_POST['inputpassword'], PASSWORD_BCRYPT);
 $getdata = [
     $_POST['inputnim'],
     $_POST['inputemail'],
     $_POST['inputbirthday'],
-    $_POST['inputpassword'],
+    $password,
     $_POST['inputname'],
     $_POST['radio'],
     $_POST['inputyear'],
