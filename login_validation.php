@@ -8,7 +8,7 @@ $sql = "SELECT * FROM msdata WHERE email=?";
 $result = $key->prepare($sql);
 $data = [$_POST['email']];
 $result->execute($data);
-$fetchdata = $result->fetch();
+if($fetchdata = $result->fetch()){
     if(password_verify($password, $row['password'])){
         $_SESSION['nama'] = $fetchdata['nama'];
         if($fetchdata['authorize'] == 1){
@@ -22,6 +22,9 @@ $fetchdata = $result->fetch();
     else{
         header("location:form_login.php"); 
     }
+}else{
+    header("location:form_login.php");
+}
 
 
 
