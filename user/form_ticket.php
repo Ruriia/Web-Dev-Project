@@ -119,12 +119,16 @@ li.dropdown {
             <br/>
             <form action="action_page.php" method="post">
                 <div class="form-group">
-                    <label for="nama">Email (Gunakan email student):</label>
-                    <input type="text" class="form-control" name="emailticket" placeholder="Email_Student" required>
+                    <label for="nama">Email :</label>
+                    <input type="text" class="form-control" name="emailticket" placeholder="" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap :</label>
+                    <input type="text" class="form-control" name="nama_lengkap" placeholder="" readonly>
                 </div>
                 <div class="form-group">
                     <label for="student_id">NIM :</label>
-                    <input type="text" class="form-control" name="student_id" placeholder="Nim" required>
+                    <input type="text" class="form-control" name="student_id" placeholder="" readonly>
                 </div>
                 <div class="row">
                     <div class="col-9">
