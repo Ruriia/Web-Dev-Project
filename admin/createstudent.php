@@ -124,7 +124,7 @@
             </div>
             <div class="row">
               <div class="col-sm-12">
-              <small class="form-text text-muted"><em>Password is birthday by default ("dd/mm/yyyy").</em></small>
+              <small class="form-text text-muted"><em>Password is birthday by default ("ddmmyyyy").</em></small>
               </div>
             </div>
           </div>

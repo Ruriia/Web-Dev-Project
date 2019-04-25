@@ -94,5 +94,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   });
 </script>
 
+<!-- Change password form -->
+<script>
+  $('#changepass').click(function(){
+      syntax="<form action='action/updatedata.php' method='post'><div class='form-group row'><label class='col-sm-2 col-form-label'>&emsp;Old Password</label><div class='col-sm-8'><input type='password' class='form-control' name='oldpassword' placeholder='Enter old password'></div></div><br /><div class='form-group row'><label class='col-sm-2 col-form-label'>&emsp;New Password</label><div class='col-sm-8'><input type='password' class='form-control' name='newpassword' placeholder='Enter new password'></div></div></form>";
+      $('#insertBeforePlace').before(syntax);
+  });
+</script>
+
 </body>
 </html>

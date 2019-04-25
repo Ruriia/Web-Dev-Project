@@ -19,7 +19,7 @@
   $hasil->execute([$_SESSION['email']]);
 
   $data = $hasil->fetch();
-?>
+?>  
 
 
     <section class="content-header">
@@ -31,10 +31,40 @@
 
     <!-- Main content -->
     <div class="content container-fluid">
-        <div class="bootstrap-iso">
-            <div class="row">
-                <div class="col-mt-3"><strong>Full name</strong></div>
-                <div class="row-mt-6">Testing</div>
+        <div class="bootstrap-iso" id="disini">
+            <div class="ml-3">
+                <form action="action/updatedata.php" method="post">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Full name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="inputnama" placeholder="<?= $data['nama']; ?>"> 
+                        </div>          
+                    </div>               
+                </form>
+
+                <form action="updatedata.php" method="post">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" name="inputemail" placeholder="<?= $data['email']; ?>"> 
+                        </div>          
+                    </div>               
+                </form>
+
+                
+                <br />
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>Password</strong>                 
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#" id="changepass">Change password</a> 
+                    </div>
+                </div>
+
+                <br />
+                <button class="btn btn-success" id="insertBeforePlace">Save</button>
+
             </div>
         </div>
     </div>
