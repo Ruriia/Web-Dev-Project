@@ -1,4 +1,5 @@
-<?phpsession_start();
+<?php
+  session_start();
   if(!isset($_SESSION['loginas'])){
       header('location:../form_login.php');
   }else{
@@ -120,15 +121,15 @@ li.dropdown {
             <form action="action_page.php" method="post">
                 <div class="form-group">
                     <label for="nama">Email :</label>
-                    <input type="text" class="form-control" name="emailticket" placeholder="" readonly>
+                    <input type="text" class="form-control" name="emailticket" placeholder="" value="<?= $_SESSION['email'];?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="nama">Nama Lengkap :</label>
-                    <input type="text" class="form-control" name="nama_lengkap" placeholder="" readonly>
+                    <input type="text" class="form-control" name="nama_lengkap" placeholder="" value="<?= $_SESSION['nama'];?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="student_id">NIM :</label>
-                    <input type="text" class="form-control" name="student_id" placeholder="" readonly>
+                    <input type="text" class="form-control" name="student_id" placeholder="" value="<?= $_SESSION['nim'];?>" readonly>
                 </div>
                 <div class="row">
                     <div class="col-9">
@@ -197,7 +198,9 @@ li.dropdown {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Yes, Logout</button>
+        <button type="button" class="btn btn-primary">
+          <a href="../logout.php">Yes, Logout</a>
+         </button>
       </div>
     </div>
   </div>

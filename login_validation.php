@@ -13,6 +13,9 @@ $result->execute($data);
 if($fetchdata = $result->fetch()){
     if(password_verify($katasandi, $fetchdata['password'])){
         $_SESSION['nama'] = $fetchdata['nama'];
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['nim'] = $fetchdata['nim'];
+        $_SESSION['nama'] = $fetchdata['nama'];
         $_SESSION['loginfail'] = 0;
         if($fetchdata['authorize'] == 1){
             
