@@ -32,7 +32,10 @@
     <!-- Main content -->
     <div class="content container-fluid">
         <div class="bootstrap-iso">
-      
+            <div class="row">
+                <div class="col-mt-3"><strong>Full name</strong></div>
+                <div class="row-mt-6">Testing</div>
+            </div>
         </div>
     </div>
     
