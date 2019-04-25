@@ -13,9 +13,12 @@
   require 'action/databasekey.php';
   $key = connection();
 
-  $sql = "SELECT * FROM msdata WHERE";
+  $sql = "SELECT * FROM msdata WHERE msdata.email = ?";
 
-  $result = $key->query($sql);
+  $hasil = $key->prepare($sql);
+  $hasil->execute([$_SESSION['email']]);
+
+  $data = $hasil->fetch();
 ?>
 
 
