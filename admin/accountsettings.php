@@ -55,11 +55,11 @@
                         <a href="#formChangePassword" data-toggle="collapse">Change Password</a>
                                 <div id="formChangePassword" class="collapse">
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="currentPassword" placeholder="Current Password">
+                                        <input type="password" class="form-control" id="currentPassword" placeholder="Current Password" name="oldpassword">
                                         <br/>
-                                        <input type="password" class="form-control" id="newPassword" placeholder="New Password">
+                                        <input type="password" class="form-control" id="newPassword" placeholder="New Password" name="newpassword">
                                         <br/>
-                                        <input type="password" class="form-control" id="confirmNewPassword" placeholder="Confirm New Password">
+                                        <input type="password" class="form-control" id="confirmNewPassword" placeholder="Confirm New Password" name="confirmpassword">
                                     </div>
                                 </div>
                         </div>
