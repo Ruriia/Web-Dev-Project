@@ -86,7 +86,7 @@
               <!-- The user image in the navbar-->
               <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Aswin Candra</span>
+              <span class="hidden-xs"><?= $_SESSION['nama']; ?> </span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -94,7 +94,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Aswin Candra - Admin
+                  <?= $_SESSION['nama']; ?> - <?= $_SESSION['loginas']; ?>
                   <small>Member since xx/xx/xxxx</small>
                 </p>
               </li>
@@ -102,10 +102,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Account Settings</a>
+                  <a href="masteradmin.php?page=accountsettings" class="btn btn-default btn-flat">Account Settings</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a data-target="#modalLogout" data-toggle="modal" class="btn btn-default btn-flat" id="navlogout" href="#modalLogout">Logout</a>
                 </div>
               </li>
             </ul>
@@ -113,5 +113,28 @@
           
         </ul>
       </div>
+
     </nav>
   </header>
+
+  <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLogoutLabel">Notice</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to logout?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary">
+                <a href="../../logout.php">Yes, Logout</a>
+              </button>
+            </div>
+          </div>
+        </div>
+  </div>  

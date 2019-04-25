@@ -9,9 +9,9 @@
     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
   </div>
   <div class="pull-left info">
-    <p>Aswin Candra</p>
+    <p><?= $_SESSION['nama']; ?></p>
     <!-- Status -->
-    <a href="#"><i class="fa fa-circle text-success"></i> Admin</a>
+    <a href="#"><i class="fa fa-circle text-success"></i> <?= $_SESSION['loginas']; ?></a>
   </div>
 </div>
 
@@ -29,7 +29,6 @@
 
 <!-- Sidebar Menu -->
 <ul class="sidebar-menu" data-widget="tree">
-  <li class="header">woy</li>
   <!-- Optionally, you can add icons to the links -->
   <li class="treeview">
     <a href="#"><i class="fa fa-users"></i> <span>Users</span>
@@ -38,21 +37,23 @@
       </span>
     </a>
     <ul class="treeview-menu">
-      <li class="treeview">
-        <a href="#"> <span>Create New User</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>       
-        </a>
-
-        <ul class="treeview-menu">
-          <li><a href="masteradmin.php?page=createstudent">Create New Student</a></li>
-          <li><a href="masteradmin.php?page=createadmin">Create New Admin</a></li>             
-        </ul>
-      </li>
-      <li><a href="masteradmin.php?page=recentusers">Recent Users</a></li>
+      <li><a href="masteradmin.php?page=createstudent"><span>Create new user</span></a></li>
+      <li><a href="masteradmin.php?page=recentusers">Recent users</a></li>
     </ul>
   </li>
+
+  <li class="treeview">
+    <a href="#"><i class="fa fa-user-cog"></i><span>Admin</span>
+      <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li><a href="masteradmin.php?page=createadmin "><span>Create new admin</span></a></li>
+      <li><a href="masteradmin.php?page=recentusers">Recent admin</a></li>
+    </ul>
+  </li>
+
   <li><a href="masteradmin.php?page=tickets"><i class="fa fa-ticket"></i> <span>Tickets</span></a></li>
 
 </ul>

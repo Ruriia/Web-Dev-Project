@@ -1,72 +1,137 @@
-<!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins -->
-  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+<?php
 
 
-  <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
+//session_start();
+  if(!isset($_SESSION['loginas'])){
+      header('location:../form_login.php');
+  }else{
+      if($_SESSION['loginas'] != "admin"){
+          header('location:../user/index.php');
+      }
+  }
+?>
 
-<body class="hold-transition skin-blue sidebar-mini">
 
-  <!-- Content Wrapper. Contains page content -->
-
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Create New Admin
         <small>Optional description</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content container-fluid">
+    <div class="content container-fluid">
+    <div class="bootstrap-iso">
+      <form action="action/insertAdminDB.php" method="post" autocomplete="off">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Full Name</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="inputname" placeholder="Enter full name">
+          </div>
+        </div>
 
-      <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Email Address</label>
+          <div class="col-sm-8">
+            <input type="email" class="form-control" name="inputemail" placeholder="Enter email address">
+          </div>
+        </div>
 
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">NIM</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="inputnim" placeholder="Enter NIM">    
+          </div>
+        </div>
 
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Birthday</label>
+          <div class="col-sm-8">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+                <input class="form-control" id="inputbirthday" name="inputbirthday" placeholder="DD/MM/YYYY" type="text"/>
+            </div>
+          </div>
+        </div>
 
-<!-- ./wrapper -->
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Faculty</label>
+          <div class="col-sm-8">
+            <select class="custom-select" name="inputfaculty">
+              <option selected>Choose...</option>
+              <option value="1">Teknik Informatika</option>
+              <option value="2">Bisnis</option>
+              <option value="3">Seni & Desain</option>
+              <option value="4">Ilmu Komunikasi</option>
+            </select>
+          </div>          
+        </div>
 
-<!-- REQUIRED JS SCRIPTS -->
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Major</label>
+          <div class="col-sm-8">
+            <select class="custom-select" name="inputmajor">
+              <option selected>Choose...</option>
+              <option value="1">Informatika</option>
+              <option value="2">Sistem Informasi</option>
+              <option value="3">Teknik Komputer</option>
+              <option value="4">Teknik Fisika</option>
+              <option value="5">Teknik Elektro</option>
+              <option value="6">Akuntansi</option>
+              <option value="7">Manajemen</option>
+              <option value="8">Design Komunikasi Visual</option>
+              <option value="9">Film</option>
+              <option value="10">Arsitektur</option>
+              <option value="11">Komunikasi Strategis</option>
+              <option value="12">Jurnalistik</option>
+              <option value="13">Double Degree</option>
+            </select>
+          </div>          
+        </div>
 
-<!-- jQuery 3 -->
-<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/dist/js/adminlte.min.js"></script>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Academic Year</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="inputyear" placeholder="Enter academic year">
+          </div>
+        </div>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
-</body>
-</html>
+        <div class="form-group row" id="div_radio">
+          <label class="col-sm-2 col-form-label" for="radio">Gender</label>
+          
+          <div class="col-sm-8">
+            <label class="radio-inline">
+              <input name="radio" type="radio" value="M"/>
+              Male
+            </label>
+       
+            <label class="radio-inline">
+              <input name="radio" type="radio" value="F"/>
+              Female
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="password" class="form-control" id="inputpassword" name="inputpassword" placeholder="Input password">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+              <small class="form-text text-muted"><em>Password is birthday by default ("dd/mm/yyyy").</em></small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary mt-5">Submit</button>
+      </form>
+    </div>
+    </div>
+    

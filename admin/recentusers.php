@@ -1,6 +1,4 @@
 <?php
-  require "action/databasekey.php";
-
   //session_start();
   if(!isset($_SESSION['loginas'])){
       header('location:../form_login.php');
@@ -10,11 +8,12 @@
       }
   }
 
+  require "action/databasekey.php";
   $key = connection();
 
-  $sql = "select msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msgender.keterangan as 'gender',msdata.academic_year,
-  msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' from msdata,msgender,msmajor,msfaculty
-  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.gender = msgender.gender";
+  $sql = "select msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
+  msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' from msdata,msmajor,msfaculty
+  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty";
 
   $result = $key->query($sql);
   
@@ -81,9 +80,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <th>Jurusan</th>
           </tr>
          <?php
-         $i = 0;
-         while($row = $result->fetch()):
-         $i++;
+          $i = 0;
+          while($row = $result->fetch()):
+          $i++;
          ?>
           <tr>
             <td><?=$i ?></td>
@@ -96,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <td><?= $row['fakultas']; ?></td>
             <td><?= $row['jurusan']; ?></td>
           </tr>
-         <?php endwhile;?>
+         <?php endwhile; ?>
         </table>
       </div>
 
