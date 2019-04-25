@@ -10,7 +10,7 @@
 
     $data = $hasilselect->fetch();
 
-    //$password = "passwordbaru";
+    $password = "passwordbaru";
     
     /*
     if(password_verify($_POST['newpassword'], $data['password'])){

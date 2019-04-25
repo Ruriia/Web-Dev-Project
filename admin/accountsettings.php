@@ -52,13 +52,23 @@
                             <strong>Password</strong>                 
                         </div>
                         <div class="col-sm-6">
-                            <a href="#" id="changepass">Change password</a> 
+                        <a href="#formChangePassword" data-toggle="collapse">Change Password</a>
+                                <div id="formChangePassword" class="collapse">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="currentPassword" placeholder="Current Password">
+                                        <br/>
+                                        <input type="password" class="form-control" id="newPassword" placeholder="New Password">
+                                        <br/>
+                                        <input type="password" class="form-control" id="confirmNewPassword" placeholder="Confirm New Password">
+                                    </div>
+                                </div>
                         </div>
                     </div>
 
                     <br />
                     <button type="submit" class="btn btn-success" id="insertBeforePlace">Save</button>
                 </form>
+                
             </div>
         </div>
     </div>
