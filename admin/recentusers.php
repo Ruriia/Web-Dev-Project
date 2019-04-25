@@ -11,8 +11,8 @@
   require "action/databasekey.php";
   $key = connection();
 
-  $sql = "select msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
-  msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' from msdata,msmajor,msfaculty
+  $sql = "SELECT msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
+  msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' FROM msdata,msmajor,msfaculty
   where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty";
 
   $result = $key->query($sql);
