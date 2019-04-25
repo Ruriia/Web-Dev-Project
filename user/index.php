@@ -210,7 +210,7 @@ li.dropdown {
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
          <button type="button" class="btn btn-primary">
-          <a href="../index.php">Yes, Logout</a>
+          <a href="../logout.php">Yes, Logout</a>
          </button>
       </div>
     </div>

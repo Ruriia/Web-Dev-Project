@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+session_start();
+$_SESSION['loginfail'] = 0;
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Home</title>

@@ -13,22 +13,23 @@ $result->execute($data);
 if($fetchdata = $result->fetch()){
     if(password_verify($katasandi, $fetchdata['password'])){
         $_SESSION['nama'] = $fetchdata['nama'];
+        $_SESSION['loginfail'] = 0;
         if($fetchdata['authorize'] == 1){
+            
             $_SESSION['loginas'] = "mahasiswa";
             header("location:user/index.php");
-            echo "1";
         }else if($fetchdata['authorize'] == 2){
             $_SESSION['loginas'] = "admin";
             header("location:admin/index.php");
-            echo "2";
         }
     }
     else{
+        $_SESSION['loginfail'] = 1;
         header("location:form_login.php"); 
-        echo "3";
+        
     }
 }else{
-    echo "4";
+    $_SESSION['loginfail'] = 2;
     header("location:form_login.php");
 }
 
