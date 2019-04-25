@@ -13,7 +13,7 @@
 
   $sql = "SELECT msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
   msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' FROM msdata,msmajor,msfaculty
-  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty";
+  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = 1";
 
   $result = $key->query($sql);
   
