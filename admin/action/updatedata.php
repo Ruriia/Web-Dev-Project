@@ -10,6 +10,7 @@
 
     $data = $hasilselect->fetch();
 
+<<<<<<< Updated upstream
     $password = "passwordbaru";
     
     /*
@@ -17,9 +18,20 @@
         $password = $_POST['newpassword'];
     }elseif($_POST['newpassword'] == ""){
         $password = $data['password'];
+=======
+    $password;
+
+    if($_POST['newpassword'].empty() || $_POST['newpassword'] == $data['password']){
+        $sql = "UPDATE msdata SET nama = ?, email = ?";
+        $input = [
+            $_POST['inputnama'],
+            $_POST['inputemail']
+        ];
+    }else{
+        $sql = "UPDATE msdata SET nama = ?, email = ?, "
+>>>>>>> Stashed changes
     }
-    */
-    
+        
 
     $sqlupdate = "UPDATE msdata SET nama=?, email=?, password=?
                 WHERE email=?";
