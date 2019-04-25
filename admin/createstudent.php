@@ -60,7 +60,7 @@
           <label class="col-sm-2 col-form-label">Faculty</label>
           <div class="col-sm-8">
             <select class="custom-select" name="inputfaculty">
-              <option selected>Choose...</option>
+              <option selected disabled>Choose...</option>
               <option value="1">Teknik Informatika</option>
               <option value="2">Bisnis</option>
               <option value="3">Seni & Desain</option>
@@ -73,7 +73,7 @@
           <label class="col-sm-2 col-form-label">Major</label>
           <div class="col-sm-8">
             <select class="custom-select" name="inputmajor">
-              <option selected>Choose...</option>
+              <option selected disabled>Choose...</option>
               <option value="1">Informatika</option>
               <option value="2">Sistem Informasi</option>
               <option value="3">Teknik Komputer</option>

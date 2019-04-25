@@ -142,7 +142,7 @@ li.dropdown {
                         <div class="form-group">
                             <label for="category">Category :</label>
                             <select class="form-control" name="category">
-                            <option selected>Choose...</option>
+                            <option selected disabled>Choose...</option>
                             <option value="1">Problem Finding Class</option>
                             <option value="2">About the Professor</option>
                             <option value="3">About the Subject</option>
