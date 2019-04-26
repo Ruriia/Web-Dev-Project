@@ -1,5 +1,7 @@
 <?php
-//session_start();
+    $_SESSION['oldpassverify'];
+    $_SESSION['newpassverify'];
+
   if(!isset($_SESSION['loginas'])){
       header('location:../form_login.php');
   }else{
@@ -73,16 +75,64 @@
                                 </div>
                         </div>
                     </div>
-
                     <br />
-                    
-                    <button type="submit" class="btn btn-success mx-auto" style="width:100px;">Save</button>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" style="width:100px;">Save</button>                    
+                    </div>
                 </form>
                 
             </div>
         </div>
     </div>
-    
+
+<?php if($_SESSION['oldpassverify'] == 0): ?>
+<!-- Modal -->
+    <div id="modalOldPassword" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Change password failed</h4>
+        </div>
+        <div class="modal-body">
+            <p>Old password doesn't match with the current password</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+
+    </div>
+    </div>
+    <!-- Modal -->
+<?php endif;?>
+
+<?php if($_SESSION['newpassverify'] == 0): ?>
+<!-- Modal -->
+<div id="modalNewPassword" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Change password failed</h4>
+      </div>
+      <div class="modal-body">
+        <p>New password doesn't set</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<?php endif;?>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $("#modalOldPassword").modal('show');

@@ -1,7 +1,6 @@
 <?php
     session_start();
-    $_SESSION['oldpassverify']=1;
-    $_SESSION['newpassverify']=1;
+
     require 'databasekey.php';
     $key = connection();
 
@@ -17,6 +16,7 @@
     
     if(isset($_POST['oldpassword'])){   
         if(password_verify($_POST['oldpassword'], $_SESSION['password'])){
+            $_SESSION['newpassverify'] = 1;
         // Cek kesesuaian old password dengan password yang digunakan untuk login
             if($_POST['newpassword'] == ""){
                 // Cek apakah form new password diisi
@@ -25,6 +25,7 @@
                
             }else {                
                 $password = $_POST['newpassword'];
+                $_SESSION['newpassverify'] = 1;
             }
 
         }else {
@@ -40,57 +41,7 @@
     
 ?>
 
-<?php 
 
-if($_SESSION['oldpassverify'] == 0): ?>
-<!-- Modal -->
-    <div id="modalOldPassword" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Change password failed</h4>
-        </div>
-        <div class="modal-body">
-            <p>Old password doesn't match with the current password</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-        </div>
-
-    </div>
-    </div>
-    <!-- Modal -->
-<?php endif;?>
-
-<?php 
-
-if($_SESSION['newpassverify'] == 0): ?>
-<!-- Modal -->
-<div id="modalNewPassword" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Change password failed</h4>
-      </div>
-      <div class="modal-body">
-        <p>New password doesn't set</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- Modal -->
-<?php endif;?>
 
 <?php    
     /*
@@ -124,10 +75,3 @@ if($_SESSION['newpassverify'] == 0): ?>
     $hasilupdate->execute($file);
     */
 ?>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#modalOldPassword").modal('show');
-        $("#modalNewPassword").modal('show');
-    });
-</script>

@@ -56,6 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- ./wrapper -->
 
+
 <!-- REQUIRED JS SCRIPTS -->
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -94,12 +95,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   });
 </script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#modalOldPassword").modal('show');
-        $("#modalNewPassword").modal('show');
-    });
-</script>
 
 
 
