@@ -102,7 +102,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="masteradmin.php?page=accountsettings" class="btn btn-default btn-flat">Account Settings</a>
+                  <a href="masteradmin.php?page=accountsettings&iderror=0" class="btn btn-default btn-flat">Account Settings</a>
                 </div>
                 <div class="pull-right">
                   <a data-target="#modalLogout" data-toggle="modal" class="btn btn-default btn-flat" id="navlogout" href="#modalLogout">Logout</a>

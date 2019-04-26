@@ -46,7 +46,7 @@
         </div>
         <div class="form-group">
             <input type="password" id="pass" class="form-control" name="katasandi" placeholder="Password" required="required">
-            <input type="checkbox" onclick="visiblePassword()">Show Password
+            <input type="checkbox" onclick="visiblePassword()" class="mt-3"> Show Password
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success btn-block">Login</button>

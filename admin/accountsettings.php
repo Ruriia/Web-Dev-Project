@@ -1,6 +1,4 @@
 <?php
-
-
   if(!isset($_SESSION['loginas'])){
       header('location:../form_login.php');
   }else{
@@ -8,9 +6,6 @@
           header('location:../user/index.php');
       }
   }
-
-  $_SESSION['newpassverify'];
-  $_SESSION['oldpassverify'];
 
   require 'action/databasekey.php';
   $key = connection();
@@ -45,17 +40,17 @@
                         <input type="File" name="foto" style="text-align:center; margin:auto;">                       
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row" id="formgroupnama">
                         <label class="col-sm-2 col-form-label">Full name</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="inputnama" value="<?= $data['nama']; ?>"> 
+                            <input type="text" id="inputnama" class="form-control" name="inputnama" value="<?= $data['nama']; ?>"> 
                         </div>          
                     </div>               
 
-                    <div class="form-group row">
+                    <div class="form-group row" id="formgroupemail">
                         <label class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-8">
-                            <input type="email" class="form-control" name="inputemail" value="<?= $data['email']; ?>"> 
+                            <input type="email" id="inputemail" class="form-control" name="inputemail" value="<?= $data['email']; ?>"> 
                         </div>          
                     </div>               
                     
@@ -79,7 +74,7 @@
                     </div>
                     <br />
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success" style="width:100px;" id="savebtn">Save</button>                    
+                        <button type="submit" id="btnupdate" class="btn btn-success" style="width:100px;" id="savebtn">Save</button>                    
                     </div>
                 </form>
                 
@@ -89,7 +84,7 @@
 
 
 
-<?php if($_SESSION['oldpassverify'] == 0): ?>
+<?php if($_GET['iderror'] == 1): ?>
 <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -113,7 +108,7 @@
     <!-- Modal -->
 <?php endif;?>
 
-<?php if($_SESSION['newpassverify'] == 0): ?>
+<?php if($_GET['iderror'] == 2): ?>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -137,9 +132,26 @@
 <!-- Modal -->
 <?php endif;?>
 
-<?php
-    echo "Session Old Password: " . $_SESSION['oldpassverify'];
-    echo "<br />";
-    echo "Session New Password: " . $_SESSION['newpassverify'];
+<?php if($_GET['iderror'] == 3): ?>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-?>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Change password failed</h4>
+      </div>
+      <div class="modal-body">
+        <p>Your confirm password doesn't valid.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<?php endif;?>

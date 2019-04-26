@@ -119,7 +119,8 @@
           <div class="col-sm-8">
             <div class="row">
               <div class="col-sm-12">
-                <input type="password" class="form-control" id="inputpassword" name="inputpassword" placeholder="Input password">
+                <input type="password" class="form-control buttonInside" id="inputpassword" name="inputpassword" placeholder="Input password">
+                <button type="button" id="showPassword">Show</button>
               </div>
             </div>
             <div class="row">

@@ -12,42 +12,39 @@
     $data = $hasilselect->fetch();
 
     $password = $_SESSION['password'];
-    
-
-    
-    if(isset($_POST['oldpassword'])){   
+    $newpassverify = 1;
+    $oldpassverify = 1;
+     
+    if(!empty($_POST['oldpassword'])){   
         if(password_verify($_POST['oldpassword'], $_SESSION['password'])){
-            $_SESSION['oldpassverify'] = 1;
+            $oldpassverify = 1;
         // Cek kesesuaian old password dengan password yang digunakan untuk login
             if($_POST['newpassword'] == ""){
                 // Cek apakah form new password diisi
-                
-                $_SESSION['newpassverify'] = 0;  
-                header("location:../masteradmin.php?page=accountsettings");    
-            }else {                
-                //$password = password_hash($_POST['newpassword'], PASSWORD_BCRYPT);
-                $password = $_POST['newpassword'];
-                $_SESSION['newpassverify'] = 1;
+                $newpassverify = 0;  
+                header("location:../masteradmin.php?page=accountsettings&iderror=2");    
+            }else {
+                if($_POST['newpassword'] == $_POST['confirmpassword']){
+                    $password = password_hash($_POST['newpassword'], PASSWORD_BCRYPT);
+                    $newpassverify = 1;
+                }else{
+                    header("location:../masteradmin.php?page=accountsettings&iderror=3"); 
+                }                
             }
 
         }else {
-            $_SESSION['oldpassverify'] = 0;
-            header("location:../masteradmin.php?page=accountsettings");          
+            $oldpassverify = 0;
+            header("location:../masteradmin.php?page=accountsettings&iderror=1");          
         }
     }
 
-
-    echo "Session Old Password: " . $_SESSION['oldpassverify'];
-    echo "<br />";
-    echo "Session New Password: " . $_SESSION['newpassverify'];
-    echo "<br />";
-    echo $password;
+   
 ?>
 
 
 
 <?php       
-    if($_SESSION['newpassverify'] = 1 && $_SESSION['oldpassverify'] == 1)
+    if($newpassverify == 1 && $oldpassverify == 1){
         $sqlupdate = "UPDATE msdata SET nama=?, email=?, password=?
                     WHERE email=?";
         $file = [
@@ -56,8 +53,12 @@
             $password,
             $_SESSION['email']
         ];
-
+    
         $hasilupdate= $key->prepare($sqlupdate);
         $hasilupdate->execute($file);
-    
+
+        echo "<h1 style='font-family:Arial; text-align:center; margin-top:15px;'>Your account has updated successfully!</h1>";
+        header( "refresh:2;url=../../form_login.php" );
+    }
+
 ?>

@@ -8,9 +8,6 @@ session_start();
           header('location:../user/index.php');
       }
   }
-
-  $_SESSION['newpassverify'] = 1;
-  $_SESSION['oldpassverify'] = 1;
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Make default value of password -->
 <script>
+
   $('#inputpassword').focusin(function(){
     var pass = $('#inputbirthday').val();
     var tanggal = pass.substring(0,2);
@@ -94,16 +92,63 @@ scratch. This page gets rid of all links and provides the needed markup only.
     var tahun = pass.substring(6);
     var temp = tanggal.concat(bulan);
     var temp1 = temp.concat(tahun);
-    $('#inputpassword').val(temp1);
+    
+    if($('#inputpassword').val() == ""){
+      $('#inputpassword').val(temp1);
+    }
   });
 </script>
 
+<!-- script for change password handling in accountsettings.php -->
 <script type="text/javascript">
     $(document).ready(function(){
         $("#myModal").modal('show');
     });
 </script>
 
+<!-- script for empty field(s) handling in accountsettings.php -->
+<script>
+    $("#inputnama").blur(function(){
+        if($("#inputnama").val() == ""){
+          $("#formgroupnama").append("<div class='col-sm-3' id='forbidden'><p style='color:red'><em>This field cannot be empty.</em></p></div>");
+          $("#btnupdate").attr("disabled", true);            
+        }else{
+          $('#forbidden').remove();
+          $("#btnupdate").attr("disabled", false);  
+        }
+    });
+
+    $("#inputemail").blur(function(){
+        if($("#inputemail").val() == ""){
+            $("#formgroupemail").append("<div class='col-sm-3' id='forbidden'><p style='color:red'><em>This field cannot be empty.</em></p></div>");
+            $("#btnupdate").attr("disabled", true);           
+        }else{
+          $('#forbidden').remove();
+          $("#btnupdate").attr("disabled", false);  
+        }
+    });
+</script>
+
+<!-- script for show password -->
+<script>
+  $("#showPassword").mousedown(function(){
+    var foo = $(this).prev().attr("type");
+    if(foo == "password"){
+      $(this).prev().attr("type", "text");
+    } else {
+      $(this).prev().attr("type", "password");
+    }
+  });
+
+  $("#showPassword").mouseup(function(){
+    var foo = $(this).prev().attr("type");
+    if(foo == "text"){
+      $(this).prev().attr("type", "password");
+    } else {
+      $(this).prev().attr("type", "text");
+    }
+  });
+</script>
 
 </body>
 </html>
