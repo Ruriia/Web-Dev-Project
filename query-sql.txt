@@ -1,0 +1,63 @@
+create table mscategory(category numeric(1) primary key,
+keterangan char(50))ENGINE=INNODB;
+
+insert into mscategory values(1,"Problem finding class"), (2,"About the Professor"),
+ (3,"About the Subject"), (4,"About the Schedule");
+
+create table mspriority(priority numeric(1) primary key, keterangan char(6))ENGINE=INNODB;
+
+insert into mspriority values(1,"Low"),(2,"Medium"),(3,"High");
+
+create table msdetailauthorize(authorize numeric(1) primary key, keterangan char(15))ENGINE=INNODB;
+
+insert into msdetailauthorize values(1,"Mahasiswa"),(2,"Admin");
+
+create table msfaculty(faculty numeric(1) primary key, keterangan varchar(20))ENGINE=INNODB;
+
+insert into msfaculty values(1,"Teknik Informatika"), (2,"Bisnis"), (3,"Seni & Design"), (4,"Ilmu Komunikasi");
+
+create table msmajor(major numeric(2) primary key, keterangan varchar(23))ENGINE=INNODB;
+
+insert into msmajor values (1,"Informatika"), (2,"Sistem Informasi"), (3,"Teknik Komputer"),
+(4,"Teknik Fisika"), (5,"Teknik Elektro"), (6,"Akuntansi"), (7,"Menejemen"), (8,"Design Komunikasi Visual"),
+(9,"Film"), (10,"Arsitektur"), (11,"Komunikasi Strategis"), (12, "Jurnalistik"), (13,"Double Degree");
+
+
+create table msdata(nim numeric(11),
+email varchar(35),
+birthdate varchar(10),
+password varchar(100),
+nama char(25),
+gender char(1),
+academic_year numeric(4),
+faculty numeric(1) references msfaculty(faculty) on update cascade on delete cascade,
+major numeric(2) references msmajor(major) on update cascade on delete cascade,
+authorize numeric(1) references detailauthorize(authorize) on update cascade on delete cascade,
+primary key(nim, email))ENGINE=INNODB;
+
+insert into msdata(nim,email,password,nama,authorize) values (1234, "admin", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "admin", 2),
+(1243,"user","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","user",1);
+
+
+create table referticket(done numeric(1) primary key,
+keterangan char(12))ENGINE=INNODB;
+
+insert into referticket values(0,"Not Answered"),(1, "Answered");
+
+create table ticket(questionid int not null auto_increment primary key,
+email varchar(35) references msdata(email) on update cascade on delete cascade,
+nim numeric(11) references msdata(nim) on update cascade on delete cascade,
+subject varchar(50),
+question varchar(255),
+category numeric(1) references mscategory(category) on update cascade on delete cascade,
+priority numeric(1) references mspriority(priorty) on update cascade on delete cascade,
+done numeric(1) references referticket(done) on update cascade on delete cascade)ENGINE=INNODB;
+
+
+
+ALTER TABLE `msdata` ADD CONSTRAINT `jurusan` FOREIGN KEY(`major`) REFERENCES `msmajor`(`major`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `msdata` ADD CONSTRAINT `fakultas` FOREIGN KEY(`faculty`) references `msfaculty`(`faculty`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `
+
+//SELECT QUERY
+SELECT msdata.nama, msfaculty.keterangan as "Fakultas" , msmajor.keterangan as "Jurusan" from msdata,msfaculty,msmajor where msdata.faculty = msfaculty.faculty and msdata.major = msmajor.major;
