@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-sm-6">
                         <a href="#formChangePassword" data-toggle="collapse">Change Password</a>
-                                <div id="formChangePassword" class="collapse">
+                                <div id="formChangePassword" class="collapse" style="margin-top:15px;">
                                     <div class="form-group">
                                         <input type="password" class="form-control" id="currentPassword" placeholder="Current Password" name="oldpassword">
                                         <br/>
