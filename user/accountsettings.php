@@ -8,17 +8,16 @@
       }
   }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
+    <title>Form Ticket</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
 
 <style>
 body {
@@ -75,7 +74,7 @@ li.dropdown {
   list-style-type: none;
 }
 </style>
-</head>
+
 <body>
 
 <!-- Navbar -->
@@ -100,7 +99,7 @@ li.dropdown {
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown dropleft">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="index.php" id="navbardrop" data-toggle="dropdown">
             <?= $_SESSION['nama'];?> <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:35px;">
             </a>
             <div class="dropdown-menu" style="letter-spacing:0px;">
@@ -113,85 +112,57 @@ li.dropdown {
     </div>
   </nav>
 
-<!-- First Container -->
-<div class="container-fluid bg-1">
+  <div class="container-fluid">
 
-  <div class="container">
+<div class="container" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="images/programming.jpg" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/programming.jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/programming.jpg" alt="Third slide">
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-
+    <h3>Account Settings</h3>
     <hr/>
-    <div class="container bg-2">
-      <div class="d-flex">
-        <div class="mr-auto p-2"><h3>Make Your<br/>TICKETS!</h3>
-          <p>There are 3 categories :</p>
-            <p>- Problem Finding Class<br/>
-            - About the Professor<br/>
-            - About the Subject<br/>
-            - About the Schedule
+    <div class="row" style="padding:20px;">
+        <div class="col col-md-6 text-center" style="background-color:lightgrey;padding:20px;border:solid;border-width:thin;border-radius:5px;">
+            <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:140px;">
+            <hr/>
+            <?= $_SESSION['nama'];?>
+            <br/>
+            <?= $_SESSION['nim'];?>
+            <br/>
+            <?= $_SESSION['email'];?>
         </div>
-        <div class="p-2"><img src="images/ticket.jpg" alt="code" style="width:250px;height:130px">
-        <br/>
-        <a href="form_ticket.php" id="formticket" name="formticket" class="btn btn-primary btn-block">Create New Ticket</a>
-        <a href="#" id="recentticket" name="recentticket" class="btn btn-secondary btn-block">Show Recent Ticket</a>
+        <div class="col col-md-6">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="no_telp">Nomor Telepon :</label>
+                    <input type="text" class="form-control" name="no_telp" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat :</label>
+                    <textarea class="form-control" id="TextAreaAlamat" rows="4" name="alamat"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="recentPassword">Recent Password :</label>
+                    <input type="password" class="form-control" name="recentPassword" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password :</label>
+                    <input type="password" class="form-control" name="newPassword" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password :</label>
+                    <input type="password" class="form-control" name="confirmNewPassword" placeholder="">
+                </div>
+                <!--<div class="form-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Attach File</label>
+                    </div>
+                </div>-->
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="index.php" id="cancel" name="cancel" class="btn btn-secondary">Cancel</a>
+            </form>
         </div>
-      </div>
-      <div class="col col-md bg-2 text-center">
-        <button class="btn btn-default buttondown" data-toggle="collapse" data-target="#demo"><i class="fa fa-chevron-down"></i>
-      </div>
-    </div>
-  </div>
-
-  <div id="demo" class="collapse">
-  <!-- Second Container -->
-  <div class="container">
-
-    <div class="d-flex justify-content-around bg-2" style="padding-top:40px;padding-bottom:40px;">
-      <div class="category text-center">
-        <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
-        <p>Problem Finding Class</p>
-      </div>
-      <div class="category text-center">
-        <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
-        <p>About the Professor</p>
-      </div>
-      <div class="category text-center">
-        <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
-        <p>About the Subject</p>
-      </div>
-      <div class="category text-center">
-        <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
-        <p>About the Schedule</p>
-      </div>
     </div>
 
-  </div>
-  </div>
+</div>
 
 </div>
 
@@ -209,7 +180,7 @@ li.dropdown {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-         <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary">
           <a href="../logout.php">Yes, Logout</a>
          </button>
       </div>

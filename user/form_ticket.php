@@ -87,7 +87,7 @@ li.dropdown {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="alamat.html">About</a>
@@ -98,12 +98,12 @@ li.dropdown {
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
         <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown dropleft">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                Account
+            <?= $_SESSION['nama'];?> <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:35px;">
             </a>
             <div class="dropdown-menu" style="letter-spacing:0px;">
-                <a class="dropdown-item" href="#">Account Settings</a>
+                <a class="dropdown-item" href="accountsettings.php">Account Settings</a>
                 <a data-target="#modalLogout" data-toggle="modal" class="dropdown-item" id="navlogout" href="#modalLogout">Logout</a>
             </div>
         </li>
