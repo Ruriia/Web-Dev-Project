@@ -28,10 +28,19 @@
     </section>
 
     <!-- Main content -->
+    
     <div class="content container-fluid">
-        <div class="bootstrap-iso" id="disini">
-            <div class="ml-3">
+        <div class="bootstrap-iso">
+       
+            <div>
                 <form action="action/updatedata.php" method="post">
+                    <div class="form-group-row" style="margin-bottom:20px; text-align:center; margin-auto;">
+                        <img src="img\default-profile.gif" width="160" class="img-circle" alt="User Image">
+                        <br /><br />
+                        
+                        <input type="File" name="foto" style="text-align:center; margin:auto;">                       
+                    </div>
+
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Full name</label>
                         <div class="col-sm-8">
@@ -66,7 +75,8 @@
                     </div>
 
                     <br />
-                    <button type="submit" class="btn btn-success" id="insertBeforePlace">Save</button>
+                    
+                    <button type="submit" class="btn btn-success mx-auto" style="width:100px;">Save</button>
                 </form>
                 
             </div>
