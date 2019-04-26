@@ -83,3 +83,9 @@
         </div>
     </div>
     
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#modalOldPassword").modal('show');
+        $("#modalNewPassword").modal('show');
+    });
+</script>
