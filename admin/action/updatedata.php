@@ -21,7 +21,8 @@
             if($_POST['newpassword'] == ""){
                 // Cek apakah form new password diisi
                 // $password = password_hash($_POST['newpassword'], PASSWORD_BCRYPT);
-                $_SESSION['newpassverify'] = 0;     
+                $_SESSION['newpassverify'] = 0;  
+                header("location:../masteradmin.php?page=accountsettings");    
             }else {                
                 $password = $_POST['newpassword'];
                 $_SESSION['newpassverify'] = 1;
@@ -29,7 +30,7 @@
 
         }else {
             $_SESSION['oldpassverify'] = 0;
-            
+            header("location:../masteradmin.php?page=accountsettings");          
         }
     }
 
@@ -38,8 +39,6 @@
     echo "Session New Password: " . $_SESSION['newpassverify'];
     echo "<br />";
     echo $password;
-    echo "<br />";
-    echo "Isinya passbaru emang apaan?" . $_POST['newpassword'];
 ?>
 
 

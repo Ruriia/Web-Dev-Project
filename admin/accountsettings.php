@@ -9,6 +9,8 @@
       }
   }
 
+
+
   require 'action/databasekey.php';
   $key = connection();
 
@@ -83,4 +85,54 @@
             </div>
         </div>
     </div>
+
+
+
+<?php if($_SESSION['oldpassverify'] == 0): ?>
+<!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Change password failed</h4>
+        </div>
+        <div class="modal-body">
+            <p>Old password doesn't match with the current password</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+
+    </div>
+    </div>
+    <!-- Modal -->
+<?php endif;?>
+
+<?php if($_SESSION['newpassverify'] == 0): ?>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Change password failed</h4>
+      </div>
+      <div class="modal-body">
+        <p>New password doesn't set</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<?php endif;?>
 
