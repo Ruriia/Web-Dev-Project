@@ -12,6 +12,7 @@
     $data = $hasilselect->fetch();
 
     $password = $_SESSION['password'];
+    
 
     
     if(isset($_POST['oldpassword'])){   
@@ -20,10 +21,11 @@
         // Cek kesesuaian old password dengan password yang digunakan untuk login
             if($_POST['newpassword'] == ""){
                 // Cek apakah form new password diisi
-                // $password = password_hash($_POST['newpassword'], PASSWORD_BCRYPT);
+                
                 $_SESSION['newpassverify'] = 0;  
                 header("location:../masteradmin.php?page=accountsettings");    
             }else {                
+                //$password = password_hash($_POST['newpassword'], PASSWORD_BCRYPT);
                 $password = $_POST['newpassword'];
                 $_SESSION['newpassverify'] = 1;
             }
@@ -34,6 +36,7 @@
         }
     }
 
+
     echo "Session Old Password: " . $_SESSION['oldpassverify'];
     echo "<br />";
     echo "Session New Password: " . $_SESSION['newpassverify'];
@@ -43,35 +46,18 @@
 
 
 
-<?php    
-    /*
-    if(password_verify($_POST['newpassword'], $data['password'])){
-        $password = $_POST['newpassword'];
-    }elseif($_POST['newpassword'] == ""){
-        $password = $data['password'];
-    $password;
-
-    if($_POST['newpassword'].empty() || $_POST['newpassword'] == $data['password']){
-        $sql = "UPDATE msdata SET nama = ?, email = ?";
-        $input = [
+<?php       
+    if($_SESSION['newpassverify'] = 1 && $_SESSION['oldpassverify'] == 1)
+        $sqlupdate = "UPDATE msdata SET nama=?, email=?, password=?
+                    WHERE email=?";
+        $file = [
             $_POST['inputnama'],
-            $_POST['inputemail']
+            $_POST['inputemail'],
+            $password,
+            $_SESSION['email']
         ];
-    }else{
-        $sql = "UPDATE msdata SET nama = ?, email = ?, "
-    }   
-        
 
-    $sqlupdate = "UPDATE msdata SET nama=?, email=?, password=?
-                WHERE email=?";
-    $file = [
-        $_POST['inputnama'],
-        $_POST['inputemail'],
-        $password,
-        $_SESSION['email']
-    ];
-
-    $hasilupdate= $key->prepare($sqlupdate);
-    $hasilupdate->execute($file);
-    */
+        $hasilupdate= $key->prepare($sqlupdate);
+        $hasilupdate->execute($file);
+    
 ?>

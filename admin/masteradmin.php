@@ -8,6 +8,9 @@ session_start();
           header('location:../user/index.php');
       }
   }
+
+  $_SESSION['newpassverify'] = 1;
+  $_SESSION['oldpassverify'] = 1;
 ?>
 
 <!DOCTYPE html>

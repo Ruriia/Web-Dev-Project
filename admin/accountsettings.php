@@ -9,7 +9,8 @@
       }
   }
 
-
+  $_SESSION['newpassverify'];
+  $_SESSION['oldpassverify'];
 
   require 'action/databasekey.php';
   $key = connection();
@@ -47,14 +48,14 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Full name</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="inputnama" placeholder="<?= $data['nama']; ?>"> 
+                            <input type="text" class="form-control" name="inputnama" value="<?= $data['nama']; ?>"> 
                         </div>          
                     </div>               
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-8">
-                            <input type="email" class="form-control" name="inputemail" placeholder="<?= $data['email']; ?>"> 
+                            <input type="email" class="form-control" name="inputemail" value="<?= $data['email']; ?>"> 
                         </div>          
                     </div>               
                     
@@ -136,3 +137,9 @@
 <!-- Modal -->
 <?php endif;?>
 
+<?php
+    echo "Session Old Password: " . $_SESSION['oldpassverify'];
+    echo "<br />";
+    echo "Session New Password: " . $_SESSION['newpassverify'];
+
+?>
