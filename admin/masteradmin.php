@@ -24,17 +24,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   
   <!-- for stylesheet -->
-  <?php include 'template-parts/head.php'; ?>
+  <?php require 'template-parts/head.php'; ?>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
   <!-- Main Header -->
-  <?php include 'template-parts/header.php'; ?>
+  <?php require 'template-parts/header.php'; ?>
 
   <!-- Left side column. contains the logo and sidebar -->
-  <?php include 'template-parts/aside.php'; ?>
+  <?php require 'template-parts/aside.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -50,7 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
-  <?php include 'template-parts/footer.php'; ?>
+  <?php require 'template-parts/footer.php'; ?>
 
 
 </div>
@@ -65,7 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 
-<!-- Include Date Picker -->
+<!-- require Date Picker -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 

@@ -16,13 +16,12 @@
     
     if(isset($_POST['oldpassword'])){   
         if(password_verify($_POST['oldpassword'], $_SESSION['password'])){
-            $_SESSION['newpassverify'] = 1;
+            $_SESSION['oldpassverify'] = 1;
         // Cek kesesuaian old password dengan password yang digunakan untuk login
             if($_POST['newpassword'] == ""){
                 // Cek apakah form new password diisi
                 // $password = password_hash($_POST['newpassword'], PASSWORD_BCRYPT);
-                $_SESSION['newpassverify'] = 0;
-               
+                $_SESSION['newpassverify'] = 0;     
             }else {                
                 $password = $_POST['newpassword'];
                 $_SESSION['newpassverify'] = 1;
@@ -30,6 +29,7 @@
 
         }else {
             $_SESSION['oldpassverify'] = 0;
+            
         }
     }
 
@@ -38,7 +38,8 @@
     echo "Session New Password: " . $_SESSION['newpassverify'];
     echo "<br />";
     echo $password;
-    
+    echo "<br />";
+    echo "Isinya passbaru emang apaan?" . $_POST['newpassword'];
 ?>
 
 
