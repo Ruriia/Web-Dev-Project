@@ -117,7 +117,7 @@
     </nav>
   </header>
 
-  <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+  <div class="modal fade" id="modalLogout" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -131,8 +131,8 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary">
-                <a href="../logout.php">Yes, Logout</a>
+              <button type="button" class="btn btn-primary" >
+                <a href="../logout.php" style="color:unset;">Yes, Logout</a>
               </button>
             </div>
           </div>
