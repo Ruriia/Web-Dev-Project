@@ -28,6 +28,8 @@ email varchar(35),
 birthdate varchar(10),
 password varchar(100),
 nama char(25),
+alamat varchar(255),
+notelp char(13),
 gender char(1),
 academic_year numeric(4),
 faculty numeric(1) references msfaculty(faculty) on update cascade on delete cascade,
@@ -61,3 +63,59 @@ ALTER TABLE `
 
 //SELECT QUERY
 SELECT msdata.nama, msfaculty.keterangan as "Fakultas" , msmajor.keterangan as "Jurusan" from msdata,msfaculty,msmajor where msdata.faculty = msfaculty.faculty and msdata.major = msmajor.major;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+...........................................................................................................................................................................

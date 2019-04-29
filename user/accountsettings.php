@@ -7,6 +7,19 @@
           header('location:../admin/index.php');
       }
   }
+
+
+  require "../admin/action/databasekey.php";
+  $key = connection();
+  
+  $sql = "SELECT * FROM msdata WHERE nim=?";
+
+  $data = [$_SESSION['nim']];
+
+  $result = $key->prepare($sql);
+  $result->execute($data);
+
+  $row = $result->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +100,7 @@ li.dropdown {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="alamat.html">About</a>
@@ -129,14 +142,14 @@ li.dropdown {
             <?= $_SESSION['email'];?>
         </div>
         <div class="col col-md-6">
-            <form action="#" method="post">
+            <form action="edit_user.php" method="post">
                 <div class="form-group">
                     <label for="no_telp">Nomor Telepon :</label>
-                    <input type="text" class="form-control" name="no_telp" placeholder="">
+                    <input type="text" class="form-control" name="no_telp" placeholder="" value="<?= $row['notelp']?>">
                 </div>
                 <div class="form-group">
                     <label for="alamat">Alamat :</label>
-                    <textarea class="form-control" id="TextAreaAlamat" rows="4" name="alamat"></textarea>
+                    <textarea class="form-control" id="TextAreaAlamat" rows="4" name="alamat"><?= $row['alamat'] ?></textarea>
                 </div>
                 <div class="form-group">
                     <label for="recentPassword">Recent Password :</label>
