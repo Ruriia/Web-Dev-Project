@@ -27,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <?php require 'template-parts/head.php'; ?>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onload="startTime()">
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -150,5 +150,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
   });
 </script>
 
+<!-- Script for display day & date -->$GLOBALS</script>
+
+<!-- Script to get date & time -->
+<script>
+  var d = new Date();
+  var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", 
+                "September", "October", "November", "December"];
+
+  document.getElementById('home-day').innerHTML = days[d.getDay()];
+  document.getElementById('home-date').innerHTML = d.getDate() + "<sup>th</sup> " + months[d.getMonth()] + " " + d.getFullYear();
+
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('home-clock').innerHTML = h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+  }
+
+  function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+  }
+</script>
 </body>
 </html>

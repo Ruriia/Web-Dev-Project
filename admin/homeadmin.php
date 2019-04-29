@@ -42,10 +42,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <section class="content container-fluid">
+      <div class="row" style="margin-top:10px;">
+        <div id="home-left" class="col-md-4">
+          Your left-content is here.
+        </div>
 
+        <div id="home-middle" class="col-md-4">
+          Your middle-content is here.
+        </div>
 
-    <!-- /.content -->
-  </div>
+        <div id="home-right" class="col-md-4" style="background: #0080c0;">
+          <h1 id="home-day" style="text-align: center; font-size: 45px; color: white;"></h1>
+          <p id="home-date" style="text-align: center; font-size: 22px; letter-spacing: 1px; color: #0080c0; background: white;"></p>
+          <h1 id="home-clock" style="text-align: center; font-size: 45px; color: white;"></h1>
+        </div>
+      </div>
+
+    </section>
   <!-- /.content-wrapper -->
 
 

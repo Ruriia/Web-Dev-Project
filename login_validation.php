@@ -20,10 +20,10 @@ if($fetchdata = $result->fetch()){
         $_SESSION['password'] = $fetchdata['password'];
         if($fetchdata['authorize'] == 1){
             
-            $_SESSION['loginas'] = "mahasiswa";
+            $_SESSION['loginas'] = "Mahasiswa";
             header("location:user/index.php");
         }else if($fetchdata['authorize'] == 2){
-            $_SESSION['loginas'] = "admin";
+            $_SESSION['loginas'] = "Admin";
             header("location:admin/index.php");
         }
     }

@@ -56,48 +56,6 @@
           </div>
         </div>
 
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Faculty</label>
-          <div class="col-sm-8">
-            <select class="custom-select" name="inputfaculty">
-              <option selected disabled>Choose...</option>
-              <option value="1">Teknik Informatika</option>
-              <option value="2">Bisnis</option>
-              <option value="3">Seni & Desain</option>
-              <option value="4">Ilmu Komunikasi</option>
-            </select>
-          </div>          
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Major</label>
-          <div class="col-sm-8">
-            <select class="custom-select" name="inputmajor">
-              <option selected disabled>Choose...</option>
-              <option value="1">Informatika</option>
-              <option value="2">Sistem Informasi</option>
-              <option value="3">Teknik Komputer</option>
-              <option value="4">Teknik Fisika</option>
-              <option value="5">Teknik Elektro</option>
-              <option value="6">Akuntansi</option>
-              <option value="7">Manajemen</option>
-              <option value="8">Design Komunikasi Visual</option>
-              <option value="9">Film</option>
-              <option value="10">Arsitektur</option>
-              <option value="11">Komunikasi Strategis</option>
-              <option value="12">Jurnalistik</option>
-              <option value="13">Double Degree</option>
-            </select>
-          </div>          
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Academic Year</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="inputyear" placeholder="Enter academic year">
-          </div>
-        </div>
-
         <div class="form-group row" id="div_radio">
           <label class="col-sm-2 col-form-label" for="radio">Gender</label>
           

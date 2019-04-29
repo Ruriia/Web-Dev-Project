@@ -13,9 +13,10 @@
 
   $sql = "SELECT msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
   msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' FROM msdata,msmajor,msfaculty
-  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = 1";
+  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = ?";
 
-  $result = $key->query($sql);
+  $result = $key->prepare($sql);
+  $result->execute([$_GET['authorize']]);
   
 ?>
 
@@ -28,7 +29,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>Helpdesk KRS | Recent <?= $_SESSION['loginas']; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
