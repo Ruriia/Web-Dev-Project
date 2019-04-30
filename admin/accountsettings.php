@@ -32,12 +32,12 @@
         <div class="bootstrap-iso">
        
             <div>
-                <form action="action/updatedata.php" method="post">
+                <form action="action/updatedata.php" method="post" enctype="multipart/form-data">
                     <div class="form-group-row" style="margin-bottom:20px; text-align:center; margin-auto;">
-                        <img src="img\default-profile.gif" width="160" class="img-circle" alt="User Image">
+                        <img src="<?= $_SESSION['profile']?>" width="160" class="img-circle" alt="User Image">
                         <br /><br />
                         
-                        <input type="File" name="foto" style="text-align:center; margin:auto;">                       
+                        <input type="file" name="foto" style="text-align:center; margin:auto;">                       
                     </div>
 
                     <div class="form-group row" id="formgroupnama">

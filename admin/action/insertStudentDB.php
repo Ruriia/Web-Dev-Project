@@ -2,9 +2,10 @@
 require "databasekey.php";
 $key = connection();
 
-$query = "INSERT INTO msdata values (?,?,?,?,?,?,?,?,?,1)";
+$query = "INSERT INTO msdata values (?,?,?,?,?,?,?,?,?,1,?)";
 
 $run = $key->prepare($query);
+$gambar = "profilepicture/user.png";
 $password = password_hash($_POST['inputpassword'], PASSWORD_BCRYPT);
 $getdata = [
     $_POST['inputnim'],
@@ -16,6 +17,7 @@ $getdata = [
     $_POST['inputyear'],
     $_POST['inputfaculty'],
     $_POST['inputmajor'],
+    $gambar
 ];
 
 $run->execute($getdata);

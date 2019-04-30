@@ -2,8 +2,8 @@
 require "databasekey.php";
 $key = connection();
 
-$query = "INSERT INTO msdata (email, birthdate, password, nama, gender, authorize) values (?,?,?,?,?,2)";
-
+$query = "INSERT INTO msdata (email, birthdate, password, nama, gender, authorize, image) values (?,?,?,?,?,2,?)";
+$gambar = "action/profilepicture/admin.png";
 $run = $key->prepare($query);
 $password = password_hash($_POST['inputpassword'], PASSWORD_BCRYPT);
 $getdata = [
@@ -12,6 +12,7 @@ $getdata = [
     $password,
     $_POST['inputname'],
     $_POST['radio'],
+    $gambar
 ];
 
 $run->execute($getdata);
