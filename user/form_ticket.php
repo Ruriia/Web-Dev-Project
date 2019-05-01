@@ -115,10 +115,20 @@ li.dropdown {
     <div class="container-fluid">
 
         <div class="container" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
+            <?php
+              require "../admin/action/databasekey.php";
+              $key = connection();              
+              $sql = "SELECT * FROM msticket ORDER BY no_ticket DESC LIMIT 1";
+              $result = $key->prepare($sql);
+              $result->execute();
+              $data = $result->fetch();
+              $no = $data['no_ticket'] + 1;            
+            ?>
 
             <h3>Create New Ticket</h3>
+            <h5>Ticket no: <?= $no; ?></h5>
             <br/>
-            <form action="action_page.php" method="post">
+            <form action="action/insert_ticket.php" method="post">
                 <div class="form-group">
                     <label for="nama">Email :</label>
                     <input type="text" class="form-control" name="emailticket" placeholder="" value="<?= $_SESSION['email'];?>" readonly>
@@ -176,6 +186,7 @@ li.dropdown {
                         <label class="custom-file-label" for="customFile">Attach File</label>
                     </div>
                 </div>
+
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a href="index.php" id="cancel" name="cancel" class="btn btn-secondary">Cancel</a>
             </form>

@@ -117,7 +117,7 @@
     </nav>
   </header>
 
-  <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+  <div class="modal fade" id="modalLogout" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
