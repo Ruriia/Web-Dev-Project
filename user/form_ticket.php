@@ -170,12 +170,12 @@ li.dropdown {
                 <div class="form-group">
                     <textarea class="form-control" id="Textarea1" rows="6" name="pertanyaan"></textarea>
                 </div>
-                <!--<div class="form-group">
+                <div class="form-group">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="customFile">
                         <label class="custom-file-label" for="customFile">Attach File</label>
                     </div>
-                </div>-->
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a href="index.php" id="cancel" name="cancel" class="btn btn-secondary">Cancel</a>
             </form>

@@ -54,9 +54,9 @@ priority numeric(1) references mspriority(priorty) on update cascade on delete c
 done numeric(1) references referticket(done) on update cascade on delete cascade)ENGINE=INNODB;
 
 create table question(questionid int references ticket(questionid) on update cascade on delete cascade,
-question varchar(255),
-answer varchar(255),
-type int(1))ENGINE=INNODB;
+message varchar(255),
+gambar varchar(255),
+from numeric(1))ENGINE=INNODB;
 
 
 
