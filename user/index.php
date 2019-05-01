@@ -3,7 +3,7 @@
   if(!isset($_SESSION['loginas'])){
       header('location:../form_login.php');
   }else{
-      if($_SESSION['loginas'] != "mahasiswa"){
+      if($_SESSION['loginas'] != "Mahasiswa"){
           header('location:../admin/index.php');
       }
   }
@@ -101,7 +101,7 @@ li.dropdown {
         <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown dropleft">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            <?= $_SESSION['nama'];?> <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:35px;">
+            <?= $_SESSION['nama'];?> <img src="<?= $_SESSION['profile']?>" style="width:35px;">
             </a>
             <div class="dropdown-menu" style="letter-spacing:0px;">
                 <a class="dropdown-item" href="accountsettings.php">Account Settings</a>

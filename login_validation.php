@@ -18,6 +18,7 @@ if($fetchdata = $result->fetch()){
         $_SESSION['nama'] = $fetchdata['nama'];
         $_SESSION['loginfail'] = 0;
         $_SESSION['password'] = $fetchdata['password'];
+        $_SESSION['profile'] = $fetchdata['image'];
         if($fetchdata['authorize'] == 1){
             
             $_SESSION['loginas'] = "Mahasiswa";

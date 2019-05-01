@@ -14,7 +14,31 @@
     $password = $_SESSION['password'];
     $newpassverify = 1;
     $oldpassverify = 1;
-     
+    if ($_FILES['foto']['size'] != 0 && $_FILES['foto']['error'] == 0){
+        $foto = $_FILES['foto'];
+        $ext = explode(".", $foto['name']);
+        $ext = end($ext);
+        $ext = strtolower($ext);
+
+        $ext_boleh = ['jpg', 'png', 'jpeg'];
+        if(in_array($ext, $ext_boleh)){
+            $sumber = $foto['tmp_name'];
+            $tujuan = 'profilepicture/' . $_SESSION['nim'] . '.' . $ext;
+            move_uploaded_file($sumber, $tujuan);
+            $ambilgambar = 'action/profilepicture/' . $_SESSION['nim'] . '.' . $ext;
+            $_SESSION['profile'] = $ambilgambar;
+            $queryubahgambar = "UPDATE msdata set image=? where nim=?";
+            $ubahdata = [
+                $ambilgambar,
+                $_SESSION['nim']
+            ];
+            $ubah = $key->prepare($queryubahgambar);
+            $ubah->execute($ubahdata);
+            
+        }
+    }
+        
+    
     if(!empty($_POST['oldpassword'])){   
         if(password_verify($_POST['oldpassword'], $_SESSION['password'])){
             $oldpassverify = 1;
@@ -28,7 +52,7 @@
                     $password = password_hash($_POST['newpassword'], PASSWORD_BCRYPT);
                     $newpassverify = 1;
                 }else{
-                    header("location:../masteradmin.php?page=accountsettings&iderror=3"); 
+                  header("location:../masteradmin.php?page=accountsettings&iderror=3"); 
                 }                
             }
 
@@ -53,12 +77,12 @@
             $password,
             $_SESSION['email']
         ];
-    
         $hasilupdate= $key->prepare($sqlupdate);
         $hasilupdate->execute($file);
-
+        $_SESSION['email'] = $_POST['inputemail'];
+        $_SESSION['nama'] = $_POST['inputnama'];
         echo "<h1 style='font-family:Arial; text-align:center; margin-top:15px;'>Your account has updated successfully!</h1>";
-        header( "refresh:2;url=../../form_login.php" );
+        header( "refresh:2;url=../index.php" );
     }
 
 ?>
