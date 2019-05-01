@@ -86,6 +86,49 @@ a:hover {
 li.dropdown {
   list-style-type: none;
 }
+/* Container needed to position the button. Adjust the width as needed */
+.container-profile {
+  position: relative;
+  width: 50%;
+}
+
+/* Make the image responsive */
+.container-profile img {
+  width: 100%;
+  height: auto;
+}
+
+/* Style the button and place it in the middle of the container/image */
+
+.upload {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+.upload + label {
+  position: absolute;
+  top: 50%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  opacity:0;
+}
+
+.upload:focus + label,
+.upload + label:hover {
+  opacity: 0.5;
+  transition: .5s ease;
+  cursor:pointer;
+}
 </style>
 
 <body>
@@ -133,7 +176,11 @@ li.dropdown {
     <hr/>
     <div class="row" style="padding:20px;">
         <div class="col col-md-6 text-center" style="background-color:lightgrey;padding:20px;border:solid;border-width:thin;border-radius:5px;">
-            <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:140px;">
+          <div class="container container-profile">
+          <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:140px;">
+          <input type="file" name="file" id="file" class="upload" />
+          <label for="file">Change Profile Photo</label>
+          </div>      
             <hr/>
             <?= $_SESSION['nama'];?>
             <br/>
@@ -143,14 +190,6 @@ li.dropdown {
         </div>
         <div class="col col-md-6">
             <form action="edit_user.php" method="post">
-                <div class="form-group">
-                    <label for="no_telp">Nomor Telepon :</label>
-                    <input type="text" class="form-control" name="no_telp" placeholder="" value="<?= $row['notelp']?>">
-                </div>
-                <div class="form-group">
-                    <label for="alamat">Alamat :</label>
-                    <textarea class="form-control" id="TextAreaAlamat" rows="4" name="alamat"><?= $row['alamat'] ?></textarea>
-                </div>
                 <div class="form-group">
                     <label for="recentPassword">Recent Password :</label>
                     <input type="password" class="form-control" name="recentPassword" placeholder="">
