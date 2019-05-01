@@ -115,20 +115,10 @@ li.dropdown {
     <div class="container-fluid">
 
         <div class="container" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
-            <?php
-              require "../admin/action/databasekey.php";
-              $key = connection();              
-              $sql = "SELECT * FROM msticket ORDER BY no_ticket DESC LIMIT 1";
-              $result = $key->prepare($sql);
-              $result->execute();
-              $data = $result->fetch();
-              $no = $data['no_ticket'] + 1;            
-            ?>
 
             <h3>Create New Ticket</h3>
-            <h5>Ticket no: <?= $no; ?></h5>
             <br/>
-            <form action="action/insert_ticket.php" method="post">
+            <form action="action/insert_ticket.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nama">Email :</label>
                     <input type="text" class="form-control" name="emailticket" placeholder="" value="<?= $_SESSION['email'];?>" readonly>
@@ -177,13 +167,13 @@ li.dropdown {
                         <label class="form-check-label" for="high_priority">High</label>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group">  
                     <textarea class="form-control" id="Textarea1" rows="6" name="pertanyaan"></textarea>
                 </div>
                 <div class="form-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Attach File</label>
+                        <input type="file" class="custom-file-input" id="customFile" name="gambar">
+                        <label class="custom-file-label" for="customFile">Attach File(Optional)</label>
                     </div>
                 </div>
 

@@ -19,7 +19,6 @@
         $ext = explode(".", $foto['name']);
         $ext = end($ext);
         $ext = strtolower($ext);
-
         $ext_boleh = ['jpg', 'png', 'jpeg'];
         if(in_array($ext, $ext_boleh)){
             $sumber = $foto['tmp_name'];
