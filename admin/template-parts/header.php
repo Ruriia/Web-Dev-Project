@@ -131,13 +131,8 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-<<<<<<< HEAD
-              <button type="button" class="btn btn-primary" >
-                <a href="../logout.php" style="color:unset;">Yes, Logout</a>
-=======
               <button type="button" class="btn btn-primary">
                 <a href="../logout.php" style="color:unset">Yes, Logout</a>
->>>>>>> master
               </button>
             </div>
           </div>
