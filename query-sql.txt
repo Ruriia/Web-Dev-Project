@@ -43,7 +43,7 @@ insert into msdata(nim,email,password,nama,authorize,image) values (1234, "admin
 create table referticket(done numeric(1) primary key,
 keterangan char(12))ENGINE=INNODB;
 
-insert into referticket values(0,"Not Answered"),(1, "Answered");
+insert into referticket values(0,"Opened"),(1, "Closed");
 
 create table ticket(questionid int not null auto_increment primary key,
 email varchar(35) references msdata(email) on update cascade on delete cascade,
@@ -51,14 +51,18 @@ nim numeric(11) references msdata(nim) on update cascade on delete cascade,
 subject varchar(50),
 category numeric(1) references mscategory(category) on update cascade on delete cascade,
 priority numeric(1) references mspriority(priorty) on update cascade on delete cascade,
+date_created varchar(10),
+time_created varchar(5),
 done numeric(1) references referticket(done) on update cascade on delete cascade)ENGINE=INNODB;
 
-create table question(questionid int references ticket(questionid) on update cascade on delete cascade,
+create table question(answerid int not null auto_increment primary key,
+questionid int references ticket(questionid) on update cascade on delete cascade,
 message varchar(255),
 gambar varchar(255),
 dari numeric(1))ENGINE=INNODB;
 
+insert into question(message) values("dummy");
 
 
 //SELECT QUERY
-SELECT msdata.nama, msfaculty.keterangan as "Fakultas" , msmajor.keterangan as "Jurusan" from msdata,msfaculty,msmajor where msdata.faculty = msfaculty.faculty and msdata.major = msmajor.major;
+//SELECT msdata.nama, msfaculty.keterangan as "Fakultas" , msmajor.keterangan as "Jurusan" from msdata,msfaculty,msmajor where msdata.faculty = msfaculty.faculty and msdata.major = msmajor.major;
