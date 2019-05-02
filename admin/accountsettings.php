@@ -35,8 +35,7 @@
                 <form action="action/updatedata.php" method="post" enctype="multipart/form-data">
                     <div class="form-group-row" style="margin-bottom:20px; text-align:center; margin-auto;">
                         <img src="<?= $_SESSION['profile']?>" width="160" height="160" class="img-circle" alt="User Image">
-                        <br /><br />
-                        
+                        <br /><br />                        
                         <input type="file" name="foto" style="text-align:center; margin:auto;">                       
                     </div>
 
