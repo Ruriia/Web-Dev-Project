@@ -17,6 +17,7 @@
             WHERE question.questionid = ticket.questionid AND msdata.email = ticket.email";
 
   $result = $key->query($sql);
+  //$data = $result->fetch();
 ?>
 
 
@@ -46,7 +47,9 @@
     <section class="content container-fluid" style="padding-bottom: 0; margin-bottom: 0;">
         <div class="row">
             <div class="col-sm-3"> <!-- Untuk Ticket Info -->
-            
+                <h1 class="h3">Ticket Info</h1>
+                <p>User: &ensp;<?= $data['namauser']; ?></p>
+                <p>Ticket no: &ensp;<?= $_GET['ticketid']; ?></p>
             </div>
 
             <div class="col-sm-9 mb-0">
