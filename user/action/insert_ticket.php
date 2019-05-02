@@ -10,12 +10,9 @@ $result = $key->prepare($sql);
 
 date_default_timezone_set('Asia/Jakarta');
 $date = date("d/m/Y");
-<<<<<<< Updated upstream
 $time = date("H:i:s");
-=======
 $date = date('Y-m-d', strtotime($date));
-$time = date("H:i");
->>>>>>> Stashed changes
+
 
 $data = [
     $_POST['emailticket'],
