@@ -107,7 +107,7 @@ li.dropdown {
           <a class="nav-link" href="alamat.html">About</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="chatroom.php">Chatroom</a>
+            <a class="nav-link" href="#">Chatroom</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
