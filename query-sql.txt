@@ -57,9 +57,12 @@ done numeric(1) references referticket(done) on update cascade on delete cascade
 
 create table question(answerid int not null auto_increment primary key,
 questionid int references ticket(questionid) on update cascade on delete cascade,
+sender varchar(50),
 message varchar(255),
 gambar varchar(255),
-dari numeric(1))ENGINE=INNODB;
+dari numeric(1),
+date_sended date,
+time_sended time)ENGINE=INNODB;
 
 insert into question(message) values("dummy");
 
