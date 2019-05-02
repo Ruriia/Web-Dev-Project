@@ -23,7 +23,7 @@ insert into msmajor values (1,"Informatika"), (2,"Sistem Informasi"), (3,"Teknik
 (9,"Film"), (10,"Arsitektur"), (11,"Komunikasi Strategis"), (12, "Jurnalistik"), (13,"Double Degree");
 
 
-create table msdata(nim numeric(11),
+create table msdata(nim int not null auto_increment,
 email varchar(35),
 birthdate varchar(10),
 password varchar(100),
@@ -36,8 +36,8 @@ authorize numeric(1) references detailauthorize(authorize) on update cascade on 
 image varchar(255),
 primary key(nim, email))ENGINE=INNODB;
 
-insert into msdata(nim,email,password,nama,authorize,image) values (1234, "admin", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "admin", 2, "action/profilepicture/admin.png"),
-(1243,"user","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","user",1,"profilepicture/user.png");
+insert into msdata(email,password,nama,authorize,image) values ("admin", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "admin", 2, "action/profilepicture/admin.png"),
+("user","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","user",1,"profilepicture/user.png");
 
 
 create table referticket(done numeric(1) primary key,

@@ -37,12 +37,12 @@
           </div>
         </div>
 
-        <div class="form-group row">
+        <!--<div class="form-group row">
           <label class="col-sm-2 col-form-label">NIM</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" name="inputnim" placeholder="Enter NIM">    
           </div>
-        </div>
+        </div>-->
 
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Birthday</label>

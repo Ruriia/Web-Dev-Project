@@ -2,13 +2,12 @@
 require "databasekey.php";
 $key = connection();
 
-$query = "INSERT INTO msdata values (?,?,?,?,?,?,?,?,?,1,?)";
+$query = "INSERT INTO msdata(email,birthdate,password,nama,gender,academic_year,faculty,major,authorize,image) values (?,?,?,?,?,?,?,?,1,?)";
 
 $run = $key->prepare($query);
 $gambar = "profilepicture/user.png";
 $password = password_hash($_POST['inputpassword'], PASSWORD_BCRYPT);
 $getdata = [
-    $_POST['inputnim'],
     $_POST['inputemail'],
     $_POST['inputbirthday'],
     $password,

@@ -50,7 +50,7 @@
     </a>
     <ul class="treeview-menu">
       <li><a href="masteradmin.php?page=createadmin "><span>Create new admin</span></a></li>
-      <li><a href="masteradmin.php?page=recentusers&authorize=2">Recent admins</a></li>
+      <li><a href="masteradmin.php?page=recentadmin&authorize=2">Recent admins</a></li>
     </ul>
   </li>
 

@@ -189,7 +189,7 @@ li.dropdown {
             <?= $_SESSION['email'];?>
         </div>
         <div class="col col-md-6">
-            <form action="edit_user.php" method="post">
+            <form action="edit_user.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="recentPassword">Recent Password :</label>
                     <input type="password" class="form-control" name="recentPassword" placeholder="">

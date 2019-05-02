@@ -11,9 +11,8 @@
   require "action/databasekey.php";
   $key = connection();
 
-  $sql = "SELECT msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
-  msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' FROM msdata,msmajor,msfaculty
-  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = ? order by nim desc limit 50";
+  $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata
+  where authorize = ? order by nim desc limit 50";
 
   $result = $key->prepare($sql);
   $result->execute([$_GET['authorize']]);
@@ -55,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Recent Users
+        Recent Admin
         <small>Optional description</small>
       </h1>
       <ol class="breadcrumb">
@@ -66,23 +65,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <section class="content container-fluid">
-
       <div class="table-responsive mt-3">
         <table class="table">
           <tr>
             <th>No.</th>
-            <th>Nim</th>
+            <th>NIKW</th>
             <th>Nama</th>
             <th>Email</th>
             <th>Tanggal lahir</th>
             <th>Gender</th>
-            <th>Tahun Ajaran</th>
-            <th>Fakultas</th>
-            <th>Jurusan</th>
           </tr>
          <?php
           $i = 0;
           while($row = $result->fetch()):
+          
           $i++;
          ?>
           <tr>
@@ -92,9 +88,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <td><?= $row['email']; ?></td>
             <td><?= $row['birthdate']; ?></td>
             <td><?= $row['gender']; ?></td>
-            <td><?= $row['academic_year']; ?></td>
-            <td><?= $row['fakultas']; ?></td>
-            <td><?= $row['jurusan']; ?></td>
           </tr>
          <?php endwhile; ?>
         </table>
