@@ -16,8 +16,15 @@
             FROM question, msdata, ticket
             WHERE question.questionid = ticket.questionid AND msdata.email = ticket.email";
 
+
   $result = $key->query($sql);
-  //$data = $result->fetch();
+  $sqlbaru = "SELECT msdata.nama as namauser, ticket.subject as subjek, mscategory.keterangan as keterangan, mspriority.keterangan as prioritas, msdone.keterangan as done
+  from ticket,mscategory,mspriority,msdata,msdone where ticket.category = mscategory.category and ticket.priority = mspriority.priority and
+  ticket.questionid = ? and msdata.email = ticket.email and msdone.done = ticket.done";
+  $hasil = $key->prepare($sqlbaru);
+  $hasil->execute([$_GET['ticketid']]);
+  $row = $hasil->fetch();
+
 ?>
 
 
@@ -47,9 +54,13 @@
     <section class="content container-fluid" style="padding-bottom: 0; margin-bottom: 0;">
         <div class="row">
             <div class="col-sm-3"> <!-- Untuk Ticket Info -->
-                <h1 class="h3">Ticket Info</h1>
-                <p>User: &ensp;<?= $data['namauser']; ?></p>
+                <h1 class="h3">Ticket Information</h1>
+                <p>User: &ensp;<?= $row['namauser']; ?></p>
                 <p>Ticket no: &ensp;<?= $_GET['ticketid']; ?></p>
+                <p>Category : &ensp;<?= $row['keterangan'];?></p>
+                <p>Subject : &ensp;<?= $row['subjek'];?></p>
+                <p>Priority : &ensp;<?= $row['prioritas'];?></p>
+                <p>Status : &ensp;<?= $row['done'];?></p>
             </div>
 
             <div class="col-sm-9 mb-0">

@@ -45,7 +45,7 @@ keterangan char(12))ENGINE=INNODB;
 
 insert into referticket values(0,"Opened"),(1, "Closed");
 
-create table ticket(questionid int not null auto_increment primary key,
+create table ticket(ticketid int not null auto_increment primary key,
 email varchar(35) references msdata(email) on update cascade on delete cascade,
 nim numeric(11) references msdata(nim) on update cascade on delete cascade,
 subject varchar(50),
@@ -63,6 +63,11 @@ gambar varchar(255),
 dari numeric(1),
 date_sent date,
 time_sent time)ENGINE=INNODB;
+
+create table msdone(done int not null auto increment primary key,
+keterangan varchar(10))ENGINE=INNODB;
+
+insert into msdone(keterangan) values("Opened"),("Closed");
 
 insert into question(message) values("dummy");
 
