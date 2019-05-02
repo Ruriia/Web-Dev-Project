@@ -3,7 +3,7 @@ require "../../admin/action/databasekey.php";
 session_start();
 $key = connection();
 
-$sql = "INSERT INTO ticket(email, nim, subject, category, priority, date_created,time_created,done) 
+$sql = "INSERT INTO ticket(email, nim, subject, category, priority, date_created, time_created, done) 
 values (?,?,?,?,?,?,?,0)";
 
 $result = $key->prepare($sql);

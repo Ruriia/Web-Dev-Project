@@ -150,7 +150,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   });
 </script>
 
-<!-- Script for display day & date -->$GLOBALS</script>
+<!-- Script for display day & date -->
+<!-- Gatau ini apaan? ->  --><script>$GLOBALS</script>
 
 <!-- Script to get date & time -->
 <script>
