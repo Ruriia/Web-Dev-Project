@@ -6,7 +6,7 @@
 <!-- Sidebar user panel (optional) -->
 <div class="user-panel">
   <div class="pull-left image">
-    <img src="<?= $_SESSION['profile']?>" class="img-circle" alt="User Image">
+    <img src="<?= $_SESSION['profile']?>" class="img-circle" alt="User Image" style="width: 45px; height: 45px;">
   </div>
   <div class="pull-left info">
     <p><?= $_SESSION['nama']; ?></p>

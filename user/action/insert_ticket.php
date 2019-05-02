@@ -10,7 +10,7 @@ $result = $key->prepare($sql);
 
 date_default_timezone_set('Asia/Jakarta');
 $date = date("d/m/Y");
-$time = date("H:i");
+$time = date("H:i:s");
 
 $data = [
     $_POST['emailticket'],
