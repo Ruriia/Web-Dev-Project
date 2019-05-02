@@ -159,6 +159,9 @@ li.dropdown {
         <br/>
         <a href="form_ticket.php" id="formticket" name="formticket" class="btn btn-primary btn-block">Create New Ticket</a>
         <a href="#" id="recentticket" name="recentticket" class="btn btn-secondary btn-block">Show Recent Ticket</a>
+        <a href="images/Helpdesk_UMN.pdf" download>
+        <button type="button" class="btn btn-secondary">Download Panduan</button>
+        </a>
         </div>
       </div>
       <div class="col col-md bg-2 text-center">
