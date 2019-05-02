@@ -10,7 +10,12 @@ $result = $key->prepare($sql);
 
 date_default_timezone_set('Asia/Jakarta');
 $date = date("d/m/Y");
+<<<<<<< Updated upstream
 $time = date("H:i:s");
+=======
+$date = date('Y-m-d', strtotime($date));
+$time = date("H:i");
+>>>>>>> Stashed changes
 
 $data = [
     $_POST['emailticket'],
@@ -32,7 +37,7 @@ $row = $result->fetch();
 $noticket = $row['questionid'];
 
 if ($_FILES['gambar']['size'] != 0 && $_FILES['gambar']['error'] == 0){
-    $sql2 = "INSERT INTO question(questionid,message,gambar,dari) values(?,?,?,1)";
+    $sql2 = "INSERT INTO question(questionid,sender,message,gambar,dari,date_sent,time_sent) values(?,?,?,?,1,?,?)";
     $foto = $_FILES['gambar'];
     $ext = explode(".", $foto['name']);
     $ext = end($ext);
@@ -58,11 +63,14 @@ if ($_FILES['gambar']['size'] != 0 && $_FILES['gambar']['error'] == 0){
         header("location:../index.php");
     }
 }else{
-    $sql2 = "INSERT INTO question(questionid,message,dari) values (?,?,1)";
+    $sql2 = "INSERT INTO question(questionid,sender,message,dari,date_sent,time_sent) values (?,?,?,1,?,?)";
     $jalan = $key->prepare($sql2);
     $masuk = [
         $noticket,
+        $_SESSION['nama'],
         $_POST['pertanyaan'],
+        $date,
+        $time
     ];
     $jalan->execute($masuk);
     header("location:../index.php");

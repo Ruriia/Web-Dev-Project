@@ -51,8 +51,8 @@ nim numeric(11) references msdata(nim) on update cascade on delete cascade,
 subject varchar(50),
 category numeric(1) references mscategory(category) on update cascade on delete cascade,
 priority numeric(1) references mspriority(priorty) on update cascade on delete cascade,
-date_created varchar(10),
-time_created varchar(5),
+date_created date,
+time_created time,
 done numeric(1) references referticket(done) on update cascade on delete cascade)ENGINE=INNODB;
 
 create table question(answerid int not null auto_increment primary key,
@@ -61,8 +61,8 @@ sender varchar(50),
 message varchar(255),
 gambar varchar(255),
 dari numeric(1),
-date_sended date,
-time_sended time)ENGINE=INNODB;
+date_sent date,
+time_sent time)ENGINE=INNODB;
 
 insert into question(message) values("dummy");
 
