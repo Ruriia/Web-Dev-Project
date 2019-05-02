@@ -94,7 +94,7 @@ li.dropdown {
           <a class="nav-link" href="alamat.html">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="chatroom.php">Chatroom</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
@@ -159,6 +159,9 @@ li.dropdown {
         <br/>
         <a href="form_ticket.php" id="formticket" name="formticket" class="btn btn-primary btn-block">Create New Ticket</a>
         <a href="#" id="recentticket" name="recentticket" class="btn btn-secondary btn-block">Show Recent Ticket</a>
+        <a href="images/Helpdesk_UMN.pdf" download>
+        <button type="button" class="btn btn-secondary">Download Panduan</button>
+        </a>
         </div>
       </div>
       <div class="col col-md bg-2 text-center">
