@@ -86,19 +86,16 @@ a:hover {
 li.dropdown {
   list-style-type: none;
 }
-/* Container needed to position the button. Adjust the width as needed */
+
 .container-profile {
   position: relative;
   width: 50%;
 }
 
-/* Make the image responsive */
 .container-profile img {
   width: 100%;
   height: auto;
 }
-
-/* Style the button and place it in the middle of the container/image */
 
 .upload {
     width: 0px;
