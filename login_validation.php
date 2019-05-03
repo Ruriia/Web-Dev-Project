@@ -16,16 +16,16 @@ if($fetchdata = $result->fetch()){
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['nim'] = $fetchdata['nim'];
         $_SESSION['nama'] = $fetchdata['nama'];
-        $_SESSION['loginfail'] = 0;
+        $_SESSION['loginfail'] = 3;
         $_SESSION['password'] = $fetchdata['password'];
         $_SESSION['profile'] = $fetchdata['image'];
         if($fetchdata['authorize'] == 1){
             
             $_SESSION['loginas'] = "Mahasiswa";
-            header("location:user/index.php");
+            header("location:form_login.php");
         }else if($fetchdata['authorize'] == 2){
             $_SESSION['loginas'] = "Admin";
-            header("location:admin/index.php");
+            header("location:form_login.php");
         }
     }
     else{
@@ -40,3 +40,4 @@ if($fetchdata = $result->fetch()){
 
 
 ?>
+
