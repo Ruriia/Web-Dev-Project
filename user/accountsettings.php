@@ -118,6 +118,7 @@ li.dropdown {
   height:140px;
   border-radius:50%;
   opacity:0;
+  transition: .5s ease;
 }
 
 .upload:focus + label,
@@ -176,7 +177,7 @@ li.dropdown {
           <div class="container container-profile">
           <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:140px;">
           <input type="file" name="file" id="file" class="upload" />
-          <label for="file">Change Profile Photo</label>
+          <label for="file"><br/>Change Profile Photo</label>
           </div>      
             <hr/>
             <?= $_SESSION['nama'];?>
