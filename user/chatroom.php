@@ -73,6 +73,10 @@ p {font-size: 16px;}
   color: #1abc9c !important;
 }
 
+.navbar-nav button:hover {
+  color: #1abc9c !important;
+}
+
 .buttondown:hover {
   color: white;
 }
