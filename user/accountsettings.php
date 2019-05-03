@@ -131,28 +131,77 @@ li.dropdown {
   transition: .5s ease;
   cursor:pointer;
 }
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  padding-top: 25px;
+  padding-bottom :25px;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 10px;
+  padding-left: 18px;
+  text-decoration: none;
+  transition: .5s ease;
+}
+
+.sidebar p {
+  padding-left: 18px;
+}
+
+.sidebar img {
+  padding-left: 18px;
+}
+
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+  transition: .5s ease;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  transition: .5s ease;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
 </style>
 
 <body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <a class="navbar-brand" href="#">KRS Guides</a>
+    <a class="navbar-brand" href="index.php">KRS Guides</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="alamat.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="chatroom.php">Chatroom</a>
-        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
         <ul class="navbar-nav mr-auto">
@@ -161,7 +210,7 @@ li.dropdown {
             <?= $_SESSION['nama'];?> <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:35px;">
             </a>
             <div class="dropdown-menu" style="letter-spacing:0px;">
-                <a class="dropdown-item" href="accountsettings.php">Account Settings</a>
+                <a class="dropdown-item" href="about.html">About Us</a>
                 <button type="button" id="tombol" class="dropdown-item" onclick="sweetclick()">Logout</button>
             </div>
         </li>
@@ -170,7 +219,20 @@ li.dropdown {
     </div>
   </nav>
 
-  <div class="container-fluid">
+<!-- The sidebar -->
+<div class="sidebar">
+  <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:70px;">
+  <small><p>Welcome, <b><?= $_SESSION['nama'];?></b>
+  <br/>
+  Your ID: <?= $_SESSION['nim'];?></small></p>
+  <hr/>
+  <small>
+  <a href="chatroom.php"><i class="fa fa-comments"></i> Chatroom</a>
+  <a class="active" href="accountsettings.php"><i class="fa fa-cogs"></i> Account Settings</a>
+  </small>
+</div>
+
+<div class="container-fluid">
 
 <div class="container" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
 
