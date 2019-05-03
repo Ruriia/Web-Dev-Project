@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>About Us</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
+<style>
+    .navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+  color: #1abc9c !important;
+}
+
+.navbar-nav button:hover {
+  color: #1abc9c !important;
+}
+
+.buttondown:hover {
+  color: white;
+}
+a {
+  color: white;
+}
+a:hover {
+  text-decoration: none;
+}
+
+li.dropdown {
+  list-style-type: none;
+}
+</style>
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <a class="navbar-brand" href="index.php">KRS Guides</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown dropleft">
+            <div class="dropdown-menu" style="letter-spacing:0px;">
+                <a class="dropdown-item" href="about.html">About Us</a>
+                <!--<a data-target="#modalLogout" data-toggle="modal" class="dropdown-item" id="navlogout" href="#modalLogout">Logout</a>-->
+                <button type="button" id="tombol" class="dropdown-item" onclick="sweetclick()">Logout</button>
+            </div>
+        </li>
+        </ul>
+      </form>
+    </div>
+  </nav>
+    <div class="container text-center" style="margin-top:100px;margin-bottom:20px">
+        <h2><i>The Team</i></h2>
+        <hr/>
+        <div class="row" style="border-radius: 5px;padding-bottom:15px;">
+            
+            <div class="col col-md-6" style="margin-top:20px;">
+                <div class="container" style="background-color:#f1f1f1;padding-top:10px;padding-bottom:10px;padding-left:25px;padding-right:25px;border-radius:5px;">
+                    <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" alt="aswin" style="width:180px;height:180px;">
+                    <figcaption class="caption">Aswin</figcaption>
+                    <hr/>
+                    <div class="d-flex justify-content-around" style="width:120px;margin:auto;">
+                        <i class="fa fa-instagram"></i> <i class="fa fa-facebook-square"></i> <i class="fa fa-twitter-square"></i> <i class="fa fa-envelope-square"></i>
+                    </div>
+                    <!--<div id="details" style="text-align:justify;border:solid;border-width:thin;padding:10px;">
+                        <p>test</p>
+                    </div>-->
+                </div>
+            </div>
+            <div class="col col-md-6" style="margin-top:20px;">
+                <div class="container" style="background-color:#f1f1f1;padding-top:10px;padding-bottom:10px;padding-left:25px;padding-right:25px;border-radius:5px;">
+                    <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" alt="alfon" style="width:180px;height:180px;">
+                    <figcaption class="caption">Alfon</figcaption>
+                    <hr/>
+                    <div class="d-flex justify-content-around" style="width:120px;margin:auto;">
+                        <i class="fa fa-instagram"></i> <i class="fa fa-facebook-square"></i> <i class="fa fa-envelope-square"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-6" style="margin-top:20px;">
+                <div class="container" style="background-color:#f1f1f1;padding-top:10px;padding-bottom:10px;padding-left:25px;padding-right:25px;border-radius:5px;">
+                    <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" alt="fata" style="width:180px;height:180px;">
+                    <figcaption class="caption">Fata</figcaption>
+                    <hr/>
+                    <div class="d-flex justify-content-around" style="width:120px;margin:auto;">
+                        <i class="fa fa-instagram"></i> <i class="fa fa-facebook-square"></i> <i class="fa fa-twitter-square"></i> <i class="fa fa-envelope-square"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-6" style="margin-top:20px;">
+                <div class="container" style="background-color:#f1f1f1;padding-top:10px;padding-bottom:10px;padding-left:25px;padding-right:25px;border-radius:5px;">
+                    <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" alt="darmadi" style="width:180px;height:180px;">
+                    <figcaption class="caption">Darmadi</figcaption>
+                    <hr/>
+                    <div class="d-flex justify-content-around" style="width:120px;margin:auto;">
+                        <i class="fa fa-instagram"></i> <i class="fa fa-envelope-square"></i>
+                    </div>
+                </div>
+            </div>
+             
+        </div>
+
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
