@@ -44,9 +44,9 @@
         <br/>
         <div class="form-group">
             <?php if($_SESSION['loginfail'] == 3): ?>
-              <input type="text" class="form-control" name="email" placeholder="Username/E-mail Student" required="required" value="<?= $_SESSION['email']; ?>">
+              <input type="text" class="form-control" name="email" placeholder="E-mail Student" required="required" value="<?= $_SESSION['email']; ?>">
             <?php else: ?>
-              <input type="text" class="form-control" name="email" placeholder="Username/E-mail Student" required="required">
+              <input type="text" class="form-control" name="email" placeholder="E-mail Student" required="required">
             <?php endif;?>
         </div>
         <div class="form-group">

@@ -19,7 +19,7 @@ if($fetchdata = $result->fetch()){
         $_SESSION['loginfail'] = 3;
         $_SESSION['password'] = $fetchdata['password'];
         $_SESSION['profile'] = $fetchdata['image'];
-        $_SESSION['dicari'];
+        $_SESSION['dicari'] = "";
         if($fetchdata['authorize'] == 1){
             
             $_SESSION['loginas'] = "Mahasiswa";

@@ -10,12 +10,29 @@
 
   require "action/databasekey.php";
   $key = connection();
-
+  if($_SESSION['dicari'] == ""){
   $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata
-  where authorize = ? order by nim desc limit 50";
-
+  where authorize = ? order by nim";
+  
   $result = $key->prepare($sql);
   $result->execute([$_GET['authorize']]);
+  }else{
+    $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata
+    where authorize = ? and (nim = ? or nama like ? or nama like ? or nama like ? or 
+    email like ?) order by nim";
+  
+    $result = $key->prepare($sql);
+    $result->execute([
+      $_GET['authorize'],
+      $_SESSION['dicari'],
+      $_SESSION['dicari']."%",
+      "%".$_SESSION['dicari']."%",
+      "%".$_SESSION['dicari'],
+      $_SESSION['dicari']
+    ]);
+
+
+  }
   
 ?>
 
@@ -55,8 +72,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <section class="content-header">
       <h1>
         Recent Admin
-        <small>Optional description
-        <input type="text" placeholder="Search.." style="border-radius:5px;"></small>
+        <small>Optional description | Masukkan NIKW atau Nama yang ingin dicari
+        <form action="addsession1.php" method="post">
+          <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $_SESSION['dicari'] ?>">
+          <button type="submit">Search</button>
+        </form>
+        </small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -115,3 +136,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
      user experience. -->
 </body>
 </html>
+
+<?php
+  $_SESSION['dicari'] = "";
+?>

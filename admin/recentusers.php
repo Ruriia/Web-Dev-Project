@@ -72,10 +72,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         Recent Users
         <small>Optional description | Masukkan NIM atau Nama yang ingin dicari
         <form action="addsession.php" method="post">
-          <input type="text" placeholder="Search" style="border-radius:5px;" name="search">
-          <button type="submit">Search
-          
-          </button>
+          <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $_SESSION['dicari'] ?>">
+          <button type="submit">Search</button>
         </form>
         </small>
       </h1>
