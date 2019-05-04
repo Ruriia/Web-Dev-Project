@@ -23,12 +23,15 @@
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 
 <style>
 body {
   font: Montserrat, sans-serif;
   line-height: 1.8;
   color: black;
+  overflow-x: hidden;
 }
 p {font-size: 16px;}
 .margin {margin-bottom: 45px;}
@@ -83,7 +86,7 @@ li.dropdown {
   list-style-type: none;
 }
 
-.sidebar {
+/*.sidebar {
   margin: 0;
   padding: 0;
   width: 200px;
@@ -140,6 +143,7 @@ li.dropdown {
     float: none;
   }
 }
+*/
 </style>
 </head>
 <body>
@@ -153,25 +157,32 @@ li.dropdown {
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="chatroom.php">Chatroom</a>
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
         <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown dropleft">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            <?= $_SESSION['nama'];?> <img src="<?= $_SESSION['profile']?>" style="width:35px;">
-            </a>
-            <div class="dropdown-menu" style="letter-spacing:0px;">
+          <li class="nav-item dropdown dropleft">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              <?= $_SESSION['nama'];?> <img src="<?= $_SESSION['profile']?>" style="width:35px;">
+              </a>
+              <div class="dropdown-menu" style="letter-spacing:0px;">
+                <a class="dropdown-item" href="accountsettings.php">Account Settings</a>
                 <a class="dropdown-item" href="about.html">About Us</a>
                 <!--<a data-target="#modalLogout" data-toggle="modal" class="dropdown-item" id="navlogout" href="#modalLogout">Logout</a>-->
                 <button type="button" id="tombol" class="dropdown-item" onclick="sweetclick()">Logout</button>
-            </div>
-        </li>
+              </div>
+          </li>
         </ul>
       </form>
     </div>
   </nav>
 
-<!-- The sidebar -->
+<!-- The sidebar
 <div class="sidebar">
   <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:70px;">
   <small><p>Welcome, <b><?= $_SESSION['nama'];?></b>
@@ -179,10 +190,11 @@ li.dropdown {
   Your ID: <?= $_SESSION['nim'];?></small></p>
   <hr/>
   <small>
+  <a href="form_ticket.php"><i class="fa fa-envelope"></i> Create New Ticket</a>
   <a href="chatroom.php"><i class="fa fa-comments"></i> Chatroom</a>
   <a href="accountsettings.php"><i class="fa fa-cogs"></i> Account Settings</a>
   </small>
-</div>
+</div>-->
 
 <!-- First Container -->
 <div class="container-fluid bg-1">
@@ -319,5 +331,6 @@ li.dropdown {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="dist/sweetalert2.all.min.js"></script>
+<script src="components/js/adminlte.min.js"></script>
 </body>
 </html>

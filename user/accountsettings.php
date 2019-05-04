@@ -132,6 +132,7 @@ li.dropdown {
   cursor:pointer;
 }
 
+/*
 .sidebar {
   margin: 0;
   padding: 0;
@@ -189,6 +190,7 @@ li.dropdown {
     float: none;
   }
 }
+*/
 </style>
 
 <body>
@@ -202,6 +204,12 @@ li.dropdown {
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="chatroom.php">Chatroom</a>
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
         <ul class="navbar-nav mr-auto">
@@ -210,6 +218,7 @@ li.dropdown {
             <?= $_SESSION['nama'];?> <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:35px;">
             </a>
             <div class="dropdown-menu" style="letter-spacing:0px;">
+                <a class="dropdown-item" href="accountsettings.php">Account Settings</a>
                 <a class="dropdown-item" href="about.html">About Us</a>
                 <button type="button" id="tombol" class="dropdown-item" onclick="sweetclick()">Logout</button>
             </div>
@@ -219,7 +228,7 @@ li.dropdown {
     </div>
   </nav>
 
-<!-- The sidebar -->
+<!-- The sidebar
 <div class="sidebar">
   <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:70px;">
   <small><p>Welcome, <b><?= $_SESSION['nama'];?></b>
@@ -227,16 +236,17 @@ li.dropdown {
   Your ID: <?= $_SESSION['nim'];?></small></p>
   <hr/>
   <small>
+  <a href="form_ticket.php"><i class="fa fa-envelope"></i> Create New Ticket</a>
   <a href="chatroom.php"><i class="fa fa-comments"></i> Chatroom</a>
   <a class="active" href="accountsettings.php"><i class="fa fa-cogs"></i> Account Settings</a>
   </small>
-</div>
+</div>-->
 
 <div class="container-fluid">
 
 <div class="container" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
 
-    <h3>Account Settings</h3>
+    <h3><i class="fa fa-cogs"></i> Account Settings</h3>
     <hr/>
     <div class="row" style="padding:20px;">
         <div class="col col-md-6 text-center" style="background-color:lightgrey;padding:20px;border:solid;border-width:thin;border-radius:5px;">
