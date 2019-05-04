@@ -25,12 +25,13 @@
             $tujuan = '../profilepicture/' . $_SESSION['nim'] . '.' . $ext;
             move_uploaded_file($sumber, $tujuan);
             $ambilgambar = 'profilepicture/' . $_SESSION['nim'] . '.' . $ext;
-            $_SESSION['profile'] = $ambilgambar;
+           
             $queryubahgambar = "UPDATE msdata set image=? where nim=?";
             $ubahdata = [
                 $ambilgambar,
                 $_SESSION['nim']
             ];
+            $_SESSION['profile'] = $ambilgambar;
             $ubah = $key->prepare($queryubahgambar);
             $ubah->execute($ubahdata);
             

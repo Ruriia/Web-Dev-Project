@@ -16,20 +16,20 @@ $getdata = [
 ];
 
 $run->execute($getdata);
+
+header("refresh: 2;../masteradmin.php?page=recentadmin&authorize=2");
 ?>
 
-<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+<script src="../../user/dist/sweetalert2.all.min.js"></script>
 
-<div class="container-fluid">
-    <h1 class="title text-center">Your admin's account creation has succeed!</h1>
-
-    <div class="text-center">
-        <a href="../masteradmin.php"><button class="btn btn-success"><strong>Back to Home<strong></button></a>
-    </div>
-
-</div>
-<!-- REQUIRED JS SCRIPTS -->
-<!-- jQuery 3 -->
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+  function sweetclick(){
+    Swal.fire({
+      type: 'success',
+      title: 'Update Berhasil!',
+      showConfirmButton: false,
+      timer: 3000,
+  })
+  }
+  window.onload = sweetclick;
+</script>

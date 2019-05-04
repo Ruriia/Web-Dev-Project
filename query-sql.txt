@@ -34,6 +34,7 @@ faculty numeric(1) references msfaculty(faculty) on update cascade on delete cas
 major numeric(2) references msmajor(major) on update cascade on delete cascade,
 authorize numeric(1) references detailauthorize(authorize) on update cascade on delete cascade,
 image varchar(255),
+date_created date,
 primary key(nim, email))ENGINE=INNODB;
 
 insert into msdata(email,password,nama,authorize,image) values ("admin", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "admin", 2, "profilepicture/admin.png"),
