@@ -19,7 +19,7 @@
   }else{
     $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata
     where authorize = ? and (nim = ? or nama like ? or nama like ? or nama like ? or 
-    email like ?) order by nim";
+    email like ? or email like ?) order by nim";
   
     $result = $key->prepare($sql);
     $result->execute([
@@ -28,7 +28,8 @@
       $_SESSION['dicari']."%",
       "%".$_SESSION['dicari']."%",
       "%".$_SESSION['dicari'],
-      $_SESSION['dicari']
+      $_SESSION['dicari']."%",
+      "%".$_SESSION['dicari']."%"
     ]);
 
 
@@ -76,6 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <form action="addsession1.php" method="post">
           <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $_SESSION['dicari'] ?>">
           <button type="submit">Search</button>
+          <a href="masteradmin.php?page=recentadmin&authorize=2" style="color: red;">Reset</a>
         </form>
         </small>
       </h1>
@@ -108,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <td><?= $row['nim']; ?></td>
             <td><?= $row['nama']; ?></td>
             <td><?= $row['email']; ?></td>
-            <td><?= $row['birthdate']; ?></td>
+            <td><?= date('d-F-Y', strtotime($row['birthdate'])); ?></td>
             <td><?= $row['gender']; ?></td>
           </tr>
          <?php endwhile; ?>

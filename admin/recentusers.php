@@ -74,6 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <form action="addsession.php" method="post">
           <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $_SESSION['dicari'] ?>">
           <button type="submit">Search</button>
+          <a href="masteradmin.php?page=recentusers&authorize=1" style="color: red;">Reset</a>
         </form>
         </small>
       </h1>
@@ -109,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <td><?= $row['nim']; ?></td>
             <td><?= $row['nama']; ?></td>
             <td><?= $row['email']; ?></td>
-            <td><?= $row['birthdate']; ?></td>
+            <td><?= date('d-F-Y', strtotime($row['birthdate'])); ?></td>
             <td><?= $row['gender']; ?></td>
             <td><?= $row['academic_year']; ?></td>
             <td><?= $row['fakultas']; ?></td>

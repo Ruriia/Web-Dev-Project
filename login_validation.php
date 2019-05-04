@@ -20,6 +20,7 @@ if($fetchdata = $result->fetch()){
         $_SESSION['password'] = $fetchdata['password'];
         $_SESSION['profile'] = $fetchdata['image'];
         $_SESSION['dicari'] = "";
+        $_SESSION['membersince'] = $fetchdata['date_created'];
         if($fetchdata['authorize'] == 1){
             
             $_SESSION['loginas'] = "Mahasiswa";

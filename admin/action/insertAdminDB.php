@@ -1,18 +1,22 @@
 <?php
 require "databasekey.php";
 $key = connection();
-
-$query = "INSERT INTO msdata (email, birthdate, password, nama, gender, authorize, image) values (?,?,?,?,?,2,?)";
-$gambar = "action/profilepicture/admin.png";
+date_default_timezone_set('Asia/Jakarta');
+$date = date("d/m/Y");
+$date = date('Y-m-d', strtotime($date));
+$birth = date('Y-d-m', strtotime($_POST['inputbirthday']));
+$query = "INSERT INTO msdata (email, birthdate, password, nama, gender, authorize, image,date_created) values (?,?,?,?,?,2,?,?)";
+$gambar = "profilepicture/admin.png";
 $run = $key->prepare($query);
 $password = password_hash($_POST['inputpassword'], PASSWORD_BCRYPT);
 $getdata = [
     $_POST['inputemail'],
-    $_POST['inputbirthday'],
+    $birth,
     $password,
     $_POST['inputname'],
     $_POST['radio'],
-    $gambar
+    $gambar,
+    $date
 ];
 
 $run->execute($getdata);
@@ -26,7 +30,7 @@ header("refresh: 2;../masteradmin.php?page=recentadmin&authorize=2");
   function sweetclick(){
     Swal.fire({
       type: 'success',
-      title: 'Update Berhasil!',
+      title: 'Berhasil membuat akun admin baru!',
       showConfirmButton: false,
       timer: 3000,
   })

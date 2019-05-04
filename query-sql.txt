@@ -16,7 +16,7 @@ create table msfaculty(faculty numeric(1) primary key, keterangan varchar(20))EN
 
 insert into msfaculty values(1,"Teknik Informatika"), (2,"Bisnis"), (3,"Seni & Design"), (4,"Ilmu Komunikasi");
 
-create table msmajor(major numeric(2) primary key, keterangan varchar(23))ENGINE=INNODB;
+create table msmajor(major numeric(2) primary key, keterangan varchar(24))ENGINE=INNODB;
 
 insert into msmajor values (1,"Informatika"), (2,"Sistem Informasi"), (3,"Teknik Komputer"),
 (4,"Teknik Fisika"), (5,"Teknik Elektro"), (6,"Akuntansi"), (7,"Menejemen"), (8,"Design Komunikasi Visual"),
@@ -25,7 +25,7 @@ insert into msmajor values (1,"Informatika"), (2,"Sistem Informasi"), (3,"Teknik
 
 create table msdata(nim int not null auto_increment,
 email varchar(35),
-birthdate varchar(10),
+birthdate date,
 password varchar(100),
 nama char(25),
 gender char(1),

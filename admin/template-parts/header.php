@@ -95,7 +95,7 @@
 
                 <p>
                   <?= $_SESSION['nama']; ?> - <?= $_SESSION['loginas']; ?>
-                  <small>Member since xx/xx/xxxx</small>
+                  <small>Member Since : <?= date('d-F-Y', strtotime($_SESSION['membersince']));?></small>
                 </p>
               </li>
               

@@ -59,7 +59,7 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Faculty</label>
           <div class="col-sm-8">
-            <select class="custom-select" name="inputfaculty">
+            <select class="custom-select" id="fakultas" name="inputfaculty" onchange="myFunction()">
               <option selected disabled>Choose...</option>
               <option value="1">Teknik Informatika</option>
               <option value="2">Bisnis</option>
@@ -74,19 +74,19 @@
           <div class="col-sm-8">
             <select class="custom-select" name="inputmajor">
               <option selected disabled>Choose...</option>
-              <option value="1">Informatika</option>
-              <option value="2">Sistem Informasi</option>
-              <option value="3">Teknik Komputer</option>
-              <option value="4">Teknik Fisika</option>
-              <option value="5">Teknik Elektro</option>
-              <option value="6">Akuntansi</option>
-              <option value="7">Manajemen</option>
-              <option value="8">Design Komunikasi Visual</option>
-              <option value="9">Film</option>
-              <option value="10">Arsitektur</option>
-              <option value="11">Komunikasi Strategis</option>
-              <option value="12">Jurnalistik</option>
-              <option value="13">Double Degree</option>
+              <option class="fti" style="display: none" value="1">Informatika</option>
+              <option class="fti" style="display: none" value="2">Sistem Informasi</option>
+              <option class="fti" style="display: none" value="3">Teknik Komputer</option>
+              <option class="fti" style="display: none" value="4">Teknik Fisika</option>
+              <option class="fti" style="display: none" value="5">Teknik Elektro</option>
+              <option class="eko" style="display: none" value="6">Akuntansi</option>
+              <option class="eko" style="display: none" value="7">Manajemen</option>
+              <option class="fsd" style="display: none" value="8">Design Komunikasi Visual</option>
+              <option class="fsd" style="display: none" value="9">Film</option>
+              <option class="fsd" style="display: none" value="10">Arsitektur</option>
+              <option class="ilkom" style="display: none" value="11">Komunikasi Strategis</option>
+              <option class="ilkom" style="display: none" value="12">Jurnalistik</option>
+              <option class="fti" style="display: none" value="13">Double Degree</option>
             </select>
           </div>          
         </div>
@@ -135,4 +135,68 @@
       </form>
     </div>
     </div>
-    
+    <script>
+      function myFunction() {
+        var x = document.getElementById("fakultas").value;
+        var panjangfti = document.getElementsByClassName("fti").length;
+        var panjangfsd = document.getElementsByClassName("fsd").length;
+        var panjangilkom = document.getElementsByClassName("ilkom").length;
+        var panjangeko = document.getElementsByClassName("eko").length;
+        if(x == 1){
+          for (let index = 0; index < panjangfti; index++) {
+            document.getElementsByClassName("fti")[index].style.display = "block";
+          }
+          for (let index = 0; index < panjangfsd; index++) {
+            document.getElementsByClassName("fsd")[index].style.display = "none";
+          }
+          for (let index = 0; index < panjangilkom; index++) {
+            document.getElementsByClassName("ilkom")[index].style.display = "none";
+          }
+          for (let index = 0; index < panjangeko; index++) {
+            document.getElementsByClassName("eko")[index].style.display = "none";
+          }
+        }else if(x == 2){
+          for (let index = 0; index < panjangfti; index++) {
+            document.getElementsByClassName("fti")[index].style.display = "none";
+          }
+          for (let index = 0; index < panjangfsd; index++) {
+            document.getElementsByClassName("fsd")[index].style.display = "none";
+          }
+          for (let index = 0; index < panjangilkom; index++) {
+            document.getElementsByClassName("ilkom")[index].style.display = "none";
+          }
+          for (let index = 0; index < panjangeko; index++) {
+            document.getElementsByClassName("eko")[index].style.display = "block";
+          }
+        }else if(x == 3){
+          for (let index = 0; index < panjangfti; index++) {
+            document.getElementsByClassName("fti")[index].style.display = "none";
+          }
+          for (let index = 0; index < panjangfsd; index++) {
+            document.getElementsByClassName("fsd")[index].style.display = "block";
+          }
+          for (let index = 0; index < panjangilkom; index++) {
+            document.getElementsByClassName("ilkom")[index].style.display = "none";
+          }
+          for (let index = 0; index < panjangeko; index++) {
+            document.getElementsByClassName("eko")[index].style.display = "none";
+          }
+        }else if(x == 4){
+          for (let index = 0; index < panjangfti; index++) {
+            document.getElementsByClassName("fti")[index].style.display = "none";
+          }
+          for (let index = 0; index < panjangfsd; index++) {
+            document.getElementsByClassName("fsd")[index].style.display = "none";
+          }
+          for (let index = 0; index < panjangilkom; index++) {
+            document.getElementsByClassName("ilkom")[index].style.display = "block";
+          }
+          for (let index = 0; index < panjangeko; index++) {
+            document.getElementsByClassName("eko")[index].style.display = "none";
+          }
+        }
+         
+        
+      }
+      
+    </script>

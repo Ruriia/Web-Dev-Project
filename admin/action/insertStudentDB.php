@@ -1,22 +1,26 @@
 <?php
 require "databasekey.php";
 $key = connection();
-
-$query = "INSERT INTO msdata(email,birthdate,password,nama,gender,academic_year,faculty,major,authorize,image) values (?,?,?,?,?,?,?,?,1,?)";
+date_default_timezone_set('Asia/Jakarta');
+$date = date("d/m/Y");
+$date = date('Y-m-d', strtotime($date));
+$birth = date('Y-d-m', strtotime($_POST['inputbirthday']));
+$query = "INSERT INTO msdata(email,birthdate,password,nama,gender,academic_year,faculty,major,authorize,image,date_created) values (?,?,?,?,?,?,?,?,1,?,?)";
 
 $run = $key->prepare($query);
 $gambar = "profilepicture/user.png";
 $password = password_hash($_POST['inputpassword'], PASSWORD_BCRYPT);
 $getdata = [
     $_POST['inputemail'],
-    $_POST['inputbirthday'],
+    $birth,
     $password,
     $_POST['inputname'],
     $_POST['radio'],
     $_POST['inputyear'],
     $_POST['inputfaculty'],
     $_POST['inputmajor'],
-    $gambar
+    $gambar,
+    $date
 ];
 
 $run->execute($getdata);
@@ -29,7 +33,7 @@ header("refresh: 2; ../masteradmin.php?page=recentusers&authorize=1")
   function sweetclick(){
     Swal.fire({
       type: 'success',
-      title: 'Update Berhasil!',
+      title: 'Berhasil membuat akun student baru!',
       showConfirmButton: false,
       timer: 3000,
   })
