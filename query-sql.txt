@@ -57,14 +57,14 @@ done numeric(1) references referticket(done) on update cascade on delete cascade
 
 create table question(answerid int not null auto_increment primary key,
 questionid int references ticket(questionid) on update cascade on delete cascade,
-sender varchar(50),
+sender numeric(11) references msdata(nim) on update cascade on delete cascade,
 message varchar(255),
 gambar varchar(255),
 dari numeric(1),
 date_sent date,
 time_sent time)ENGINE=INNODB;
 
-create table msdone(done int not null auto increment primary key,
+create table msdone(done int not null auto_increment primary key,
 keterangan varchar(10))ENGINE=INNODB;
 
 insert into msdone(keterangan) values("Opened"),("Closed");

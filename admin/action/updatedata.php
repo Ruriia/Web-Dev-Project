@@ -22,9 +22,9 @@
         $ext_boleh = ['jpg', 'png', 'jpeg'];
         if(in_array($ext, $ext_boleh)){
             $sumber = $foto['tmp_name'];
-            $tujuan = 'profilepicture/' . $_SESSION['nim'] . '.' . $ext;
+            $tujuan = '../profilepicture/' . $_SESSION['nim'] . '.' . $ext;
             move_uploaded_file($sumber, $tujuan);
-            $ambilgambar = 'action/profilepicture/' . $_SESSION['nim'] . '.' . $ext;
+            $ambilgambar = 'profilepicture/' . $_SESSION['nim'] . '.' . $ext;
             $_SESSION['profile'] = $ambilgambar;
             $queryubahgambar = "UPDATE msdata set image=? where nim=?";
             $ubahdata = [
@@ -80,8 +80,7 @@
         $hasilupdate->execute($file);
         $_SESSION['email'] = $_POST['inputemail'];
         $_SESSION['nama'] = $_POST['inputnama'];
-        echo "<h1 style='font-family:Arial; text-align:center; margin-top:15px;'>Your account has updated successfully!</h1>";
-        header( "refresh:2;url=../index.php" );
+        header("location:../success.php");
     }
 
 ?>

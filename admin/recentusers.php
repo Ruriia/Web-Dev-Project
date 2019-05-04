@@ -7,16 +7,30 @@
           header('location:../user/index.php');
       }
   }
-
   require "action/databasekey.php";
   $key = connection();
-
+  if($_SESSION['dicari'] == ""){
   $sql = "SELECT msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
   msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' FROM msdata,msmajor,msfaculty
-  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = ? order by nim desc limit 50";
-
+  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = ? order by nim";
   $result = $key->prepare($sql);
   $result->execute([$_GET['authorize']]);
+  }else{
+    $sql = "SELECT msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
+    msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' FROM msdata,msmajor,msfaculty
+    where (msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = ?) 
+    and (msdata.nim = ? or msdata.nama like ? or msdata.nama like ? or msdata.nama like ? or 
+    msdata.email like ?) order by nim";
+    
+    $result = $key->prepare($sql);
+    $result->execute([
+      $_GET['authorize'],
+      $_SESSION['dicari'],
+      $_SESSION['dicari']."%",
+      "%".$_SESSION['dicari']."%",
+      "%".$_SESSION['dicari'],
+      $_SESSION['dicari']]);
+  }
   
 ?>
 
@@ -56,8 +70,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <section class="content-header">
       <h1>
         Recent Users
-        <small>Optional description
-        <input type="text" placeholder="Search.." style="border-radius:5px;"></small>
+        <small>Optional description | Masukkan NIM atau Nama yang ingin dicari
+        <form action="addsession.php" method="post">
+          <input type="text" placeholder="Search" style="border-radius:5px;" name="search">
+          <button type="submit">Search
+          
+          </button>
+        </form>
+        </small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -122,3 +142,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
      user experience. -->
 </body>
 </html>
+
+<?php
+  $_SESSION['dicari'] = "";
+?>
