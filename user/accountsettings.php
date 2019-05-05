@@ -215,7 +215,7 @@ li.dropdown {
         <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown dropleft">
             <a class="nav-link dropdown-toggle" href="index.php" id="navbardrop" data-toggle="dropdown">
-            <?= $_SESSION['nama'];?> <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:35px;">
+            <?= $_SESSION['nama'];?> <img src="<?= $_SESSION['profile']; ?>" style="width:35px;">
             </a>
             <div class="dropdown-menu" style="letter-spacing:0px;">
                 <a class="dropdown-item" href="accountsettings.php">Account Settings</a>
@@ -245,36 +245,37 @@ li.dropdown {
 <div class="container-fluid">
 
 <div class="container" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
-
+<form action="edit_user.php" method="post" enctype="multipart/form-data">
     <h3><i class="fa fa-cogs"></i> Account Settings</h3>
     <hr/>
     <div class="row" style="padding:20px;">
         <div class="col col-md-6 text-center" style="background-color:lightgrey;padding:20px;border:solid;border-width:thin;border-radius:5px;">
           <div class="container container-profile">
-          <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1" style="width:140px;">
-          <input type="file" name="file" id="file" class="upload" />
+          <img src="<?= $_SESSION['profile']; ?>" style="width:140px;">
+          <input type="file" id="file" class="upload" name="foto">
           <label for="file"><br/>Change Profile Photo</label>
-          </div>      
+        </div>      
             <hr/>
             <?= $_SESSION['nama'];?>
             <br/>
             <?= $_SESSION['nim'];?>
             <br/>
             <?= $_SESSION['email'];?>
-        </div>
+    </div>
         <div class="col col-md-6">
-            <form action="edit_user.php" method="post" enctype="multipart/form-data">
+            
                 <div class="form-group">
                     <label for="recentPassword">Recent Password :</label>
-                    <input type="password" class="form-control" name="recentPassword" placeholder="">
+                    <input type="password" class="form-control" name="recentPassword" placeholder=""">
                 </div>
                 <div class="form-group">
                     <label for="newPassword">New Password :</label>
-                    <input type="password" class="form-control" name="newPassword" placeholder="">
+                    <input type="password" class="form-control" name="newPassword" placeholder="" onchange="myFunction()">
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword">Confirm New Password :</label>
-                    <input type="password" class="form-control" name="confirmNewPassword" placeholder="">
+                    <input type="password" class="form-control" name="confirmNewPassword" placeholder="" onchange="myFunction()">
+                    <label id="notequal" style="color: red; font-weight: bold;"></label>
                 </div>
                 <!--<div class="form-group">
                     <div class="custom-file">
@@ -282,12 +283,12 @@ li.dropdown {
                         <label class="custom-file-label" for="customFile">Attach File</label>
                     </div>
                 </div>-->
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="simpan">Submit</button>
                 <a href="index.php" id="cancel" name="cancel" class="btn btn-secondary">Cancel</a>
-            </form>
+            
         </div>
     </div>
-
+    </form>
 </div>
 
 </div>
@@ -333,6 +334,22 @@ li.dropdown {
       window.location.href = "../logout.php";
     }
   })
+  }
+</script>
+<script>
+  function myFunction(){
+    var newpassword = document.getElementsByClassName("form-control")[1].value;
+    var confirm = document.getElementsByClassName("form-control")[2].value;
+    if(newpassword === "" && confirm === ""){
+      document.getElementById("simpan").disabled = false;
+      document.getElementById("notequal").innerText = "";
+    }else if(newpassword != confirm){ 
+      document.getElementById("notequal").innerText = "Password tidak sama";
+      document.getElementById("simpan").disabled = true;
+    }else if(newpassword === confirm){ 
+      document.getElementById("simpan").disabled = false;
+      document.getElementById("notequal").innerText = "";
+    }
   }
 </script>
 
