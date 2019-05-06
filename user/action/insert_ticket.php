@@ -4,7 +4,7 @@ session_start();
 $key = connection();
 
 $sql = "INSERT INTO ticket(email, nim, subject, category, priority, date_created, time_created, done) 
-values (?,?,?,?,?,?,?,1)";
+values (?,?,?,?,?,?,?,0)";
 
 $result = $key->prepare($sql);
 
@@ -52,7 +52,7 @@ if ($_FILES['gambar']['size'] != 0 && $_FILES['gambar']['error'] == 0){
         $ambilgambar = 'ticketuser/' . $no . '.' . $ext;
         $updatequestion = [
             $noticket,
-            $_SESSION['nim'],
+            $_SESSION['nama'],
             $_POST['pertanyaan'],
             $ambilgambar,
             $date,
@@ -67,7 +67,7 @@ if ($_FILES['gambar']['size'] != 0 && $_FILES['gambar']['error'] == 0){
     $jalan = $key->prepare($sql2);
     $masuk = [
         $noticket,
-        $_SESSION['nim'],
+        $_SESSION['nama'],
         $_POST['pertanyaan'],
         $date,
         $time

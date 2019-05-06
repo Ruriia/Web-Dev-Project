@@ -77,6 +77,10 @@
           <?php
             $i = 0;
             while($row = $result->fetch()):
+            $tgl = $row['date_created'];
+            // Konversi format tanggal
+            $tgl = new DateTime($tgl);
+            $tgl = $tgl->format('d M Y');
           ?>
             <tr>
               <td><?= $row['ticketid']; ?></td>
@@ -85,14 +89,14 @@
               <td><?= $row['subject']; ?></td>
               <td><?= $row['keteranganCategory']; ?></td>
               <td><?= $row['keteranganPriority']; ?></td>
-              <td><?= $row['date_created']; ?></td>
+              <td><?= $tgl; ?></td>
               <td><?= $row['time_created']; ?></td>
               <td>
                 <?php
                   if($row['done'] == 0){
                     echo "<span style='color:green;'><strong>Opened</strong></span>";
                   }elseif($row['done'] == 1){
-                    echo "<span style='color:green;'><strong>Closed</strong></span>";
+                    echo "<span style='color:red;'><strong>Closed</strong></span>";
                   }                
                 ?>
               </td>

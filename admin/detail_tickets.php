@@ -10,16 +10,16 @@
   require('action/databasekey.php');
   $key = connection();
 
-  $sql = "SELECT question.questionid, question.message, question.gambar, question.dari,
-            msdata.nama AS namauser,
+  $sql = "SELECT question.ticketid, question.message, question.gambar, question.dari,
+            msdata.nama AS namauser, question.sender,
             question.date_sent AS date, question.time_sent AS time
             FROM question, msdata, ticket
-            WHERE question.questionid = ticket.ticketid AND msdata.email = ticket.email";
+            WHERE question.ticketid = ticket.ticketid AND msdata.email = ticket.email";
   $result = $key->query($sql);
   
   $sqlbaru = "SELECT msdata.nama as namauser, ticket.subject as subjek, mscategory.keterangan as keterangan, mspriority.keterangan as prioritas, msdone.keterangan as done
             from ticket,mscategory,mspriority,msdata,msdone where ticket.category = mscategory.category and ticket.priority = mspriority.priority and
-            ticket.questionid = ? and msdata.email = ticket.email and msdone.done = ticket.done";
+            ticket.ticketid = ? and msdata.email = ticket.email and msdone.done = ticket.done";
   $hasil = $key->prepare($sqlbaru);
   $hasil->execute([$_GET['ticketid']]);
   $row = $hasil->fetch();
@@ -64,14 +64,18 @@
             <div class="col-sm-9 mb-0">
                 <div class="row"> <!-- Membagi area chat view dan text box -->               
                     <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll;"> <!-- Untuk chat view -->
-                        <?php while($data = $result->fetch()): ?>                           
+                        <?php while($data = $result->fetch()): 
+                            $tgl = $data['date'];
+                            $tgl = new DateTime($tgl);
+                            $tgl = $tgl->format('d/m/Y');    
+                        ?>                           
                             <?php if($data['ticketid'] == $_GET['ticketid']): ?>
                                 <?php if($data['dari'] == 1): ?>
                                     <div class="row">
-                                        <div class="col-sm-6 mt-3">            
-                                            <strong><?= $data['namauser']; ?></strong>
+                                        <div class="col-sm-6 mt-3" style="border-radius:20px; background: #67bec2; color: white; padding-top: 5px; margin-bottom: 10px;">            
+                                            <strong><?= $data['sender']; ?></strong>
                                             <br />
-                                            <small><?= $data['date']; ?>&ensp;<?= $data['time']; ?></small>
+                                            <small><?= $tgl ?>&ensp;<?= $data['time']; ?></small>
                                             <br />
                                             <p><?= $data['message']; ?></p>
                                         </div>                                    
@@ -82,10 +86,10 @@
                                     <div class="row">
                                         <div class="col-sm-6 mt-3"></div>
 
-                                        <div class="col-sm-6 mt-3">            
-                                            <strong><?= $data['namauser']; ?></strong>
+                                        <div class="col-sm-6 mt-3" style="border-radius:20px; background: #ffffff; padding-top: 5px; margin-bottom: 10px;">            
+                                            <strong><?= $data['sender']; ?></strong>
                                             <br />
-                                            <small><?= $data['date']; ?>&ensp;<?= $data['time']; ?></small>
+                                            <small><?= $tgl ?>&ensp;<?= $data['time']; ?></small>
                                             <br />
                                             <p><?= $data['message']; ?></p>
                                         </div>
