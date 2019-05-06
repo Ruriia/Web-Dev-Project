@@ -10,16 +10,18 @@
   require('action/databasekey.php');
   $key = connection();
 
-  $sql = "SELECT question.questionid, question.message, question.gambar, question.dari,
+  $sql = "SELECT question.ticketid, question.message, question.gambar, question.dari,
             msdata.nama AS namauser,
             question.date_sent AS date, question.time_sent AS time
             FROM question, msdata, ticket
-            WHERE question.questionid = ticket.ticketid AND msdata.email = ticket.email";
+            WHERE question.ticketid = ticket.ticketid AND msdata.email = ticket.email";
   $result = $key->query($sql);
   
-  $sqlbaru = "SELECT msdata.nama as namauser, ticket.subject as subjek, mscategory.keterangan as keterangan, mspriority.keterangan as prioritas, msdone.keterangan as done
-            from ticket,mscategory,mspriority,msdata,msdone where ticket.category = mscategory.category and ticket.priority = mspriority.priority and
-            ticket.questionid = ? and msdata.email = ticket.email and msdone.done = ticket.done";
+  $sqlbaru = "SELECT msdata.nama as namauser, mscategory.keterangan as kategori, ticket.subject as subjek,
+  mspriority.keterangan as prioritas, referticket.keterangan as done
+  from msdata, ticket, question, mscategory, mspriority, referticket where
+  ticket.ticketid = ? and ticket.email = msdata.email and ticket.category = mscategory.category
+  and mspriority.priority = ticket.priority and referticket.done = ticket.done";
   $hasil = $key->prepare($sqlbaru);
   $hasil->execute([$_GET['ticketid']]);
   $row = $hasil->fetch();
@@ -55,7 +57,7 @@
                 <h1 class="h3">Ticket Information</h1>
                 <p>User: &ensp;<?= $row['namauser']; ?></p>
                 <p>Ticket no: &ensp;<?= $_GET['ticketid']; ?></p>
-                <p>Category : &ensp;<?= $row['keterangan'];?></p>
+                <p>Category : &ensp;<?= $row['kategori'];?></p>
                 <p>Subject : &ensp;<?= $row['subjek'];?></p>
                 <p>Priority : &ensp;<?= $row['prioritas'];?></p>
                 <p>Status : &ensp;<?= $row['done'];?></p>

@@ -41,10 +41,8 @@ insert into msdata(email,password,nama,authorize,image) values ("admin", "$2y$10
 ("user","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","user",1,"profilepicture/user.png");
 
 
-create table referticket(done numeric(1) primary key,
-keterangan char(12))ENGINE=INNODB;
-
-insert into referticket values(0,"Opened"),(1, "Closed");
+create table referticket(done int not null auto_increment primary key,
+keterangan char(10))ENGINE=INNODB;
 
 create table ticket(ticketid int not null auto_increment primary key,
 email varchar(35) references msdata(email) on update cascade on delete cascade,
@@ -65,10 +63,8 @@ dari numeric(1),
 date_sent date,
 time_sent time)ENGINE=INNODB;
 
-create table msdone(done int not null auto_increment primary key,
-keterangan varchar(10))ENGINE=INNODB;
 
-insert into msdone(keterangan) values("Opened"),("Closed");
+insert into referticket(keterangan) values("Opened"),("Closed");
 
 insert into question(message) values("dummy");
 

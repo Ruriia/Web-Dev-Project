@@ -89,9 +89,9 @@
               <td><?= $row['time_created']; ?></td>
               <td>
                 <?php
-                  if($row['done'] == 0){
+                  if($row['done'] == 1){
                     echo "<span style='color:green;'><strong>Opened</strong></span>";
-                  }elseif($row['done'] == 1){
+                  }elseif($row['done'] == 2){
                     echo "<span style='color:green;'><strong>Closed</strong></span>";
                   }                
                 ?>
