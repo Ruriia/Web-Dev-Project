@@ -4,7 +4,7 @@ session_start();
 $key = connection();
 
 $sql = "INSERT INTO ticket(email, nim, subject, category, priority, date_created, time_created, done) 
-values (?,?,?,?,?,?,?,0)";
+values (?,?,?,?,?,?,?,1)";
 
 $result = $key->prepare($sql);
 
