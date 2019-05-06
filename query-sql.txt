@@ -57,7 +57,7 @@ time_created time,
 done numeric(1) references referticket(done) on update cascade on delete cascade)ENGINE=INNODB;
 
 create table question(answerid int not null auto_increment primary key,
-questionid int references ticket(questionid) on update cascade on delete cascade,
+ticketid int references ticket(questionid) on update cascade on delete cascade,
 sender numeric(11) references msdata(nim) on update cascade on delete cascade,
 message varchar(255),
 gambar varchar(255),
