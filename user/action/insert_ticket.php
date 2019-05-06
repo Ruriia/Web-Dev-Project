@@ -63,7 +63,7 @@ if ($_FILES['gambar']['size'] != 0 && $_FILES['gambar']['error'] == 0){
         header("location:../index.php");
     }
 }else{
-    $sql2 = "INSERT INTO question(questionid,sender,message,dari,date_sent,time_sent) values (?,?,?,1,?,?)";
+    $sql2 = "INSERT INTO question(ticketid,sender,message,dari,date_sent,time_sent) values (?,?,?,1,?,?)";
     $jalan = $key->prepare($sql2);
     $masuk = [
         $noticket,
