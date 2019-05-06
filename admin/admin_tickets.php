@@ -79,7 +79,7 @@
             while($row = $result->fetch()):
           ?>
             <tr>
-              <td><?= $row['questionid']; ?></td>
+              <td><?= $row['ticketid']; ?></td>
               <td><?= $row['email']; ?></td>
               <td><?= $row['nim']; ?></td>
               <td><?= $row['subject']; ?></td>
@@ -96,7 +96,7 @@
                   }                
                 ?>
               </td>
-              <td><a href="masteradmin.php?page=detail_tickets&ticketid=<?= $row['questionid']; ?>" style="border: 1.6px solid #0080ff; border-radius: 3px; padding: 3px;">
+              <td><a href="masteradmin.php?page=detail_tickets&ticketid=<?= $row['ticketid']; ?>" style="border: 1.6px solid #0080ff; border-radius: 3px; padding: 3px;">
                   <strong>View</strong></a>
               </td>
             </tr>

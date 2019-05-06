@@ -67,7 +67,7 @@
                 <div class="row"> <!-- Membagi area chat view dan text box -->               
                     <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll;"> <!-- Untuk chat view -->
                         <?php while($data = $result->fetch()): ?>                           
-                            <?php if($data['questionid'] == $_GET['ticketid']): ?>
+                            <?php if($data['ticketid'] == $_GET['ticketid']): ?>
                                 <?php if($data['dari'] == 1): ?>
                                     <div class="row">
                                         <div class="col-sm-6 mt-3">            
