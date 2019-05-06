@@ -31,7 +31,7 @@ $result = $key->prepare($sql1);
 $data = $_SESSION['email'];
 $result->execute([$data]);
 $row = $result->fetch();
-$noticket = $row['questionid'];
+$noticket = $row['ticketid'];
 
 if ($_FILES['gambar']['size'] != 0 && $_FILES['gambar']['error'] == 0){
     $sql2 = "INSERT INTO question(questionid,sender,message,gambar,dari,date_sent,time_sent) values(?,?,?,?,1,?,?)";

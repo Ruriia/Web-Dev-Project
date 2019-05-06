@@ -12,19 +12,17 @@
 
   $sql = "SELECT question.questionid, question.message, question.gambar, question.dari,
             msdata.nama AS namauser,
-            ticket.date_created AS date, ticket.time_created AS time
+            question.date_sent AS date, question.time_sent AS time
             FROM question, msdata, ticket
-            WHERE question.questionid = ticket.questionid AND msdata.email = ticket.email";
-
-
+            WHERE question.questionid = ticket.ticketid AND msdata.email = ticket.email";
   $result = $key->query($sql);
+  
   $sqlbaru = "SELECT msdata.nama as namauser, ticket.subject as subjek, mscategory.keterangan as keterangan, mspriority.keterangan as prioritas, msdone.keterangan as done
-  from ticket,mscategory,mspriority,msdata,msdone where ticket.category = mscategory.category and ticket.priority = mspriority.priority and
-  ticket.questionid = ? and msdata.email = ticket.email and msdone.done = ticket.done";
+            from ticket,mscategory,mspriority,msdata,msdone where ticket.category = mscategory.category and ticket.priority = mspriority.priority and
+            ticket.questionid = ? and msdata.email = ticket.email and msdone.done = ticket.done";
   $hasil = $key->prepare($sqlbaru);
   $hasil->execute([$_GET['ticketid']]);
   $row = $hasil->fetch();
-
 ?>
 
 
