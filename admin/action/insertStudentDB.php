@@ -3,8 +3,10 @@ require "databasekey.php";
 $key = connection();
 date_default_timezone_set('Asia/Jakarta');
 $date = date("d/m/Y");
-$date = date('Y-m-d', strtotime($date));
-$birth = date('Y-d-m', strtotime($_POST['inputbirthday']));
+$date = DateTime::createFromFormat('d/m/Y', $date);
+$date = $date->format('Y-m-d');
+$birth = DateTime::createFromFormat('d/m/Y', $_POST['inputbirthday']);
+$birth = $birth->format('Y-m-d');
 $query = "INSERT INTO msdata(email,birthdate,password,nama,gender,academic_year,faculty,major,authorize,image,date_created) values (?,?,?,?,?,?,?,?,1,?,?)";
 
 $run = $key->prepare($query);
