@@ -55,6 +55,7 @@ p {font-size: 16px;}
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
 .navbar {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -70,6 +71,23 @@ p {font-size: 16px;}
 
 .navbar-nav button:hover {
   color: #1abc9c !important;
+}
+
+#navbar1 {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+}
+
+#navbar1 a {
+  float: left;
+  display: block;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
 }
 
 .buttondown:hover {
@@ -149,6 +167,7 @@ li.dropdown {
 <body>
 
 <!-- Navbar -->
+<div id="navbar1">
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <a class="navbar-brand" href="#">KRS Guides</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -181,6 +200,7 @@ li.dropdown {
       </form>
     </div>
   </nav>
+  </div>
 
 <!-- The sidebar
 <div class="sidebar">
@@ -325,6 +345,18 @@ li.dropdown {
     }
   })
   }
+  
+// When the user scrolls down 20px from the top of the document, slide down the navbar
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar1").style.top = "0";
+  } else {
+    document.getElementById("navbar1").style.top = "0px";
+  }
+}
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
