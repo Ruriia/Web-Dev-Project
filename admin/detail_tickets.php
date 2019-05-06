@@ -66,14 +66,18 @@
             <div class="col-sm-9 mb-0">
                 <div class="row"> <!-- Membagi area chat view dan text box -->               
                     <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll;"> <!-- Untuk chat view -->
-                        <?php while($data = $result->fetch()): ?>                           
+                        <?php while($data = $result->fetch()): 
+                            $tgl = $data['date'];
+                            $tgl = new DateTime($tgl);
+                            $tgl = $tgl->format('d/m/Y');    
+                        ?>                           
                             <?php if($data['ticketid'] == $_GET['ticketid']): ?>
                                 <?php if($data['dari'] == 1): ?>
                                     <div class="row">
-                                        <div class="col-sm-6 mt-3">            
-                                            <strong><?= $data['namauser']; ?></strong>
+                                        <div class="col-sm-6 mt-3" style="border-radius:20px; background: #67bec2; color: white; padding-top: 5px; margin-bottom: 10px;">            
+                                            <strong><?= $data['sender']; ?></strong>
                                             <br />
-                                            <small><?= $data['date']; ?>&ensp;<?= $data['time']; ?></small>
+                                            <small><?= $tgl ?>&ensp;<?= $data['time']; ?></small>
                                             <br />
                                             <p><?= $data['message']; ?></p>
                                         </div>                                    
@@ -84,10 +88,10 @@
                                     <div class="row">
                                         <div class="col-sm-6 mt-3"></div>
 
-                                        <div class="col-sm-6 mt-3">            
-                                            <strong><?= $data['namauser']; ?></strong>
+                                        <div class="col-sm-6 mt-3" style="border-radius:20px; background: #ffffff; padding-top: 5px; margin-bottom: 10px;">            
+                                            <strong><?= $data['sender']; ?></strong>
                                             <br />
-                                            <small><?= $data['date']; ?>&ensp;<?= $data['time']; ?></small>
+                                            <small><?= $tgl ?>&ensp;<?= $data['time']; ?></small>
                                             <br />
                                             <p><?= $data['message']; ?></p>
                                         </div>
