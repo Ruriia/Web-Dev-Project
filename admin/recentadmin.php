@@ -7,46 +7,68 @@
           header('location:../user/index.php');
       }
   }
+  $dicari = (isset($_POST['search'])) ? $_POST['search'] : "" ;
+  $dicari = (isset($_GET['dicari'])) ? $_GET['dicari'] : $dicari;
 
   require "action/databasekey.php";
   $key = connection();
   $halaman = $_GET['halaman'];  
   $temp = 10;
   $bottom = ($halaman-1) * $temp;
-  $hitung = "SELECT count(*) as panjang from msdata where authorize = 2";
-          
-  $jalan = $key->query($hitung);
-  $hasil = $jalan->fetch();
-  $length = $hasil['panjang'];
-  $limit = ceil($length/$temp);
+  echo $bottom;
+  echo $temp;
+  //-------------------------------------
   $count = 0;
   $i = 0;
-  $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata where authorize = ? order by nim LIMIT " . $bottom . ",". $temp;
-  $result = $key->prepare($sql);
-  $result->execute([$_GET['authorize']]);
-  //-------------------------------------
 
-
-  if($_SESSION['dicari'] == ""){
-  
+  if($dicari == ""){
+    
+    $hitung = "SELECT count(*) as panjang from msdata where authorize = 2";
+            
+    $jalan = $key->query($hitung);
+    $hasil = $jalan->fetch();
+    $length = $hasil['panjang'];
+    $limit = ceil($length/$temp);
+    
+    $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata where authorize = ? order by nim LIMIT " . $bottom . ",". $temp;
+    $result = $key->prepare($sql);
+    $result->execute([$_GET['authorize']]);
   
   
   }else{
-    $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata
+    $halaman = "SELECT count(*) as panjang FROM msdata
     where authorize = ? and (nim = ? or nama like ? or nama like ? or nama like ? or 
     email like ? or email like ?) order by nim";
+
+    $result = $key->prepare($halaman);
+    $result->execute([
+      $_GET['authorize'],
+      $dicari,
+      $dicari."%",
+      "%".$dicari."%",
+      "%".$dicari,
+      $dicari."%",
+      "%".$dicari."%"
+    ]);
+    $panjang = $result->fetch();
+    $length = $panjang['panjang'];
+    $limit = ceil($length/$temp);
+
+    $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata
+    where authorize = ? and (nim = ? or nama like ? or nama like ? or nama like ? or 
+    email like ? or email like ?) order by nim LIMIT " . $bottom . "," . $temp ;
   
     $result = $key->prepare($sql);
     $result->execute([
       $_GET['authorize'],
-      $_SESSION['dicari'],
-      $_SESSION['dicari']."%",
-      "%".$_SESSION['dicari']."%",
-      "%".$_SESSION['dicari'],
-      $_SESSION['dicari']."%",
-      "%".$_SESSION['dicari']."%"
+      $dicari,
+      $dicari."%",
+      "%".$dicari."%",
+      "%".$dicari,
+      $dicari."%",
+      "%".$dicari."%"
     ]);
-
+  
 
   }
   
@@ -89,10 +111,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <h1>
         Recent Admin
         <small>Optional description | Masukkan NIKW atau Nama yang ingin dicari
-        <form action="addsession1.php" method="post">
-          <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $_SESSION['dicari'] ?>">
+        <form action="masteradmin.php?page=recentadmin&authorize=2&halaman=1" method="post">
+          <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $dicari;?>">
           <button type="submit">Search</button>
-          <a href="masteradmin.php?page=recentadmin&authorize=2" style="color: red;">Reset</a>
+          <a href="masteradmin.php?page=recentadmin&authorize=2&halaman=1 " style="color: red;">Reset</a>
         </form>
         </small>
       </h1>
@@ -134,7 +156,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </tr>
 
          <?php endwhile;?>
-         <a href="masteradmin.php?page=recentadmin&authorize=2&halaman=<?= $count?>"> <?= $count?></a>
+         <a href="masteradmin.php?page=recentadmin&authorize=2&halaman=<?= $count?>&dicari=<?= $dicari?>"> <?= $count?></a>
          <?php endwhile; ?>
         </table>
       </div>
@@ -161,6 +183,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </body>
 </html>
 
-<?php
-  $_SESSION['dicari'] = "";
-?>
+
