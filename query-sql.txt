@@ -40,6 +40,32 @@ primary key(nim, email))ENGINE=INNODB;
 insert into msdata(email,password,nama,authorize,image) values ("admin", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "admin", 2, "profilepicture/admin.png"),
 ("user","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","user",1,"profilepicture/user.png");
 
+insert into msdata(email,password,nama,gender,authorize,image) values 
+("alfon", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "alfon","M", 2, "profilepicture/admin.png"),
+("aswin", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "aswin","M", 2, "profilepicture/admin.png"),
+("septry", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "septry","F", 2, "profilepicture/admin.png"),
+("fata", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "fata","M", 2, "profilepicture/admin.png"),
+("darmadi", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "darmadi","M", 2, "profilepicture/admin.png"),
+("velda", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "velda","F", 2, "profilepicture/admin.png"),
+("kenny", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "kenny","M", 2, "profilepicture/admin.png"),
+("jessica", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "jessica","F", 2, "profilepicture/admin.png"),
+("michelle", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "michelle","F", 2, "profilepicture/admin.png"),
+("jessy", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "jessy","F", 2, "profilepicture/admin.png"),
+("jovi", "$2y$10$e0e0.nx5o55eus3CkTjA9Oe5JoYGTut1m2ag6lQYc6FPfakVVmpma", "jovi","M", 2, "profilepicture/admin.png");
+insert into msdata(email,password,nama,gender,academic_year,faculty,major,authorize,image) values
+("cindy","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","cindy","F",2017,2,7,1,"profilepicture/user.png"),
+("feren","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","feren","F",2017,2,7,1,"profilepicture/user.png"),
+("mushvi","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","mushvi","F",2017,2,7,1,"profilepicture/user.png"),
+("vera","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","vera","F",2018,2,7,1,"profilepicture/user.png"),
+("anna","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","anna","F",2017,3,8,1,"profilepicture/user.png"),
+("ferdi","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","ferdi","M",2017,1,2,1,"profilepicture/user.png"),
+("andreas","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","andreas","M",2017,1,1,1,"profilepicture/user.png"),
+("josen","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","josen","M",2017,4,11,1,"profilepicture/user.png"),
+("tasya","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","tasya","F",2017,4,12,1,"profilepicture/user.png"),
+("rayner","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","rayner","M",2018,3,9,1,"profilepicture/user.png"),
+("ricki","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","ricki","M",2017,3,9,1,"profilepicture/user.png"),
+("richad","$2y$10$mWyrVyWj5IDTOeQHxBay1umCFr6e2Zt878PudGx0A6GPG7fHj1f5y","richad","M",2017,4,11,1,"profilepicture/user.png");
+
 
 create table referticket(done int not null auto_increment primary key,
 keterangan char(10))ENGINE=INNODB;
