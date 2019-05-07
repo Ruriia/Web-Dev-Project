@@ -36,7 +36,7 @@ if ($_POST['confirmNewPassword']!=""){
             $ubah->execute($ubahdata);
             
         }
-}else{
+}}else{
     if ($_FILES['foto']['size'] != 0 && $_FILES['foto']['error'] == 0){
         $foto = $_FILES['foto'];
         $ext = explode(".", $foto['name']);
