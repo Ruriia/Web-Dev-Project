@@ -10,12 +10,27 @@
 
   require "action/databasekey.php";
   $key = connection();
-  if($_SESSION['dicari'] == ""){
-  $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata
-  where authorize = ? order by nim";
-  
+  $halaman = $_GET['halaman'];  
+  $temp = 10;
+  $bottom = ($halaman-1) * $temp;
+  $hitung = "SELECT count(*) as panjang from msdata where authorize = 2";
+          
+  $jalan = $key->query($hitung);
+  $hasil = $jalan->fetch();
+  $length = $hasil['panjang'];
+  $limit = ceil($length/$temp);
+  $count = 0;
+  $i = 0;
+  $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata where authorize = ? order by nim LIMIT " . $bottom . ",". $temp;
   $result = $key->prepare($sql);
   $result->execute([$_GET['authorize']]);
+  //-------------------------------------
+
+
+  if($_SESSION['dicari'] == ""){
+  
+  
+  
   }else{
     $sql = "SELECT nim,nama,email,birthdate,gender as 'gender' FROM msdata
     where authorize = ? and (nim = ? or nama like ? or nama like ? or nama like ? or 
@@ -100,7 +115,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <th>Gender</th>
           </tr>
          <?php
-          $i = 0;
+          
+          
+          while($count < $limit) : 
+          
+          $count++;
           while($row = $result->fetch()):
           
           $i++;
@@ -113,6 +132,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <td><?= date('d-F-Y', strtotime($row['birthdate'])); ?></td>
             <td><?= $row['gender']; ?></td>
           </tr>
+
+         <?php endwhile;?>
+         <a href="masteradmin.php?page=recentadmin&authorize=2&halaman=<?= $count?>"> <?= $count?></a>
          <?php endwhile; ?>
         </table>
       </div>
