@@ -73,9 +73,10 @@ p {font-size: 16px;}
   color: #1abc9c !important;
 }
 
+/*
 #navbar1 {
   position: fixed;
-  top: 0px;
+  top: -70px;
   width: 100%;
   display: block;
   transition: top 0.3s;
@@ -85,6 +86,7 @@ p {font-size: 16px;}
   float: left;
   display: block;
 }
+*/
 
 #navbar a:hover {
   background-color: #ddd;
@@ -167,7 +169,7 @@ li.dropdown {
 <body>
 
 <!-- Navbar -->
-<div id="navbar1">
+<!--<div id="navbar1">-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <a class="navbar-brand" href="#">KRS Guides</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -200,7 +202,7 @@ li.dropdown {
       </form>
     </div>
   </nav>
-  </div>
+  <!--</div>-->
 
 <!-- The sidebar
 <div class="sidebar">
@@ -347,15 +349,17 @@ li.dropdown {
   }
   
 // When the user scrolls down 20px from the top of the document, slide down the navbar
+/*
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     document.getElementById("navbar1").style.top = "0";
   } else {
-    document.getElementById("navbar1").style.top = "0px";
+    document.getElementById("navbar1").style.top = "-70px";
   }
 }
+*/
 
 </script>
 
