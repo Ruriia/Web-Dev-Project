@@ -50,7 +50,7 @@ padding : 50px 0;
 .login-sec .copy-text a{color:#6A95CC;}
 .login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #6A95CC;}
 .login-sec h2:after{content:" "; width:140px; height:5px; background:#6A95CC; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
-.btn-login{ color:#fff; font-weight:600;}
+.btn-login{font-weight:600;}
 .banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}
 .banner-text h2{color:#fff; font-weight:600;}
 .banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}
@@ -105,8 +105,8 @@ padding : 50px 0;
   
   
     <div class="form-group">
-    <button type="submit" class="btn btn-login btn-block btn-success">Login</button>
-    <a href="index.php" id="home" name="home" class="btn btn-secondary btn-block">Cancel</a>
+    <button type="submit" class="btn btn-login btn-block btn-primary">Login</button>
+    <a href="index.php" id="home" name="home" class="btn btn-outline-secondary btn-block">Cancel</a>
     </div>
   
 </form>
