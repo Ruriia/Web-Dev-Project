@@ -1,8 +1,70 @@
 <?php
     session_start();
-    $_SESSION['loginfail'];
-?><!DOCTYPE html>
-<html lang="en">
+    $_SESSION['loginfail'] = (isset($_SESSION['loginfail'])) ? $_SESSION['loginfail'] : "";;
+    $_SESSION['loginas'] = (isset($_SESSION['loginas'])) ? $_SESSION['loginas'] : "";
+?>
+
+<?php if ($_SESSION['loginfail'] == 2): ?>
+<script>
+  function sweetclick(){
+    Swal.fire({
+    title: 'Email yang kamu masukkan tidak terdaftar!',
+    type: 'error',
+    showCancelButton: false,
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Ok',
+    animation: false,
+    customClass: {
+    popup: 'animated tada'
+    }
+  })
+  }
+  window.onload = sweetclick;
+</script>
+<?php endif;?>
+
+
+<?php if($_SESSION['loginfail'] == 1): ?>
+<script>
+  function sweetclick(){
+    Swal.fire({
+    title: 'Password yang kamu masukkan salah!',
+    type: 'error',
+    showCancelButton: false,
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Ok',
+    animation: false,
+    customClass: {
+    popup: 'animated tada'
+    }
+  })
+  }
+  window.onload = sweetclick;
+</script>
+<?php endif;?>
+
+<?php if($_SESSION['loginfail'] == 3): ?>
+<script>
+  function sweetclick(){
+    Swal.fire({
+      type: 'success',
+      title: 'Login Berhasil!',
+      showConfirmButton: false,
+      timer: 3000,
+  })
+  }
+  window.onload = sweetclick;
+</script>
+<?php endif; ?>
+
+<?php if($_SESSION['loginas'] == "Mahasiswa"){
+  header("refresh:2; user/index.php");
+}else if($_SESSION['loginas'] == "Admin"){
+  header("refresh:2; admin/index.php");
+}
+$_SESSION['loginfail'] = 0;
+
+?>
 <head>
     <title>Login</title>
     <meta charset="utf-8">
@@ -65,7 +127,7 @@ padding : 50px 0;
         <br/>
         <div class="form-group">
             <?php if($_SESSION['loginfail'] == 3): ?>
-              <input type="text" class="form-control" name="email" placeholder="E-mail Student" required="required" value="<?= $_SESSION['email']; ?>">
+              <input type="text" class="form-control" name="email" placeholder="E-mail Student" required="required" value="< $_SESSION['email']; ?>">
             <?php else: ?>
               <input type="text" class="form-control" name="email" placeholder="E-mail Student" required="required">
             <?php endif;?>
@@ -92,11 +154,7 @@ padding : 50px 0;
 		    <h2 class="text-center">KRS Helpdesk</h2>
 		    <form class="login-form" action="login_validation.php" method="post">
         <div class="form-group">
-            <?php if($_SESSION['loginfail'] == 3): ?>
-              <input type="text" class="form-control" name="email" placeholder="E-mail Student" required="required" value="<?= $_SESSION['email']; ?>">
-            <?php else: ?>
-              <input type="text" class="form-control" name="email" placeholder="E-mail Student" required="required">
-            <?php endif;?>
+          <input type="text" class="form-control" name="email" placeholder="E-mail Student" required="required">  
         </div>
         <div class="form-group">
             <input type="password" id="pass" class="form-control" name="katasandi" placeholder="Password" required="required">
@@ -130,65 +188,8 @@ padding : 50px 0;
 </div>
 </section>
 
-<?php if ($_SESSION['loginfail'] == 2): ?>
-<script>
-  function sweetclick(){
-    Swal.fire({
-    title: 'Email yang kamu masukkan tidak terdaftar!',
-    type: 'error',
-    showCancelButton: false,
-    confirmButtonColor: '#3085d6',
-    confirmButtonText: 'Ok',
-    animation: false,
-    customClass: {
-    popup: 'animated tada'
-    }
-  })
-  }
-  window.onload = sweetclick;
-</script>
-<?php endif;?>
 
 
-<?php if($_SESSION['loginfail'] == 1): ?>
-<script>
-  function sweetclick(){
-    Swal.fire({
-    title: 'Password yang kamu masukkan salah!',
-    type: 'error',
-    showCancelButton: false,
-    confirmButtonColor: '#3085d6',
-    confirmButtonText: 'Ok',
-    animation: false,
-    customClass: {
-    popup: 'animated tada'
-    }
-  })
-  }
-  window.onload = sweetclick;
-</script>
-<?php endif;?>
-
-<?php if($_SESSION['loginfail'] == 3): ?>
-<script>
-  function sweetclick(){
-    Swal.fire({
-      type: 'success',
-      title: 'Login Berhasil!',
-      showConfirmButton: false,
-      timer: 3000,
-  })
-  }
-  window.onload = sweetclick;
-</script>
-<?php if($_SESSION['loginas'] == "Mahasiswa"){
-  header("refresh:2; user/index.php");
-}else if($_SESSION['loginas'] == "Admin"){
-  header("refresh:2; admin/index.php");
-}
-$_SESSION['loginfail'] = 0;
-?>
-<?php endif;?>
 
 <script>
 function visiblePassword() {

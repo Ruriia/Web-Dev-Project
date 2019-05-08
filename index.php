@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['loginfail'] = 0;
+session_destroy();
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

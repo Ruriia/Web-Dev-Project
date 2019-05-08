@@ -111,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <section class="content-header">
       <h1>
         Recent Users
-        <small>Optional description | Masukkan NIM atau Nama yang ingin dicari
+        <small>Masukkan NIM atau Nama yang ingin dicari
         <form action="masteradmin.php?page=recentusers&authorize=1&halaman=1" method="post">
           <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $dicari; ?>">
           <button type="submit">Search</button>
