@@ -15,11 +15,9 @@
   $halaman = $_GET['halaman'];  
   $temp = 10;
   $bottom = ($halaman-1) * $temp;
-  echo $bottom;
-  echo $temp;
   //-------------------------------------
   $count = 0;
-  $i = 0;
+  $i = ($halaman-1) * $temp;
 
   if($dicari == ""){
     
@@ -110,7 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <section class="content-header">
       <h1>
         Recent Admin
-        <small>Optional description | Masukkan NIKW atau Nama yang ingin dicari
+        <small>Masukkan NIKW atau Nama yang ingin dicari
         <form action="masteradmin.php?page=recentadmin&authorize=2&halaman=1" method="post">
           <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $dicari;?>">
           <button type="submit">Search</button>

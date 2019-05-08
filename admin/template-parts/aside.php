@@ -38,7 +38,7 @@
     </a>
     <ul class="treeview-menu">
       <li><a href="masteradmin.php?page=createstudent"><span>Create new user</span></a></li>
-      <li><a href="masteradmin.php?page=recentusers&authorize=1">All Users</a></li>
+      <li><a href="masteradmin.php?page=recentusers&authorize=1&halaman=1">All Users</a></li>
     </ul>
   </li>
 

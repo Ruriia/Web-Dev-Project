@@ -7,29 +7,70 @@
           header('location:../user/index.php');
       }
   }
+  
+  $dicari = (isset($_POST['search'])) ? $_POST['search'] : "" ;
+  $dicari = (isset($_GET['dicari'])) ? $_GET['dicari'] : $dicari;
   require "action/databasekey.php";
   $key = connection();
-  if($_SESSION['dicari'] == ""){
+  $halaman = $_GET['halaman'];  
+  $temp = 10;
+  $bottom = ($halaman-1) * $temp;
+
+  //-------------------------------------
+  $count = 0;
+  $i = ($halaman-1) * $temp;
+
+  if($dicari == ""){
+  $hitung = "SELECT count(*) as panjang from msdata where authorize = 1";
+  $jalan = $key ->query($hitung);
+  $hasil = $jalan->fetch();
+  $length = $hasil['panjang'];
+  $limit = ceil($length/$temp);
   $sql = "SELECT msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
   msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' FROM msdata,msmajor,msfaculty
-  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = ? order by nim";
+  where msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = ? order by nim 
+  LIMIT " . $bottom . ", " . $temp;
+
   $result = $key->prepare($sql);
   $result->execute([$_GET['authorize']]);
+  
   }else{
+    $halaman = "SELECT count(*) as panjang FROM msdata
+    where authorize = ? and (nim = ? or nama like ? or nama like ? or nama like ? or 
+    email like ? or email like ?) order by nim";
+
+    $result = $key->prepare($halaman);
+    $result->execute([
+      $_GET['authorize'],
+      $dicari,
+      $dicari."%",
+      "%".$dicari."%",
+      "%".$dicari,
+      $dicari."%",
+      "%".$dicari."%"
+    ]);
+    $panjang = $result->fetch();
+    $length = $panjang['panjang'];
+    $limit = ceil($length/$temp);
+
+
     $sql = "SELECT msdata.nim,msdata.nama,msdata.email,msdata.birthdate,msdata.gender as 'gender',msdata.academic_year,
     msfaculty.keterangan as 'fakultas',msmajor.keterangan as 'jurusan' FROM msdata,msmajor,msfaculty
     where (msdata.major = msmajor.major and msdata.faculty = msfaculty.faculty and msdata.authorize = ?) 
     and (msdata.nim = ? or msdata.nama like ? or msdata.nama like ? or msdata.nama like ? or 
-    msdata.email like ?) order by nim";
+    msdata.email like ? or msdata.email like ?) order by nim LIMIT " . $bottom . ", " . $temp;
     
     $result = $key->prepare($sql);
     $result->execute([
       $_GET['authorize'],
-      $_SESSION['dicari'],
-      $_SESSION['dicari']."%",
-      "%".$_SESSION['dicari']."%",
-      "%".$_SESSION['dicari'],
-      $_SESSION['dicari']]);
+      $dicari,
+      $dicari."%",
+      "%".$dicari."%",
+      "%".$dicari,
+      $dicari."%",
+      "%".$dicari."%"
+    ]);
+    
   }
   
 ?>
@@ -71,10 +112,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <h1>
         Recent Users
         <small>Optional description | Masukkan NIM atau Nama yang ingin dicari
-        <form action="addsession.php" method="post">
-          <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $_SESSION['dicari'] ?>">
+        <form action="masteradmin.php?page=recentusers&authorize=1&halaman=1" method="post">
+          <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $dicari; ?>">
           <button type="submit">Search</button>
-          <a href="masteradmin.php?page=recentusers&authorize=1" style="color: red;">Reset</a>
+          <a href="masteradmin.php?page=recentusers&authorize=1&halaman=1" style="color: red;">Reset</a>
         </form>
         </small>
       </h1>
@@ -101,7 +142,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <th>Jurusan</th>
           </tr>
          <?php
-          $i = 0;
+          while($count < $limit):
+          $count++;
           while($row = $result->fetch()):
           $i++;
          ?>
@@ -116,6 +158,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <td><?= $row['fakultas']; ?></td>
             <td><?= $row['jurusan']; ?></td>
           </tr>
+         <?php endwhile; ?>
+         <a href="masteradmin.php?page=recentusers&authorize=1&halaman=<?= $count?>&dicari=<?= $dicari?>"> <?= $count?></a>
          <?php endwhile; ?>
         </table>
       </div>
@@ -141,7 +185,3 @@ scratch. This page gets rid of all links and provides the needed markup only.
      user experience. -->
 </body>
 </html>
-
-<?php
-  $_SESSION['dicari'] = "";
-?>
