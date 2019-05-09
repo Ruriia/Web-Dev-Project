@@ -1,1 +1,4 @@
-INSERT INTO 
+INSERT INTO ticket (email, nim, subject, category, priority, date_created, time_created) values 
+('user', 2, 1, 2, 2, '2019-05-12', '14:30:20' ),
+('user', 2, 2, 1, 1, '2019-05-13', '12:35:40' ),
+('user', 2, 3, 3, 3, '2019-05-15', '13:50:20' );
