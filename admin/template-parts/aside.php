@@ -38,7 +38,7 @@
     </a>
     <ul class="treeview-menu">
       <li><a href="masteradmin.php?page=createstudent"><span>Create new user</span></a></li>
-      <li><a href="masteradmin.php?page=recentusers&authorize=1&halaman=1">All Users</a></li>
+      <li><a href="masteradmin.php?page=recentusers&authorize=1&halaman=1&cari=1">All Users</a></li>
     </ul>
   </li>
 
@@ -50,11 +50,11 @@
     </a>
     <ul class="treeview-menu">
       <li><a href="masteradmin.php?page=createadmin "><span>Create new admin</span></a></li>
-      <li><a href="masteradmin.php?page=recentadmin&authorize=2&halaman=1">All Admins</a></li>
+      <li><a href="masteradmin.php?page=recentadmin&authorize=2&halaman=1&cari=2">All Admins</a></li>
     </ul>
   </li>
 
-  <li><a href="masteradmin.php?page=admin_tickets"><i class="fa fa-ticket"></i> <span>Tickets</span></a></li>
+  <li><a href="masteradmin.php?page=admin_tickets&cari=3"><i class="fa fa-ticket"></i> <span>Tickets</span></a></li>
 
 </ul>
 <!-- /.sidebar-menu -->

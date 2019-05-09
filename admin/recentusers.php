@@ -165,7 +165,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <?php $x = 0;
           while($x<$count): 
             $x++; ?>
-           <li><a href="masteradmin.php?page=recentusers&authorize=1&halaman=<?= $x ?>&dicari=<?= $dicari?>"> <?= $x?></a></li>
+           <li><a href="masteradmin.php?page=recentusers&authorize=1&cari=1&halaman=<?= $x ?>&dicari=<?= $dicari?>"> <?= $x?></a></li>
           <?php endwhile; ?>
          </ul>
       </div>
