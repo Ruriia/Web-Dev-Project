@@ -7,19 +7,6 @@
           header('location:../admin/index.php');
       }
   }
-
-
-  require "../admin/action/databasekey.php";
-  $key = connection();
-  
-  $sql = "SELECT * FROM msdata WHERE nim=?";
-
-  $data = [$_SESSION['nim']];
-
-  $result = $key->prepare($sql);
-  $result->execute($data);
-
-  $row = $result->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,47 +78,6 @@ a:hover {
 
 li.dropdown {
   list-style-type: none;
-}
-
-.container-profile {
-  position: relative;
-  width: 50%;
-}
-
-.container-profile img {
-  width: 100%;
-  height: auto;
-}
-
-.upload {
-    width: 0px;
-    height: 0px;
-    opacity: 0;
-}
-.upload + label {
-  position: absolute;
-  top: 50%;
-  left: 49%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: #555;
-  color: white;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  opacity:0;
-  transition: .5s ease;
-}
-
-.upload:focus + label,
-.upload + label:hover {
-  opacity: 0.5;
-  transition: .5s ease;
-  cursor:pointer;
 }
 
 /*
@@ -226,14 +172,14 @@ li.dropdown {
         <li class="nav-item">
           <a class="nav-link" href="chatroom.php">Chatroom</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="recentticket.php">Recent Ticket</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Recent Ticket</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown dropleft">
-            <a class="nav-link dropdown-toggle" href="index.php" id="navbardrop" data-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             <?= $_SESSION['nama'];?> <img src="<?= $_SESSION['profile']; ?>" style="width:35px;">
             </a>
             <div class="dropdown-menu" style="letter-spacing:0px;">
@@ -245,7 +191,7 @@ li.dropdown {
         </ul>
       </form>
     </div>
-  </nav>
+</nav>
 
 <!-- The sidebar
 <div class="sidebar">
@@ -255,64 +201,56 @@ li.dropdown {
   Your ID: <?= $_SESSION['nim'];?></small></p>
   <hr/>
   <small>
-  <a href="form_ticket.php"><i class="fa fa-envelope"></i> Create New Ticket</a>
+  <a class="active" href="form_ticket.php"><i class="fa fa-envelope"></i> Create New Ticket</a>
   <a href="chatroom.php"><i class="fa fa-comments"></i> Chatroom</a>
-  <a class="active" href="accountsettings.php"><i class="fa fa-cogs"></i> Account Settings</a>
+  <a href="accountsettings.php"><i class="fa fa-cogs"></i> Account Settings</a>
   </small>
 </div>-->
 
-<div class="container-fluid">
+    <div class="container-fluid">
 
-<a href="form_ticket.php" id="button-create" class="btn btn-warning"><i class="fa fa-plus"></i> Create New Ticket</a>
+        <a href="form_ticket.php" id="button-create" class="btn btn-warning"><i class="fa fa-plus"></i> Create New Ticket</a>
 
-<div class="container bg-1" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
-<form action="edit_user.php" method="post" enctype="multipart/form-data">
-    <h3><i class="fa fa-cogs"></i> Account Settings</h3>
-    <hr/>
-    <div class="row" style="padding:20px;">
-        <div class="col col-md-6 text-center" style="background-color:lightgrey;padding:20px;border:solid;border-width:thin;border-radius:5px;">
-          <div class="container container-profile">
-          <img src="<?= $_SESSION['profile']; ?>" style="width:140px;">
-          <input type="file" id="file" class="upload" name="foto">
-          <label for="file"><br/>Change Profile Photo</label>
-        </div>      
-            <hr/>
-            <?= $_SESSION['nama'];?>
-            <br/>
-            <?= $_SESSION['nim'];?>
-            <br/>
-            <?= $_SESSION['email'];?>
-    </div>
-        <div class="col col-md-6">
-            
-                <div class="form-group">
-                    <label for="recentPassword">Recent Password :</label>
-                    <input type="password" class="form-control" name="recentPassword" placeholder=""">
-                </div>
-                <div class="form-group">
-                    <label for="newPassword">New Password :</label>
-                    <input type="password" class="form-control" name="newPassword" placeholder="" onchange="myFunction()">
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm New Password :</label>
-                    <input type="password" class="form-control" name="confirmNewPassword" placeholder="" onchange="myFunction()">
-                    <label id="notequal" style="color: red; font-weight: bold;"></label>
-                </div>
-                <!--<div class="form-group">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Attach File</label>
-                    </div>
-                </div>-->
-                <button type="submit" class="btn btn-primary" id="simpan">Submit</button>
-                <a href="index.php" id="cancel" name="cancel" class="btn btn-secondary">Cancel</a>
-            
+        <div class="container bg-1" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
+
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">Ticket ID</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">ID Student</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Category</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Date Created</th>
+                <th scope="col">Time Created</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <!--<tbody>
+                <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                </tr>
+                <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                </tr>
+                <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+                </tr>
+            </tbody>-->
+            </table>
+
         </div>
-    </div>
-    </form>
-</div>
 
-</div>
+    </div>
 
 <!--<div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="modalLogoutLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -339,7 +277,7 @@ li.dropdown {
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
   <p>&copy; Flexbox Gang.</p>
-</footer>
+</footer>    
 
 <script>
   function sweetclick(){
@@ -355,22 +293,6 @@ li.dropdown {
       window.location.href = "../logout.php";
     }
   })
-  }
-</script>
-<script>
-  function myFunction(){
-    var newpassword = document.getElementsByClassName("form-control")[1].value;
-    var confirm = document.getElementsByClassName("form-control")[2].value;
-    if(newpassword === "" && confirm === ""){
-      document.getElementById("simpan").disabled = false;
-      document.getElementById("notequal").innerText = "";
-    }else if(newpassword != confirm){ 
-      document.getElementById("notequal").innerText = "Password tidak sama";
-      document.getElementById("simpan").disabled = true;
-    }else if(newpassword === confirm){ 
-      document.getElementById("simpan").disabled = false;
-      document.getElementById("notequal").innerText = "";
-    }
   }
 </script>
 

@@ -139,6 +139,30 @@ li.dropdown {
   }
 }
 */
+
+#button-create {
+  position:fixed;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  text-align: center;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px;
+  color:white;
+  z-index: 5;
+}
+
+/*.icon {
+  transition: .8s ease;
+}
+
+.icon:hover {
+  transform: rotate(180deg);
+  transition: .8s ease;
+}*/
 </style>
 
 <body>
@@ -153,10 +177,13 @@ li.dropdown {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="chatroom.php">Chatroom</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recentticket.php">Recent Ticket</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
@@ -191,6 +218,8 @@ li.dropdown {
 </div>-->
 
     <div class="container-fluid">
+
+        <a href="form_ticket.php" id="button-create" class="btn btn-warning"><i class="fa fa-plus icon"></i> Create New Ticket</a>
 
         <div class="container bg-1" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
 
