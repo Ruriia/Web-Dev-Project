@@ -11,16 +11,24 @@
 
   require "../admin/action/databasekey.php";
   $key = connection();
-  
-  $sql = "SELECT * FROM msdata WHERE nim=?";
 
-  $data = [$_SESSION['nim']];
+  $sql1 = "SELECT question.ticketid, question.message, question.gambar, question.dari, question.sender,
+  msdata.nama AS namauser,
+  question.date_sent AS date, question.time_sent AS time
+  FROM question, msdata, ticket
+  WHERE question.ticketid = ticket.ticketid AND msdata.email = ticket.email";
+  $result = $key->query($sql1);
 
-  $result = $key->prepare($sql);
-  $result->execute($data);
-
-  $row = $result->fetch();
+  $sql2 = "SELECT msdata.nama as namauser, mscategory.keterangan as kategori, ticket.subject as subjek,
+  mspriority.keterangan as prioritas, referticket.keterangan as done
+  from msdata, ticket, question, mscategory, mspriority, referticket where
+  ticket.ticketid = ? and ticket.email = msdata.email and ticket.category = mscategory.category
+  and mspriority.priority = ticket.priority and referticket.done = ticket.done";
+  $hasil = $key->prepare($sql2);
+  $hasil->execute([$_GET['number']]);
+  $row = $hasil->fetch();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,143 +38,86 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<style>
+  body {
+    background-color: #F7F7F7;
+    font: Montserrat, sans-serif;
+    line-height: 1.8;
+    color: black;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 {
+    background-color: #ffffff;
+    color: black;
+  }
+  .bg-2 {
+    background-color: lightgrey; 
+    color: black;
+  }
+  .bg-3 {
+    background-color: #ffffff;
+    color: #555555;
+  }
+  .bg-4 {
+    background-color: #2f2f2f; 
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .navbar {
+    background-color: #6A95CC;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
+
+  .navbar-nav button:hover {
+    color: #1abc9c !important;
+  }
+
+  .buttondown:hover {
+    color: white;
+  }
+  a {
+    color: white;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+
+  li.dropdown {
+    list-style-type: none;
+  }
+
+
+  #button-create {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    text-align: center;
+    border-radius: 50px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px;
+    color:white;
+    z-index: 5;
+  }
+  </style>
+
+
 </head>
 
-<style>
-body {
-  background-color: #F7F7F7;
-  font: Montserrat, sans-serif;
-  line-height: 1.8;
-  color: black;
-}
-p {font-size: 16px;}
-.margin {margin-bottom: 45px;}
-.bg-1 {
-  background-color: #ffffff;
-  color: black;
-}
-.bg-2 {
-  background-color: lightgrey; 
-  color: black;
-}
-.bg-3 {
-  background-color: #ffffff;
-  color: #555555;
-}
-.bg-4 {
-  background-color: #2f2f2f; 
-  color: #fff;
-}
-.container-fluid {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-.navbar {
-  background-color: #6A95CC;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-.navbar-nav  li a:hover {
-  color: #1abc9c !important;
-}
-
-.navbar-nav button:hover {
-  color: #1abc9c !important;
-}
-
-.buttondown:hover {
-  color: white;
-}
-a {
-  color: white;
-}
-a:hover {
-  text-decoration: none;
-}
-
-li.dropdown {
-  list-style-type: none;
-}
-
-/*
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-  padding-top: 25px;
-  padding-bottom :25px;
-}
-
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 10px;
-  padding-left: 18px;
-  text-decoration: none;
-  transition: .5s ease;
-}
-
-.sidebar p {
-  padding-left: 18px;
-}
-
-.sidebar img {
-  padding-left: 18px;
-}
-
-.sidebar a.active {
-  background-color: #4CAF50;
-  color: white;
-  transition: .5s ease;
-}
-
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-  transition: .5s ease;
-}
-
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
-
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
-}
-*/
-
-#button-create {
-  display: inline-block;
-  width: auto;
-  height: auto;
-  text-align: center;
-  border-radius: 50px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  padding: 10px;
-  color:white;
-  z-index: 5;
-}
-</style>
 
 <body>
 
@@ -229,28 +180,72 @@ li.dropdown {
     <h3><i class="fa fa-comments"></i> Chatroom</h3>
     <hr/>
     <div class="row" style="padding:20px;">
-        <div class="col col-md-3 text-center" style="background-color:lightgrey;padding:20px;border:solid;border-width:thin;border-radius:5px;">
-          <h5>Ticket Information</h5>
-          <hr/>
-          <p>Ticket No.<br/>#xxxx-xx</p>
-          <p>Category<br/>Category 1</p>
-          <p>Subject<br/>Lorem Ipsum</p>
-          <p>Priority<br/><font color="green">High</font></p>
-          <p>Ticket No.<br/>#xxxx-xx</p>
+        <div class="col-sm-3"> <!-- Untuk Ticket Info -->
+            <h1 class="h3">Ticket Information</h1>
+            <p>User: &ensp;<?= $row['namauser']; ?></p>
+            <p>Ticket no: &ensp;<?= $_GET['number']; ?></p>
+            <p>Category : &ensp;<?= $row['kategori'];?></p>
+            <p>Subject : &ensp;<?= $row['subjek'];?></p>
+            <p>Priority : &ensp;<?= $row['prioritas'];?></p>
+            <p>Status : &ensp;<?= $row['done'];?></p>
         </div>
-        <div class="col col-md-9">
-            <div class="chatbox" style="margin-bottom:5%;">
-            <p>test</p>
-            </div>
+        
+        <div class="col-sm-9 mb-0">
+                <div class="row"> <!-- Membagi area chat view dan text box -->               
+                    <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll;"> <!-- Untuk chat view -->
+                        <?php while($data = $result->fetch()): 
+                            $tgl = $data['date'];
+                            $tgl = new DateTime($tgl);
+                            $tgl = $tgl->format('d/m/Y');    
+                        ?>                           
+                            <?php if($data['ticketid'] == $_GET['number']): ?>
+                                <?php if($data['dari'] == 2): ?>
+                                    <div class="row">
+                                        <div class="col-sm-6 mt-3" style="border-radius:20px; background: #67bec2; color: white; padding-top: 5px; margin-bottom: 10px;">            
+                                            <strong><?= $data['sender']; ?></strong>
+                                            <br />
+                                            <small><?= $tgl ?>&ensp;<?= $data['time']; ?></small>
+                                            <br />
+                                            <p><?= $data['message']; ?></p>
+                                        </div>                                    
+                                    </div>
+                                <?php endif; ?>
 
-            <div class="inputchat">
-                <label for="reply">Reply</label>
-                <br/>
-                <textarea placeholder="Type Something Here..." name="reply" cols="80" rows="6"></textarea>
-                </textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send</button>
-        </div>
+                                <?php if($data['dari'] == 1): ?>
+                                    <div class="row">
+                                        <div class="col-sm-6 mt-3"></div>
+
+                                        <div class="col-sm-6 mt-3" style="border-radius:20px; background: #f4f4f4; padding-top: 5px; margin-bottom: 10px;">            
+                                            <strong><?= $data['sender']; ?></strong>
+                                            <br />
+                                            <small><?= $tgl ?>&ensp;<?= $data['time']; ?></small>
+                                            <br />
+                                            <p><?= $data['message']; ?></p>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php endwhile; ?>                      
+                    </div>
+                    <div class="col-sm-12" id="textbox" style="background: white; height: 215px;"> <!-- Untuk text box -->
+                        <form action="action/newchat.php?&ticketid=<?= $_GET['number']; ?>" method="post">
+                            <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+                                <div class="col-sm-12">
+                                    <button type="button" style="width: 30px;"><strong>B</strong></button>
+                                    <button type="button" style="width: 30px;"><em>I</em></button>
+                                    <button type="button" style="width: 30px;"><ins>U</ins></button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..."></textarea>                           
+                            </div>                            
+                            <button type="submit" class="btn btn-sm btn-primary">SEND</button>
+                        </form>
+                    </div>
+                </div>
+           
+            </div> 
+
     </div>
 
 </div>

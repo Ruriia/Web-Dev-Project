@@ -122,64 +122,6 @@ li.dropdown {
   list-style-type: none;
 }
 
-/*.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-  padding-top: 25px;
-  padding-bottom :25px;
-}
-
-.sidebar a {
-  display: block;
-  color: black;
-  padding: 10px;
-  padding-left: 18px;
-  text-decoration: none;
-  transition: .5s ease;
-}
-
-.sidebar p {
-  padding-left: 18px;
-}
-
-.sidebar img {
-  padding-left: 18px;
-}
-
-.sidebar a.active {
-  background-color: #4CAF50;
-  color: white;
-  transition: .5s ease;
-}
-
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-  transition: .5s ease;
-}
-
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
-
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
-}
-*/
 
 #button-create {
   display: inline-block;
@@ -301,7 +243,7 @@ li.dropdown {
                                 <th><?= $row['jam'] ?></th>
                                 <th><?= $row['prioritas'] ?></th>
                                 <th><?= $row['status'] ?></th>
-                                <th><a href="chatroom.php?number=<?= $row['nomortiket'] ?>"><font color="#6A95CC">See Details</font></a></th>
+                                <th><a href="chatroom.php?number=<?= $row['ticketid'] ?>"><font color="#6A95CC">See Details</font></a></th>
                             </tr>
                           <?php endwhile; ?>
                         </tbody>

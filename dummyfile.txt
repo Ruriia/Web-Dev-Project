@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 INSERT INTO ticket (email, nim, subject, category, priority, date_created, time_created) values 
 ('user', 2, 'error', 2, 2, '2019-05-12', '14:30:20' ),
 ('darmadi', 3, 'tidak bisa login', 1, 1, '2019-05-13', '12:35:40' ),
@@ -10,3 +11,5 @@ INSERT INTO ticket (email, nim, subject, category, priority, date_created, time_
 ('andreas', 9, 'login error', 2, 3, '2019-01-29', '08:35:59' ),
 ('jovi', 10, 'kelas penuh', 3, 1, '2019-01-20', '15:36:22' ),
 ('kemal', 11, 'kelas tidak terambil', 2, 1, '2019-01-13', '16:52:20' );
+=======
+>>>>>>> Stashed changes
