@@ -7,13 +7,22 @@
           header('location:../admin/index.php');
       }
   }
+
+  require "../admin/action/databasekey.php";
+  $i = 0;
+  $key = connection();
+
+  $sql = "SELECT ticket.ticketid as nomortiket, ticket.subject as subjek, mscategory.keterangan as kategori, msdata.nama as nama, ticket.date_created as tanggal, ticket.time_created as jam, mspriority.keterangan as prioritas, referticket.keterangan as status from ticket, referticket, mspriority, mscategory, msdata where ticket.nim = ? and msdata.nim = ? and  mscategory.category = ticket.category and mspriority.priority = ticket.priority and referticket.done = ticket.done";
+
+  $run = $key->prepare($sql);
+  $run->execute([$_SESSION['nim'], $_SESSION['nim']]);
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
+    <title>Halaman Ticket</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -215,7 +224,7 @@ li.dropdown {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="chatroom.php">Chatroom</a>
@@ -259,79 +268,50 @@ li.dropdown {
 
 <!-- First Container -->
 <div class="container-fluid">
-
-  <a href="form_ticket.php" id="button-create" class="btn btn-warning"><i class="fa fa-plus"></i> Create New Ticket</a>
-
-  <div class="container">
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="images/programming.jpg" alt="First slide">
-          <div class="carousel-caption">
-            <a href="images/Helpdesk_UMN.pdf" download>
-            <button type="button" class="btn btn-danger" style=""><i class="fa fa-file-pdf-o"></i> <small>Download Panduan</small></button>
-            </a>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/umn.jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="images/programming.jpg" alt="Third slide">
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-
-    <hr/>
-    <div class="container bg-container">
-
-    <div class="row featurette">
-      <div class="col-md-9">
-        <h2 class="featurette-heading">Problem Finding Class</h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-3" style="float:right;">
-      <img src="images/class.jpg" style="width:250px;height:250px;object-fit:cover;">
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-9 order-md-2">
-        <h2 class="featurette-heading">About the Subjects</h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-3 order-md-1">
-      <img src="images/subject.jpg" style="width:250px;height:250px;object-fit:cover;">
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-9">
-        <h2 class="featurette-heading">About the Professor</h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-3" style="float:right;">
-      <img src="images/professor.jpg" style="width:250px;height:250px;object-fit:cover;">
-      </div>
-    </div>
+<h1>Your Ticket</h1>
+  <div class="card mb-4">
+                <div class="card-body">
+                    <!--Table-->
+                    <table class="table table-hover">
+                        <!--Table head-->
+                         <thead class="mdb-color darken-3">
+                            <tr class="judul" style="color: black;">
+                                <th>No Ticket</th>
+                                <th>Subject</th>
+                                <th>Category</th>
+                                <th>Username</th>
+                                <th>Date Created</th>
+                                <th>Time Created</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Detail</th>
+                            </tr>
+                        </thead>
+                        <!--Table head-->
+                        <!--Table body-->
+                        <tbody>
+                          <?php while($row = $run->fetch()): 
+                            $i++?>
+                            <tr>
+                                <th><?= $row['nomortiket'] ?></th>
+                                <th><?= $row['subjek'] ?></th>
+                                <th><?= $row['kategori'] ?></th>
+                                <th><?= $row['nama'] ?></th>
+                                <th><?= $row['tanggal'] ?></th>
+                                <th><?= $row['jam'] ?></th>
+                                <th><?= $row['prioritas'] ?></th>
+                                <th><?= $row['status'] ?></th>
+                                <th style="color = blue;"><a href="chatroom.php?number=<?= $row['nomortiket'] ?>"> See Details</a></th>
+                            </tr>
+                          <?php endwhile; ?>
+                        </tbody>
+                        <!--Table body-->
+                    </table>
+                    <!--Table-->
+                </div>
+            </div>
+ 
+</div>
 
     <!--
       <div class="d-flex">
