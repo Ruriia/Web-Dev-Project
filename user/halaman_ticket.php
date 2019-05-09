@@ -235,15 +235,15 @@ li.dropdown {
                           <?php while($row = $run->fetch()): 
                             $i++?>
                             <tr>
-                                <th><?= $row['nomortiket'] ?></th>
-                                <th><?= $row['subjek'] ?></th>
-                                <th><?= $row['kategori'] ?></th>
-                                <th><?= $row['nama'] ?></th>
-                                <th><?= $row['tanggal'] ?></th>
-                                <th><?= $row['jam'] ?></th>
-                                <th><?= $row['prioritas'] ?></th>
-                                <th><?= $row['status'] ?></th>
-                                <th><a href="chatroom.php?number=<?= $row['ticketid'] ?>"><font color="#6A95CC">See Details</font></a></th>
+                                <td><?= $row['nomortiket'] ?></td>
+                                <td><?= $row['subjek'] ?></td>
+                                <td><?= $row['kategori'] ?></td>
+                                <td><?= $row['nama'] ?></td>
+                                <td><?= $row['tanggal'] ?></td>
+                                <td><?= $row['jam'] ?></td>
+                                <td><?= $row['prioritas'] ?></td>
+                                <td><?= $row['status'] ?></td>
+                                <td><a href="chatroom.php?number=<?= $row['nomortiket']; ?>"><font color="#6A95CC">See Details</font></a></t>
                             </tr>
                           <?php endwhile; ?>
                         </tbody>

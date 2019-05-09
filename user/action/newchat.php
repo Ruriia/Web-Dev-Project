@@ -29,5 +29,5 @@ $data = [
 $result = $key->prepare($sql);
 $result->execute($data);
 
-header("location: ../chatroom.php?number=" . $_GET['ticketid']);
+header("location: ../chatroom.php?number=" . $_GET['number']);
 ?>

@@ -50,6 +50,7 @@
   .bg-1 {
     background-color: #ffffff;
     color: black;
+    height: 720px;
   }
   .bg-2 {
     background-color: lightgrey; 
@@ -112,6 +113,10 @@
     padding: 10px;
     color:white;
     z-index: 5;
+  }
+
+  .solved:hover{
+
   }
   </style>
 
@@ -188,6 +193,8 @@
             <p>Subject : &ensp;<?= $row['subjek'];?></p>
             <p>Priority : &ensp;<?= $row['prioritas'];?></p>
             <p>Status : &ensp;<?= $row['done'];?></p>
+
+            <button class="btn btn-danger" type="submit" data-toogle= "tooltip" data-placement="bottom" title="Click this button if your problem has solved" class="solved" name="solvedButton">Close Ticket</button>
         </div>
         
         <div class="col-sm-9 mb-0">
@@ -227,7 +234,8 @@
                             <?php endif; ?>
                         <?php endwhile; ?>                      
                     </div>
-                    <div class="col-sm-12" id="textbox" style="background: white; height: 215px;"> <!-- Untuk text box -->
+                    <!-- Untuk text box -->
+                    <div class="col-sm-12" id="textbox" style="background: white; height: 215px; margin-top: 30px;"> 
                         <form action="action/newchat.php?&ticketid=<?= $_GET['number']; ?>" method="post">
                             <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
                                 <div class="col-sm-12">
