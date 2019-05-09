@@ -1,4 +1,12 @@
 INSERT INTO ticket (email, nim, subject, category, priority, date_created, time_created) values 
-('user', 2, 1, 2, 2, '2019-05-12', '14:30:20' ),
-('user', 2, 2, 1, 1, '2019-05-13', '12:35:40' ),
-('user', 2, 3, 3, 3, '2019-05-15', '13:50:20' );
+('user', 2, 'error', 2, 2, '2019-05-12', '14:30:20' ),
+('darmadi', 3, 'tidak bisa login', 1, 1, '2019-05-13', '12:35:40' ),
+('aswin', 1, 'tidak bisa ambil kelas', 3, 3, '2019-05-15', '13:50:20' ),
+('alfon', 6, 'kelas error', 3, 2, '2019-04-13', '12:35:40' ),
+('fata', 5, 'server down', 1, 1, '2019-03-13', '12:32:48' ),
+('kenny', 4, 'server error', 3, 2, '2019-03-12', '11:35:40' ),
+('nathan', 7, 'kelas hilang', 2, 3, '2019-02-13', '10:35:30' ),
+('kornel', 8, 'kelas kurang', 3, 2, '2019-02-13', '09:35:50' ),
+('andreas', 9, 'login error', 2, 3, '2019-01-29', '08:35:59' ),
+('jovi', 10, 'kelas penuh', 3, 1, '2019-01-20', '15:36:22' ),
+('kemal', 11, 'kelas tidak terambil', 2, 1, '2019-01-13', '16:52:20' );
