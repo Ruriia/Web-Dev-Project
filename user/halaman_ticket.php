@@ -272,7 +272,7 @@ li.dropdown {
   <div class="card mb-4">
                 <div class="card-body">
                     <!--Table-->
-                    <table class="table table-hover">
+                    <table class="table">
                         <!--Table head-->
                          <thead class="mdb-color darken-3">
                             <tr class="judul" style="color: black;">
@@ -301,7 +301,7 @@ li.dropdown {
                                 <th><?= $row['jam'] ?></th>
                                 <th><?= $row['prioritas'] ?></th>
                                 <th><?= $row['status'] ?></th>
-                                <th style="color = blue;"><a href="chatroom.php?number=<?= $row['nomortiket'] ?>"> See Details</a></th>
+                                <th><a href="chatroom.php?number=<?= $row['nomortiket'] ?>"><font color="#6A95CC">See Details</font></a></th>
                             </tr>
                           <?php endwhile; ?>
                         </tbody>

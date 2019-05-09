@@ -183,7 +183,7 @@ li.dropdown {
           <a class="nav-link" href="chatroom.php">Chatroom</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="recentticket.php">Recent Ticket</a>
+          <a class="nav-link" href="halaman_ticket.php">Recent Ticket</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
@@ -218,8 +218,6 @@ li.dropdown {
 </div>-->
 
     <div class="container-fluid">
-
-        <a href="form_ticket.php" id="button-create" class="btn btn-warning"><i class="fa fa-plus icon"></i> Create New Ticket</a>
 
         <div class="container bg-1" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
 
