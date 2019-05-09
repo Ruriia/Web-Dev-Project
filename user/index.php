@@ -32,6 +32,7 @@ body {
   line-height: 1.8;
   color: black;
   overflow-x: hidden;
+  background-color: #F7F7F7;
 }
 p {font-size: 16px;}
 .margin {margin-bottom: 45px;}
@@ -51,26 +52,32 @@ p {font-size: 16px;}
   background-color: #2f2f2f; 
   color: #fff;
 }
+.bg-container {
+  padding-top: 15px;
+  background-color: #ffffff;
+  color: black;
+}
 .container-fluid {
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
 .navbar {
+  background-color: #6A95CC;
   padding-top: 15px;
   padding-bottom: 15px;
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
   font-size: 12px;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 }
 .navbar-nav  li a:hover {
-  color: #1abc9c !important;
+  color: black !important;
 }
 
 .navbar-nav button:hover {
-  color: #1abc9c !important;
+  color: black !important;
 }
 
 /*
@@ -164,13 +171,42 @@ li.dropdown {
   }
 }
 */
+
+#button-create {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  text-align: center;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px;
+  color:white;
+  z-index: 5;
+}
+
+#button-create-1 {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  text-align: center;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px;
+  color:white;
+  z-index: 5;
+  opacity: 0;
+}
 </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <!--<div id="navbar1">-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top">
     <a class="navbar-brand" href="#">KRS Guides</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -183,6 +219,9 @@ li.dropdown {
         </li>
         <li class="nav-item">
           <a class="nav-link" href="chatroom.php">Chatroom</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="chatroom.php">Recent Ticket</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" style="padding-right:50px;">
@@ -219,7 +258,9 @@ li.dropdown {
 </div>-->
 
 <!-- First Container -->
-<div class="container-fluid bg-1">
+<div class="container-fluid">
+
+  <a href="form_ticket.php" id="button-create" class="btn btn-warning"><i class="fa fa-plus"></i> Create New Ticket</a>
 
   <div class="container">
 
@@ -256,7 +297,43 @@ li.dropdown {
     </div>
 
     <hr/>
-    <div class="container bg-2">
+    <div class="container bg-container">
+
+    <div class="row featurette">
+      <div class="col-md-9">
+        <h2 class="featurette-heading">Problem Finding Class</h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-3" style="float:right;">
+      <img src="images/class.jpg" style="width:250px;height:250px;object-fit:cover;">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-9 order-md-2">
+        <h2 class="featurette-heading">About the Subjects</h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-3 order-md-1">
+      <img src="images/subject.jpg" style="width:250px;height:250px;object-fit:cover;">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-9">
+        <h2 class="featurette-heading">About the Professor</h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-3" style="float:right;">
+      <img src="images/professor.jpg" style="width:250px;height:250px;object-fit:cover;">
+      </div>
+    </div>
+
+    <!--
       <div class="d-flex">
         <div class="mr-auto p-3"><h3>Make Your<br/>TICKETS!</h3>
           <p>There are 3 categories :</p>
@@ -271,17 +348,16 @@ li.dropdown {
         <a href="#" id="recentticket" name="recentticket" class="btn btn-secondary btn-block">Show Recent Ticket</a>
         </div>
       </div>
-      <div class="col col-md bg-2 text-center">
+      <div class="col col-md bg-container text-center">
         <button class="btn btn-default buttondown" data-toggle="collapse" data-target="#demo"><i class="fa fa-chevron-down"></i>
       </div>
     </div>
   </div>
 
-  <div id="demo" class="collapse">
-  <!-- Second Container -->
-  <div class="container">
+    <div id="demo" class="collapse">
+    <div class="container">
 
-    <div class="d-flex justify-content-around bg-2" style="padding-top:40px;padding-bottom:40px;">
+    <div class="d-flex justify-content-around bg-container" style="padding-top:40px;padding-bottom:40px;">
       <div class="category text-center">
         <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
         <p>Problem Finding Class</p>
@@ -298,9 +374,9 @@ li.dropdown {
         <img src="images/code.jpg" alt="code" style="width:220px;height:130px">
         <p>About the Schedule</p>
       </div>
-    </div>
+    </div> -->
 
-  </div>
+    </div>
   </div>
 
 </div>

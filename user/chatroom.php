@@ -34,6 +34,7 @@
 
 <style>
 body {
+  background-color: #F7F7F7;
   font: Montserrat, sans-serif;
   line-height: 1.8;
   color: black;
@@ -61,13 +62,14 @@ p {font-size: 16px;}
   padding-bottom: 50px;
 }
 .navbar {
+  background-color: #6A95CC;
   padding-top: 15px;
   padding-bottom: 15px;
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
   font-size: 12px;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 }
 .navbar-nav  li a:hover {
   color: #1abc9c !important;
@@ -155,7 +157,7 @@ li.dropdown {
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg sticky-top">
     <a class="navbar-brand" href="index.php">KRS Guides</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -203,7 +205,7 @@ li.dropdown {
 
 <div class="container-fluid">
 
-<div class="container" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
+<div class="container bg-1" style="border:solid;border-width:thin;border-radius:5px;padding:10px;">
 
     <h3><i class="fa fa-comments"></i> Chatroom</h3>
     <hr/>
