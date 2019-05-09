@@ -107,14 +107,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Recent Admin
+        Recent Admin<!--
         <small>Masukkan NIKW atau Nama yang ingin dicari
         <form action="masteradmin.php?page=recentadmin&authorize=2&halaman=1" method="post">
           <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $dicari;?>">
           <button type="submit">Search</button>
           <a href="masteradmin.php?page=recentadmin&authorize=2&halaman=1 " style="color: red;">Reset</a>
         </form>
-        </small>
+        </small>-->
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -154,9 +154,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </tr>
 
          <?php endwhile;?>
-         <a href="masteradmin.php?page=recentadmin&authorize=2&halaman=<?= $count?>&dicari=<?= $dicari?>"> <?= $count?></a>
+         
          <?php endwhile; ?>
         </table>
+        <ul class="pagination pagination-sm inline" style="float: right;">
+          <?php $x = 0;
+          while($x<$count): 
+            $x++; ?>
+           <li><a href="masteradmin.php?page=recentadmin&authorize=2&halaman=<?= $x ?>&dicari=<?= $dicari?>"> <?= $x?></a></li>
+          <?php endwhile; ?>
+         </ul>
       </div>
 
     </section>
