@@ -54,6 +54,7 @@ p {font-size: 16px;}
 }
 .bg-container {
   padding-top: 15px;
+  padding-bottom: 15px;
   background-color: #ffffff;
   color: black;
 }
