@@ -10,7 +10,7 @@
   require('action/databasekey.php');
   $key = connection();
 
-  $sql = "SELECT question.ticketid, question.message, question.gambar, question.dari,
+  $sql = "SELECT question.ticketid, question.message, question.gambar, question.dari, question.sender,
             msdata.nama AS namauser,
             question.date_sent AS date, question.time_sent AS time
             FROM question, msdata, ticket
