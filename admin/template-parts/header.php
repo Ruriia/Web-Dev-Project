@@ -15,13 +15,34 @@
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
+        <?php
+        $searchnavbar = (isset($_GET['cari'])) ? $_GET['cari'] : "";
+
+        if($searchnavbar == 1): ?>
       <form class="navbar-form navbar-left" role="search">
               <div class="form-group">
                 <input type="text" name="search" class="form-control mr-sm-2" id="navbar-search-input" placeholder="Search" style="border-radius: 5px;">
                 <button class="btn btn-info my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
 
               </div>
-            </form>
+      </form>
+      <?php elseif($searchnavbar == 2): ?>
+        <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" name="search" class="form-control mr-sm-2" id="navbar-search-input" placeholder="Search" style="border-radius: 5px;">
+                <button class="btn btn-info my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+
+              </div>
+      </form>
+      <?php elseif ($searchnavbar == 3): ?>
+      <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" name="search" class="form-control mr-sm-2" id="navbar-search-input" placeholder="Search" style="border-radius: 5px;">
+                <button class="btn btn-info my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+
+              </div>
+      </form>
+      <?php endif; ?>
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
