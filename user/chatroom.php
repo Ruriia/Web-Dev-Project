@@ -138,9 +138,6 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php">Home</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="chatroom.php">Chatroom</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="halaman_ticket.php">Recent Ticket</a>
         </li>

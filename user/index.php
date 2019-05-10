@@ -219,9 +219,6 @@ li.dropdown {
           <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="chatroom.php">Chatroom</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="halaman_ticket.php">Recent Ticket</a>
         </li>
       </ul>
