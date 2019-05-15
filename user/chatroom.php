@@ -191,7 +191,7 @@
             <p>Priority : &ensp;<?= $row['prioritas'];?></p>
             <p>Status : &ensp;<?= $row['done'];?></p>
 
-            <button class="btn btn-danger" type="submit" data-toogle= "tooltip" data-placement="bottom" title="Click this button if your problem has solved" class="solved" name="solvedButton">Close Ticket</button>
+            <a class="btn btn-danger" type="submit" data-toogle= "tooltip" data-placement="bottom" title="Click this button if your problem has solved" class="solved" name="solvedButton">Close Ticket</a>
         </div>
         
         <div class="col-sm-9 mb-0">

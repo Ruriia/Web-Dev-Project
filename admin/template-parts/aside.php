@@ -54,7 +54,7 @@
     </ul>
   </li>
 
-  <li><a href="masteradmin.php?page=admin_tickets&cari=3"><i class="fa fa-ticket"></i> <span>Tickets</span></a></li>
+  <li><a href="masteradmin.php?page=admin_tickets&cari=3&halaman=1"><i class="fa fa-ticket"></i> <span>Tickets</span></a></li>
 
 </ul>
 <!-- /.sidebar-menu -->
