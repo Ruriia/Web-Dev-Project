@@ -84,21 +84,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
 
         <div id="home-middle" class="col-md-4">
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Ticket Priorities</h3>
+          <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ticket Priorities</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <canvas id="pieChart" style="height: 352px; width: 705px;" width="881" height="440"></canvas>
+                </div>
+                <!-- /.box-body -->
+                </div>           
             </div>
-            <div class="box-body">
-              <canvas id="pieChart" style="height: 352px; width: 705px;" width="881" height="440"></canvas>
-            </div>
-            <!-- /.box-body -->
           </div>
+
+          <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ticket Categories</h3>
+
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <canvas id="pieChart2" style="height: 352px; width: 705px;" width="881" height="440"></canvas>
+                </div>
+                <!-- /.box-body -->
+                </div>           
+            </div>
+          </div>
+
         </div>
 
         <div id="home-right" class="col-md-4" style="background: #0080c0;">

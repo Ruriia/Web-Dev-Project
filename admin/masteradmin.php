@@ -28,6 +28,22 @@ session_start();
       $high = $row1['num'];
     }
   }
+
+  $c1; $c2; $c3; $c4;
+  $sql2 = "SELECT mscategory.keterangan AS category, COUNT(*) AS num FROM mscategory, ticket WHERE mscategory.category = ticket.category GROUP BY ticket.category";
+  $stmt2 = $key->query($sql2);
+
+  while($row2= $stmt2->fetch()){
+    if($row2['category'] == "Problem finding class"){
+      $c1 = $row2['num'];
+    }elseif($row2['category'] == "About the Professor"){
+      $c2 = $row2['num'];
+    }elseif($row2['category'] == "About the Subject"){
+      $c3 = $row2['num'];
+    }elseif($row2['category'] == "About the Schedule"){
+      $c4 = $row2['num'];
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -265,6 +281,72 @@ $(function () {
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
     pieChart.Doughnut(PieData, pieOptions)
+
+
+  })
+</script>
+
+<script>
+$(function () {
+
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
+    var pieChart2       = new Chart(pieChartCanvas2)
+    var PieData2        = [
+      {
+        value    : <?= $c1; ?>,
+        color    : '#00a65a',
+        highlight: '#00a65a',
+        label    : 'Problem finding class'
+      },
+      {
+        value    : <?= $c2; ?>,
+        color    : '#f39c12',
+        highlight: '#f39c12',
+        label    : 'About the Professor'
+      },
+      {
+        value    : <?= c3; ?>,
+        color    : '#f56954',
+        highlight: '#f56954',
+        label    : 'About the Subject'
+      },
+      {
+        value    : <?= $c4; ?>,
+        color    : '#f56954',
+        highlight: '#f56954',
+        label    : 'About the Schedule'
+      }
+    ]
+    var pieOptions2     = {
+      //Boolean - Whether we should show a stroke on each segment
+      segmentShowStroke    : true,
+      //String - The colour of each segment stroke
+      segmentStrokeColor   : '#fff',
+      //Number - The width of each segment stroke
+      segmentStrokeWidth   : 2,
+      //Number - The percentage of the chart that we cut out of the middle
+      percentageInnerCutout: 50, // This is 0 for Pie charts
+      //Number - Amount of animation steps
+      animationSteps       : 100,
+      //String - Animation easing effect
+      animationEasing      : 'easeOutBounce',
+      //Boolean - Whether we animate the rotation of the Doughnut
+      animateRotate        : true,
+      //Boolean - Whether we animate scaling the Doughnut from the centre
+      animateScale         : false,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive           : true,
+      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio  : true,
+      //String - A legend template
+      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData2, pieOptions2)
 
 
   })
