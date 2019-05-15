@@ -21,7 +21,7 @@
     <section class="content-header">
       <h1>
         Account Settings
-        <small>Optional description</small>
+        <small></small>
       </h1>
     </section>
 
@@ -104,9 +104,9 @@
     </div>
     </div>
     <!-- Modal -->
-<?php endif;?>
 
-<?php if($_GET['iderror'] == 2): ?>
+
+<?php elseif($_GET['iderror'] == 2): ?>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -128,9 +128,9 @@
   </div>
 </div>
 <!-- Modal -->
-<?php endif;?>
 
-<?php if($_GET['iderror'] == 3): ?>
+
+<?php elseif($_GET['iderror'] == 3): ?>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -142,7 +142,7 @@
         <h4 class="modal-title">Change password failed</h4>
       </div>
       <div class="modal-body">
-        <p>Your confirm password doesn't valid.</p>
+        <p>Your confirmation password in invalid.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

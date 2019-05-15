@@ -14,6 +14,8 @@
     $password = $_SESSION['password'];
     $newpassverify = 1;
     $oldpassverify = 1;
+    $confirmpassverify = 1;
+
     if ($_FILES['foto']['size'] != 0 && $_FILES['foto']['error'] == 0){
         $foto = $_FILES['foto'];
         $ext = explode(".", $foto['name']);
@@ -52,6 +54,7 @@
                     $password = password_hash($_POST['newpassword'], PASSWORD_BCRYPT);
                     $newpassverify = 1;
                 }else{
+                    $confirmpassverify = 0;
                   header("location:../masteradmin.php?page=accountsettings&iderror=3"); 
                 }                
             }
@@ -68,7 +71,7 @@
 
 
 <?php       
-    if($newpassverify == 1 && $oldpassverify == 1){
+    if($newpassverify == 1 && $oldpassverify == 1 && $confirmpassverify == 1){
         $sqlupdate = "UPDATE msdata SET nama=?, email=?, password=?
                     WHERE email=?";
         $file = [
