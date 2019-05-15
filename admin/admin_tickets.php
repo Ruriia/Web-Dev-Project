@@ -27,7 +27,7 @@
 
     $sql = "SELECT ticket.*, mscategory.keterangan AS keteranganCategory, mspriority.keterangan AS keteranganPriority
             FROM ticket, mscategory, mspriority WHERE mscategory.category = ticket.category
-            AND mspriority.priority = ticket.priority order by ticket.done LIMIT " . $bottom . "," . $temp;
+            AND mspriority.priority = ticket.priority ORDER BY ticket.date_created DESC, ticket.time_created DESC LIMIT " . $bottom . "," . $temp;
     $result = $key->prepare($sql);
     $result->execute();
   }else{

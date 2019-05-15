@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
             </div>
           </div>
-          <a href="masteradmin.php?page=admin_tickets&cari=3"><button type="button" class="btn btn-primary btn-block">View tickets</button></a>
+          <a href="masteradmin.php?page=admin_tickets&cari=3&halaman=1"><button type="button" class="btn btn-primary btn-block">View tickets</button></a>
         </div>
 
         <div id="home-middle" class="col-md-4">

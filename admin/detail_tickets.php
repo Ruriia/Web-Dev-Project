@@ -56,9 +56,10 @@
 
     <!-- Main content -->
     <section class="content container-fluid" style="padding-bottom: 0; margin-bottom: 0;">
-        <div class="row">
-            <div class="col-sm-3"> <!-- Untuk Ticket Info -->
+        <div class="row" style="padding:10px;">
+            <div class="col-sm-3" style="background-color:white;border:solid;border-width:thin;border-radius:10px;"> <!-- Untuk Ticket Info -->
                 <h1 class="h3">Ticket Information</h1>
+                <hr/>
                 <p>User: &ensp;<?= $row['namauser']; ?></p>
                 <p>Ticket no: &ensp;<?= $_GET['ticketid']; ?></p>
                 <p>Category : &ensp;<?= $row['kategori'];?></p>
@@ -68,7 +69,7 @@
             </div>
 
             <div class="col-sm-9 mb-0">
-                <div class="row"> <!-- Membagi area chat view dan text box -->               
+                <div class="row" style="padding:10px;"> <!-- Membagi area chat view dan text box -->               
                     <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll;"> <!-- Untuk chat view -->
                         <?php while($data = $result->fetch()): 
                             $tgl = $data['date'];

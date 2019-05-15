@@ -182,8 +182,9 @@
     <h3><i class="fa fa-comments"></i> Chatroom</h3>
     <hr/>
     <div class="row" style="padding:20px;">
-        <div class="col-sm-3"> <!-- Untuk Ticket Info -->
+        <div class="col-sm-3" style="border:solid;border-width:thin;border-radius:5px;padding-top:5px;background: #f4f4f4;"> <!-- Untuk Ticket Info -->
             <h1 class="h3">Ticket Information</h1>
+            <hr/>
             <p>User: &ensp;<?= $row['namauser']; ?></p>
             <p>Ticket no: &ensp;<?= $_GET['number']; ?></p>
             <p>Category : &ensp;<?= $row['kategori'];?></p>
@@ -242,9 +243,9 @@
                             </div>
                             <div class="form-group">
                               <?php if($row['status'] == 1): ?>
-                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..."></textarea>
+                                <textarea class="form-control" id="tinyMceArea" rows="6" name="messageinput" placeholder="Reply here..."></textarea>
                               <?php else: ?>
-                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..." disabled="true"></textarea>
+                                <textarea class="form-control" id="tinyMceArea" rows="6" name="messageinput" placeholder="Reply here..."></textarea>
                               <?php endif; ?>                          
                             </div>
                             <?php if($row['status'] == 1): ?>
@@ -348,6 +349,12 @@
         toolbar: [
             "styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image"
         ],
+
+        <?php if($row['status'] == 1): ?>
+        readonly:1,
+        <?php else: ?>
+        readonly:0,
+        <?php endif; ?>
 
         images_upload_url: 'uploadTiny.php',
         
