@@ -243,9 +243,9 @@
                             </div>
                             <div class="form-group">
                               <?php if($row['status'] == 1): ?>
-                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..."></textarea>
+                                <textarea class="form-control" id="tinyMceArea" rows="6" name="messageinput" placeholder="Reply here..."></textarea>
                               <?php else: ?>
-                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..." disabled="true"></textarea>
+                                <textarea class="form-control" id="tinyMceArea" rows="6" name="messageinput" placeholder="Reply here..."></textarea>
                               <?php endif; ?>                          
                             </div>
                             <?php if($row['status'] == 1): ?>
@@ -349,6 +349,12 @@
         toolbar: [
             "styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image"
         ],
+
+        <?php if($row['status'] == 1): ?>
+        readonly:1,
+        <?php else: ?>
+        readonly:0,
+        <?php endif; ?>
 
         images_upload_url: 'uploadTiny.php',
         

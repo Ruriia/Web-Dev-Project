@@ -12,7 +12,7 @@
   $i = 0;
   $key = connection();
 
-  $sql = "SELECT ticket.ticketid as nomortiket, ticket.subject as subjek, mscategory.keterangan as kategori, msdata.nama as nama, ticket.date_created as tanggal, ticket.time_created as jam, mspriority.keterangan as prioritas, referticket.keterangan as status, ticket.done as done from ticket, referticket, mspriority, mscategory, msdata where ticket.nim = ? and msdata.nim = ? and  mscategory.category = ticket.category and mspriority.priority = ticket.priority and referticket.done = ticket.done";
+  $sql = "SELECT ticket.ticketid as nomortiket, ticket.subject as subjek, mscategory.keterangan as kategori, msdata.nama as nama, ticket.date_created as tanggal, ticket.time_created as jam, mspriority.keterangan as prioritas, referticket.keterangan as status, ticket.done as done from ticket, referticket, mspriority, mscategory, msdata where ticket.nim = ? and msdata.nim = ? and  mscategory.category = ticket.category and mspriority.priority = ticket.priority and referticket.done = ticket.done ORDER BY ticket.date_created DESC, ticket.time_created DESC";
 
   $run = $key->prepare($sql);
   $run->execute([$_SESSION['nim'], $_SESSION['nim']]);
