@@ -8,8 +8,6 @@
     }
   }
 
-  require('action/databasekey.php');
-  $key = connection();
 
   $sql = "SELECT ticket.*, mscategory.keterangan AS keteranganCategory, mspriority.keterangan AS keteranganPriority
           FROM ticket, mscategory, mspriority WHERE mscategory.category = ticket.category

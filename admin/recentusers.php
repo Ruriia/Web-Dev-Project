@@ -10,8 +10,7 @@
   
   $dicari = (isset($_POST['search'])) ? $_POST['search'] : "" ;
   $dicari = (isset($_GET['dicari'])) ? $_GET['dicari'] : $dicari;
-  require "action/databasekey.php";
-  $key = connection();
+ 
   $halaman = $_GET['halaman'];  
   $temp = 10;
   $bottom = ($halaman-1) * $temp;

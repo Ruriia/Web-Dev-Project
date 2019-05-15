@@ -26,13 +26,14 @@
               </div>
       </form>
       <?php elseif($searchnavbar == 2): ?>
-        <form class="navbar-form navbar-left" role="search" method="post" masteradmin.php?page=recentadmin&authorize=2&halaman=1&cari=2>
+        <form class="navbar-form navbar-left" role="search" method="post" action="masteradmin.php?page=recentadmin&authorize=2&halaman=1&cari=2">
               <div class="form-group">
                 <input type="text" name="search" class="form-control mr-sm-2" id="navbar-search-input" placeholder="Search" style="border-radius: 5px;">
                 <button class="btn btn-info my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
 
               </div>
       </form>
+      
       <?php elseif ($searchnavbar == 3): ?>
       <form class="navbar-form navbar-left" role="search" method="post" action="masteradmin.php?page=admin_tickets&cari=3">
               <div class="form-group">

@@ -23,7 +23,7 @@ $getdata = [
 
 $run->execute($getdata);
 
-header("refresh: 2;../masteradmin.php?page=recentadmin&authorize=2");
+header("refresh: 2;../masteradmin.php?page=recentadmin&authorize=2&halaman=1&cari=2");
 ?>
 
 <script src="../../user/dist/sweetalert2.all.min.js"></script>
