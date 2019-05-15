@@ -7,8 +7,7 @@
       }
   }
 
-  require 'action/databasekey.php';
-  $key = connection();
+
 
   $sql = "SELECT * FROM msdata WHERE msdata.email = ?";
 

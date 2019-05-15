@@ -7,8 +7,7 @@
     }
   }
 
-  require('action/databasekey.php');
-  $key = connection();
+  
 
   $sql = "SELECT question.ticketid, question.message, question.gambar, question.dari, question.sender,
             msdata.nama AS namauser,
