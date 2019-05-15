@@ -10,8 +10,6 @@
       }
   }
 
-  require ('action/databasekey.php');
-  $key = connection();
   
   $sql1 = "SELECT COUNT(ticketid) AS countticket FROM ticket";
   $stmt1 = $key->query($sql1);
