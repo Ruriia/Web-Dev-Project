@@ -30,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>Helpdesk KRS Website</title>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -41,7 +41,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Optional description</small>
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -84,9 +84,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
 
         <div id="home-middle" class="col-md-4">
-          <div class="box box-danger">
+          <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Ticket Categories</h3>
+              <h3 class="box-title">Ticket Priorities</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

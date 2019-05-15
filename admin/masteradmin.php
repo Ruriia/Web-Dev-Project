@@ -216,20 +216,20 @@ $(function () {
     var PieData        = [
       {
         value    : <?= $low; ?>,
-        color    : '#f56954',
-        highlight: '#f56954',
+        color    : '#00a65a',
+        highlight: '#00a65a',
         label    : 'Low'
       },
       {
         value    : <?= $medium; ?>,
-        color    : '#00a65a',
-        highlight: '#00a65a',
+        color    : '#f39c12',
+        highlight: '#f39c12',
         label    : 'Medium'
       },
       {
         value    : <?= $high; ?>,
-        color    : '#f39c12',
-        highlight: '#f39c12',
+        color    : '#f56954',
+        highlight: '#f56954',
         label    : 'High'
       }
     ]
