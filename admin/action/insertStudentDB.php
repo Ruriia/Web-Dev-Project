@@ -27,7 +27,7 @@ $getdata = [
 
 $run->execute($getdata);
 
-header("refresh: 2; ../masteradmin.php?page=recentusers&authorize=1")
+header("refresh: 2; ../masteradmin.php?page=recentusers&authorize=1&halaman=1&cari=1")
 ?>
 <script src="../../user/dist/sweetalert2.all.min.js"></script>
 

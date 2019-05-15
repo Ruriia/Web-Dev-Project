@@ -9,6 +9,17 @@
           header('location:../user/index.php');
       }
   }
+
+  require ('action/databasekey.php');
+  $key = connection();
+  
+  $sql1 = "SELECT COUNT(ticketid) AS countticket FROM ticket";
+  $stmt1 = $key->query($sql1);
+  $row1 = $stmt1->fetch();
+
+  $sql2 = "SELECT ticket.done, COUNT(*) AS num FROM ticket GROUP BY ticket.done";
+  $stmt2 = $key->query($sql2);
+  
 ?>
 
 
@@ -44,11 +55,52 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <section class="content container-fluid">
       <div class="row" style="margin-top:10px;">
         <div id="home-left" class="col-md-4">
-          Your left-content is here.
+          <div class="col-md-6">
+            <h1 style="font-size: 85px;" class="text-center"><?= $row1['countticket']; ?></h1>           
+            <p class="text-center">Tickets have opened.</p>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-12">
+                <?php
+                  while($row2 = $stmt2->fetch()):
+                    if($row2['done'] == 1):
+                ?>
+                      <h1 class="text-center"><?= $row2['num']; ?></h1>
+                      <p class="text-center">Have solved.</p>
+                
+                <?php
+                    elseif($row2['done'] == 2):
+                ?>
+                      <h1 class="text-center"><?= $row2['num']; ?></h1>
+                      <p class="text-center">Still opened.</p>
+                <?php
+                    endif;
+                  endwhile;
+                ?>
+              </div>
+            </div>
+          </div>
+          <a href="masteradmin.php?page=admin_tickets&cari=3"><button type="button" class="btn btn-primary btn-block">View tickets</button></a>
         </div>
 
         <div id="home-middle" class="col-md-4">
-          Your middle-content is here.
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Ticket Categories</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <canvas id="pieChart" style="height: 352px; width: 705px;" width="881" height="440"></canvas>
+            </div>
+            <!-- /.box-body -->
+          </div>
         </div>
 
         <div id="home-right" class="col-md-4" style="background: #0080c0;">
@@ -75,8 +127,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+<!-- Chart.js -->
+<script src="bower_components/chart.js/Chart.js"></script>
+
+<!-- Fast click -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+
+
+
+
 </body>
 </html>

@@ -8,6 +8,24 @@ session_start();
           header('location:../user/index.php');
       }
   }
+
+  require ('action/databasekey.php');
+  $key = connection();
+  
+  $sql1 = "SELECT mspriority.keterangan AS priority, COUNT(*) AS num FROM mspriority, ticket WHERE mspriority.priority = ticket.priority GROUP BY ticket.priority";
+  $stmt1 = $key->query($sql1);
+
+  $low;$medium;$high;
+
+  while($row1= $stmt1->fetch()){
+    if($row1['priority'] == "Low"){
+      $low = $row1['num'];
+    }elseif($row1['priority'] == "Medium"){
+      $medium = $row1['num'];
+    }elseif($row1['priority'] == "High"){
+      $high = $row1['num'];
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +86,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- require Date Picker -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<!-- Chart.js -->
+<script src="bower_components/chart.js/Chart.js"></script>
+
+<!-- Fast click -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
 
 <script>
     $(document).ready(function(){
@@ -179,5 +203,67 @@ scratch. This page gets rid of all links and provides the needed markup only.
     return i;
   }
 </script>
+
+
+<script>
+$(function () {
+
+    //- PIE CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieChart       = new Chart(pieChartCanvas)
+    var PieData        = [
+      {
+        value    : <?= $low; ?>,
+        color    : '#f56954',
+        highlight: '#f56954',
+        label    : 'Low'
+      },
+      {
+        value    : <?= $medium; ?>,
+        color    : '#00a65a',
+        highlight: '#00a65a',
+        label    : 'Medium'
+      },
+      {
+        value    : <?= $high; ?>,
+        color    : '#f39c12',
+        highlight: '#f39c12',
+        label    : 'High'
+      }
+    ]
+    var pieOptions     = {
+      //Boolean - Whether we should show a stroke on each segment
+      segmentShowStroke    : true,
+      //String - The colour of each segment stroke
+      segmentStrokeColor   : '#fff',
+      //Number - The width of each segment stroke
+      segmentStrokeWidth   : 2,
+      //Number - The percentage of the chart that we cut out of the middle
+      percentageInnerCutout: 50, // This is 0 for Pie charts
+      //Number - Amount of animation steps
+      animationSteps       : 100,
+      //String - Animation easing effect
+      animationEasing      : 'easeOutBounce',
+      //Boolean - Whether we animate the rotation of the Doughnut
+      animateRotate        : true,
+      //Boolean - Whether we animate scaling the Doughnut from the centre
+      animateScale         : false,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive           : true,
+      // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio  : true,
+      //String - A legend template
+      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData, pieOptions)
+
+
+  })
+</script>
+
 </body>
 </html>
