@@ -23,6 +23,7 @@
               <div class="form-group">
                 <input type="text" name="search" class="form-control mr-sm-2" id="navbar-search-input" placeholder="Search" style="border-radius: 5px;">
                 <button class="btn btn-info my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                <a class="btn btn-danger my-2 my-sm-0"><i class="fa fa-undo"></i></a>
               </div>
       </form>
       <?php elseif($searchnavbar == 2): ?>
@@ -30,6 +31,7 @@
               <div class="form-group">
                 <input type="text" name="search" class="form-control mr-sm-2" id="navbar-search-input" placeholder="Search" style="border-radius: 5px;">
                 <button class="btn btn-info my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                <a class="btn btn-danger my-2 my-sm-0"><i class="fa fa-undo"></i></a>
 
               </div>
       </form>
@@ -39,6 +41,7 @@
               <div class="form-group">
                 <input type="text" name="search" class="form-control mr-sm-2" id="navbar-search-input" placeholder="Search" style="border-radius: 5px;">
                 <button class="btn btn-info my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                <a class="btn btn-danger my-2 my-sm-0"><i class="fa fa-undo"></i></a>
 
               </div>
       </form>
