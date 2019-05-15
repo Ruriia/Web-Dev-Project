@@ -11,6 +11,8 @@ session_start();
 
   require ('action/databasekey.php');
   $key = connection();
+
+
   
   $sql1 = "SELECT mspriority.keterangan AS priority, COUNT(*) AS num FROM mspriority, ticket WHERE mspriority.priority = ticket.priority GROUP BY ticket.priority";
   $stmt1 = $key->query($sql1);
@@ -41,6 +43,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   
+
+
   <!-- for stylesheet -->
   <?php require 'template-parts/head.php'; ?>
 </head>
@@ -92,6 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Fast click -->
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
+
 
 <script>
     $(document).ready(function(){
@@ -216,20 +221,20 @@ $(function () {
     var PieData        = [
       {
         value    : <?= $low; ?>,
-        color    : '#f56954',
-        highlight: '#f56954',
+        color    : '#00a65a',
+        highlight: '#00a65a',
         label    : 'Low'
       },
       {
         value    : <?= $medium; ?>,
-        color    : '#00a65a',
-        highlight: '#00a65a',
+        color    : '#f39c12',
+        highlight: '#f39c12',
         label    : 'Medium'
       },
       {
         value    : <?= $high; ?>,
-        color    : '#f39c12',
-        highlight: '#f39c12',
+        color    : '#f56954',
+        highlight: '#f56954',
         label    : 'High'
       }
     ]
