@@ -235,14 +235,10 @@
                     <div class="col-sm-12" id="textbox" style="background: white; height: 215px; margin-top: 30px;"> 
                         <form action="action/newchat.php?&ticketid=<?= $_GET['number']; ?>" method="post">
                             <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
-                                <div class="col-sm-12">
-                                    <button type="button" style="width: 30px;"><strong>B</strong></button>
-                                    <button type="button" style="width: 30px;"><em>I</em></button>
-                                    <button type="button" style="width: 30px;"><ins>U</ins></button>
-                                </div>
+
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..."></textarea>                           
+                                <textarea class="form-control" id="tinyMceArea" rows="6" name="messageinput" placeholder="Reply here..."></textarea>                           
                             </div>                            
                             <button type="submit" class="btn btn-sm btn-primary">SEND</button>
                         </form>
@@ -328,5 +324,52 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="dist/sweetalert2.all.min.js"></script>
+
+<!-- TinyMCE -->
+<script src='https://cloud.tinymce.com/5/tinymce.min.js?apiKey=1p764owp8cnt1h9xt5zf1u7y1oowy0k4eumv95k37rrbpawy'></script>
+<script>
+    tinymce.init({
+        selector: '#tinyMceArea',
+        menubar:false,
+        statusbar: false,
+        plugins: 'code image',
+        toolbar: [
+            "styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image"
+        ],
+
+        images_upload_url: 'uploadTiny.php',
+        
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+        
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', 'uploadTiny.php');
+        
+            xhr.onload = function() {
+                var json;
+            
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+            
+                json = JSON.parse(xhr.responseText);
+            
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+            
+                success(json.location);
+            };
+        
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+        
+            xhr.send(formData);
+        },
+    });
+</script>
 </body>
 </html>
