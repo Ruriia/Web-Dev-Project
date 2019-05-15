@@ -182,8 +182,9 @@
     <h3><i class="fa fa-comments"></i> Chatroom</h3>
     <hr/>
     <div class="row" style="padding:20px;">
-        <div class="col-sm-3"> <!-- Untuk Ticket Info -->
+        <div class="col-sm-3" style="border:solid;border-width:thin;border-radius:5px;padding-top:5px;background: #f4f4f4;"> <!-- Untuk Ticket Info -->
             <h1 class="h3">Ticket Information</h1>
+            <hr/>
             <p>User: &ensp;<?= $row['namauser']; ?></p>
             <p>Ticket no: &ensp;<?= $_GET['number']; ?></p>
             <p>Category : &ensp;<?= $row['kategori'];?></p>
