@@ -12,7 +12,7 @@
   $i = 0;
   $key = connection();
 
-  $sql = "SELECT ticket.ticketid as nomortiket, ticket.subject as subjek, mscategory.keterangan as kategori, msdata.nama as nama, ticket.date_created as tanggal, ticket.time_created as jam, mspriority.keterangan as prioritas, referticket.keterangan as status from ticket, referticket, mspriority, mscategory, msdata where ticket.nim = ? and msdata.nim = ? and  mscategory.category = ticket.category and mspriority.priority = ticket.priority and referticket.done = ticket.done";
+  $sql = "SELECT ticket.ticketid as nomortiket, ticket.subject as subjek, mscategory.keterangan as kategori, msdata.nama as nama, ticket.date_created as tanggal, ticket.time_created as jam, mspriority.keterangan as prioritas, referticket.keterangan as status, ticket.done as done from ticket, referticket, mspriority, mscategory, msdata where ticket.nim = ? and msdata.nim = ? and  mscategory.category = ticket.category and mspriority.priority = ticket.priority and referticket.done = ticket.done";
 
   $run = $key->prepare($sql);
   $run->execute([$_SESSION['nim'], $_SESSION['nim']]);
@@ -239,7 +239,13 @@ li.dropdown {
                                 <td><?= $row['tanggal'] ?></td>
                                 <td><?= $row['jam'] ?></td>
                                 <td><?= $row['prioritas'] ?></td>
-                                <td><?= $row['status'] ?></td>
+                                <td>
+                                  <?php if($row['done'] == 1): ?>
+                                    <p style="color: green"><b>Opened</b></p>
+                                  <?php else: ?>
+                                    <p style="color: red"><b>Closed</b></p>
+                                  <?php endif; ?>
+                                </td>
                                 <td><a href="chatroom.php?number=<?= $row['nomortiket']; ?>"><font color="#6A95CC">See Details</font></a></t>
                             </tr>
                           <?php endwhile; ?>

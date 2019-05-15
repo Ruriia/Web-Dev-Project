@@ -7,12 +7,59 @@
         header('location:../user/index.php');
     }
   }
+  $dicari = (isset($_POST['search'])) ? $_POST['search'] : "" ;
+  $dicari = (isset($_GET['dicari'])) ? $_GET['dicari'] : $dicari;
+
+  $halaman = $_GET['halaman'];  
+  $temp = 10;
+  $bottom = ($halaman-1) * $temp;
+  //-------------------------------------
+  $count = 0;
+  $i = ($halaman-1) * $temp;
+
+  if($dicari == ""){
+    $panjang = "SELECT COUNT(*) as panjangticket FROM ticket";
+    $getpanjang = $key->query($panjang);
+    $getlength = $getpanjang->fetch();
+    $length = $getlength['panjangticket'];
+    $limit = ceil($length/$temp);
 
 
-  $sql = "SELECT ticket.*, mscategory.keterangan AS keteranganCategory, mspriority.keterangan AS keteranganPriority
-          FROM ticket, mscategory, mspriority WHERE mscategory.category = ticket.category
-          AND mspriority.priority = ticket.priority";
-  $result = $key->query($sql);
+    $sql = "SELECT ticket.*, mscategory.keterangan AS keteranganCategory, mspriority.keterangan AS keteranganPriority
+            FROM ticket, mscategory, mspriority WHERE mscategory.category = ticket.category
+            AND mspriority.priority = ticket.priority order by ticket.done LIMIT " . $bottom . "," . $temp;
+    $result = $key->prepare($sql);
+    $result->execute();
+  }else{
+
+    $panjang = "SELECT COUNT(*) as panjangticket FROM ticket WHERE subject like ? or subject like ? or subject like ? or nim like ? or ticketid like ? or email like ?";
+    $getpanjang = $key->prepare($panjang);
+    $getpanjang->execute([
+      $dicari."%",
+      "%".$dicari."%",
+      "%".$dicari,
+      $dicari,
+      $dicari,
+      $dicari."%"
+    ]);
+    $getlength = $getpanjang->fetch();
+    $length = $getlength['panjangticket'];
+    $limit = ceil($length/$temp);
+
+
+    $sql = "SELECT ticket.*, mscategory.keterangan AS keteranganCategory, mspriority.keterangan AS keteranganPriority
+            FROM ticket, mscategory, mspriority WHERE mscategory.category = ticket.category
+            AND mspriority.priority = ticket.priority and (subject like ? or subject like ? or subject like ? or nim like ? or ticketid like ? or email like ?) order by ticket.done LIMIT " . $bottom . "," . $temp;
+    $result = $key->prepare($sql);
+    $result->execute([
+      $dicari."%",
+      "%".$dicari."%",
+      "%".$dicari,
+      $dicari,
+      $dicari,
+      $dicari."%"
+    ]);
+  }
 ?>
 
 
@@ -73,6 +120,9 @@
               <th></th>
             </tr>
           <?php
+          while($count < $limit) : 
+          
+            $count++;
             $i = 0;
             while($row = $result->fetch()):
             $tgl = $row['date_created'];
@@ -94,7 +144,7 @@
                   if($row['done'] == 1){
                     echo "<span style='color:green;'><strong>Opened</strong></span>";
                   }elseif($row['done'] == 2){
-                    echo "<span style='color:green;'><strong>Closed</strong></span>";
+                    echo "<span style='color:red;'><strong>Closed</strong></span>";
                   }                
                 ?>
               </td>
@@ -103,7 +153,15 @@
               </td>
             </tr>
           <?php endwhile; ?>
+          <?php endwhile; ?>
           </table>
+          <ul class="pagination pagination-sm inline" style="float: right;">
+          <?php $x = 0;
+          while($x<$count): 
+            $x++; ?>
+           <li><a href="masteradmin.php?page=admin_tickets&cari=3&halaman=<?= $x ?>&dicari=<?= $dicari; ?>"> <?= $x?></a></li>
+          <?php endwhile; ?>
+         </ul>
       </div>
     </section>
   <!-- /.content-wrapper -->
