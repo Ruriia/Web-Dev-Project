@@ -18,7 +18,7 @@
   function sweetclick(){
     Swal.fire({
       type: 'success',
-      title: 'Thank you for using HelpDest Ticket Support!',
+      title: 'Thank You For using HelpDesk Ticket Support!',
       showConfirmButton: false,
       timer: 4000,
   })

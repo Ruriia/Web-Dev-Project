@@ -20,7 +20,7 @@
   $result = $key->query($sql1);
 
   $sql2 = "SELECT msdata.nama as namauser, mscategory.keterangan as kategori, ticket.subject as subjek,
-  mspriority.keterangan as prioritas, referticket.keterangan as done
+  mspriority.keterangan as prioritas, referticket.keterangan as done, ticket.done as status
   from msdata, ticket, question, mscategory, mspriority, referticket where
   ticket.ticketid = ? and ticket.email = msdata.email and ticket.category = mscategory.category
   and mspriority.priority = ticket.priority and referticket.done = ticket.done";
@@ -190,8 +190,11 @@
             <p>Subject : &ensp;<?= $row['subjek'];?></p>
             <p>Priority : &ensp;<?= $row['prioritas'];?></p>
             <p>Status : &ensp;<?= $row['done'];?></p>
-
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#solvedModal" name="solvedButton">Close Ticket</button>
+            <?php if($row['status'] == 1): ?>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#solvedModal" name="solvedButton">Close Ticket</button>
+            <?php else: ?>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#solvedModal" name="solvedButton" disabled="true">Close Ticket</button>
+            <?php endif; ?>
         </div>
         
         <div class="col-sm-9 mb-0">
@@ -238,9 +241,18 @@
 
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="tinyMceArea" rows="6" name="messageinput" placeholder="Reply here..."></textarea>                           
-                            </div>                            
-                            <button type="submit" class="btn btn-sm btn-primary">SEND</button>
+                              <?php if($row['status'] == 1): ?>
+                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..."></textarea>
+                              <?php else: ?>
+                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..." disabled="true"></textarea>
+                              <?php endif; ?>                          
+                            </div>
+                            <?php if($row['status'] == 1): ?>
+                                <button type="submit" class="btn btn-sm btn-primary">SEND</button>
+                              <?php else: ?>
+                                <button type="submit" class="btn btn-sm btn-primary" disabled="disabled">SEND</button>
+                              <?php endif; ?>                             
+                            
                         </form>
                     </div>
                 </div>
