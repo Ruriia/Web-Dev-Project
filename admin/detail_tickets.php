@@ -30,7 +30,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Nanti digunakan untuk styling chat box nya -->
+    <style>
+        #chatbox img{  
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -74,7 +79,7 @@
                             <?php if($data['ticketid'] == $_GET['ticketid']): ?>
                                 <?php if($data['dari'] == 1): ?>
                                     <div class="row">
-                                        <div class="col-sm-6 mt-3" style="border-radius:20px; background: #67bec2; color: white; padding-top: 5px; margin-bottom: 10px;">            
+                                        <div class="col-sm-6 mt-3" id="chatbox" style="border-radius:20px; background: #67bec2; color: white; padding-top: 5px; margin-bottom: 10px;">            
                                             <strong><?= $data['sender']; ?></strong>
                                             <br />
                                             <small><?= $tgl ?>&ensp;<?= $data['time']; ?></small>
@@ -88,7 +93,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 mt-3"></div>
 
-                                        <div class="col-sm-6 mt-3" style="border-radius:20px; background: #ffffff; padding-top: 5px; margin-bottom: 10px;">            
+                                        <div class="col-sm-6 mt-3" id="chatbox" style="border-radius:20px; background: #ffffff; padding-top: 5px; margin-bottom: 10px;">            
                                             <strong><?= $data['sender']; ?></strong>
                                             <br />
                                             <small><?= $tgl ?>&ensp;<?= $data['time']; ?></small>
@@ -100,17 +105,11 @@
                             <?php endif; ?>
                         <?php endwhile; ?>                      
                     </div>
-                    <div class="col-sm-12" id="textbox" style="background: white; height: 215px;"> <!-- Untuk text box -->
+                    <div class="col-sm-12" id="textbox" style="background: white; height: 275px;"> <!-- Untuk text box -->
                         <form action="action/newchat.php?&ticketid=<?= $_GET['ticketid']; ?>" method="post">
-                            <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
-                                <div class="col-sm-12">
-                                    <button type="button" style="width: 30px;"><strong>B</strong></button>
-                                    <button type="button" style="width: 30px;"><em>I</em></button>
-                                    <button type="button" style="width: 30px;"><ins>U</ins></button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..."></textarea>                           
+
+                            <div class="form-group" style="margin-top: 10px;">
+                                <textarea id="tinyMceArea" rows="6" name="messageinput" placeholder="Reply here..."></textarea>                           
                             </div>                            
                             <button type="submit" class="btn btn-sm btn-primary">SEND</button>
                         </form>
@@ -138,5 +137,53 @@
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+
+<!-- TinyMCE -->
+<script src='https://cloud.tinymce.com/5/tinymce.min.js?apiKey=1p764owp8cnt1h9xt5zf1u7y1oowy0k4eumv95k37rrbpawy'></script>
+<script>
+    tinymce.init({
+        selector: '#tinyMceArea',
+        menubar:false,
+        statusbar: false,
+        plugins: 'code image',
+        toolbar: [
+            "styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image"
+        ],
+
+        images_upload_url: 'uploadTiny.php',
+        
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+        
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', 'uploadTiny.php');
+        
+            xhr.onload = function() {
+                var json;
+            
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+            
+                json = JSON.parse(xhr.responseText);
+            
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+            
+                success(json.location);
+            };
+        
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+        
+            xhr.send(formData);
+        },
+    });
+</script>
+
 </body>
 </html>

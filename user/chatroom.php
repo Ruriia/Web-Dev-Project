@@ -20,7 +20,7 @@
   $result = $key->query($sql1);
 
   $sql2 = "SELECT msdata.nama as namauser, mscategory.keterangan as kategori, ticket.subject as subjek,
-  mspriority.keterangan as prioritas, referticket.keterangan as done
+  mspriority.keterangan as prioritas, referticket.keterangan as done, ticket.done as status
   from msdata, ticket, question, mscategory, mspriority, referticket where
   ticket.ticketid = ? and ticket.email = msdata.email and ticket.category = mscategory.category
   and mspriority.priority = ticket.priority and referticket.done = ticket.done";
@@ -191,8 +191,11 @@
             <p>Subject : &ensp;<?= $row['subjek'];?></p>
             <p>Priority : &ensp;<?= $row['prioritas'];?></p>
             <p>Status : &ensp;<?= $row['done'];?></p>
-
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#solvedModal" name="solvedButton">Close Ticket</button>
+            <?php if($row['status'] == 1): ?>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#solvedModal" name="solvedButton">Close Ticket</button>
+            <?php else: ?>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#solvedModal" name="solvedButton" disabled="true">Close Ticket</button>
+            <?php endif; ?>
         </div>
         
         <div class="col-sm-9 mb-0">
@@ -236,16 +239,21 @@
                     <div class="col-sm-12" id="textbox" style="background: white; height: 215px; margin-top: 30px;"> 
                         <form action="action/newchat.php?&ticketid=<?= $_GET['number']; ?>" method="post">
                             <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
-                                <div class="col-sm-12">
-                                    <button type="button" style="width: 30px;"><strong>B</strong></button>
-                                    <button type="button" style="width: 30px;"><em>I</em></button>
-                                    <button type="button" style="width: 30px;"><ins>U</ins></button>
-                                </div>
+
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..."></textarea>                           
-                            </div>                            
-                            <button type="submit" class="btn btn-sm btn-primary">SEND</button>
+                              <?php if($row['status'] == 1): ?>
+                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..."></textarea>
+                              <?php else: ?>
+                                <textarea class="form-control" id="textarea1" rows="6" name="messageinput" placeholder="Reply here..." disabled="true"></textarea>
+                              <?php endif; ?>                          
+                            </div>
+                            <?php if($row['status'] == 1): ?>
+                                <button type="submit" class="btn btn-sm btn-primary">SEND</button>
+                              <?php else: ?>
+                                <button type="submit" class="btn btn-sm btn-primary" disabled="disabled">SEND</button>
+                              <?php endif; ?>                             
+                            
                         </form>
                     </div>
                 </div>
@@ -296,7 +304,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary">
-          <a href="#">Yes</a>
+          <a href="action/tutup_proses.php?number=<?= $_GET['number']; ?>">Yes</a>
          </button>
       </div>
     </div>
@@ -329,5 +337,52 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="dist/sweetalert2.all.min.js"></script>
+
+<!-- TinyMCE -->
+<script src='https://cloud.tinymce.com/5/tinymce.min.js?apiKey=1p764owp8cnt1h9xt5zf1u7y1oowy0k4eumv95k37rrbpawy'></script>
+<script>
+    tinymce.init({
+        selector: '#tinyMceArea',
+        menubar:false,
+        statusbar: false,
+        plugins: 'code image',
+        toolbar: [
+            "styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image"
+        ],
+
+        images_upload_url: 'uploadTiny.php',
+        
+        images_upload_handler: function (blobInfo, success, failure) {
+            var xhr, formData;
+        
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', 'uploadTiny.php');
+        
+            xhr.onload = function() {
+                var json;
+            
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+            
+                json = JSON.parse(xhr.responseText);
+            
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+            
+                success(json.location);
+            };
+        
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+        
+            xhr.send(formData);
+        },
+    });
+</script>
 </body>
 </html>

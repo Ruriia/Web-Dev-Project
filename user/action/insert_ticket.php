@@ -9,10 +9,14 @@ values (?,?,?,?,?,?,?,1)";
 $result = $key->prepare($sql);
 
 date_default_timezone_set('Asia/Jakarta');
-$date = date("d/m/Y");
 $time = date("H:i:s");
-$date = date('Y-d-m', strtotime($date));
 
+//$date = date("d/m/Y");
+//$date = date('Y-d-m', strtotime($date));
+
+$date = date("d/m/Y");
+$date = DateTime::createFromFormat('d/m/Y', $date);
+$date = $date->format('Y-m-d');
 
 $data = [
     $_POST['emailticket'],
