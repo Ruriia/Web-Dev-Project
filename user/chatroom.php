@@ -295,7 +295,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary">
-          <a href="#">Yes</a>
+          <a href="action/tutup_proses.php?number=<?= $_GET['number']; ?>">Yes</a>
          </button>
       </div>
     </div>
