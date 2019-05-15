@@ -17,7 +17,7 @@
   $result = $key->query($sql);
   
   $sqlbaru = "SELECT msdata.nama as namauser, mscategory.keterangan as kategori, ticket.subject as subjek,
-  mspriority.keterangan as prioritas, referticket.keterangan as done
+  mspriority.keterangan as prioritas, referticket.keterangan as done, ticket.done as status
   from msdata, ticket, question, mscategory, mspriority, referticket where
   ticket.ticketid = ? and ticket.email = msdata.email and ticket.category = mscategory.category
   and mspriority.priority = ticket.priority and referticket.done = ticket.done";
@@ -109,9 +109,14 @@
                         <form action="action/newchat.php?&ticketid=<?= $_GET['ticketid']; ?>" method="post">
 
                             <div class="form-group" style="margin-top: 10px;">
-                                <textarea id="tinyMceArea" rows="6" name="messageinput" placeholder="Reply here..."></textarea>                           
-                            </div>                            
-                            <button type="submit" class="btn btn-sm btn-primary">SEND</button>
+                                <textarea id="tinyMceArea" rows="6" name="messageinput" placeholder="Reply here..."></textarea>                
+                            </div>
+                            <?php if($row['status'] == 1): ?>
+                                <button type="submit" class="btn btn-sm btn-primary">SEND</button>
+                            <?php else: ?>
+                                <button type="submit" class="btn btn-sm btn-primary" disabled="true">SEND</button>
+                            <?php endif; ?>                                
+                            
                         </form>
                     </div>
                 </div>
