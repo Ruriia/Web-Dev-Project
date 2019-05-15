@@ -191,7 +191,7 @@
             <p>Priority : &ensp;<?= $row['prioritas'];?></p>
             <p>Status : &ensp;<?= $row['done'];?></p>
 
-            <button class="btn btn-danger" type="submit" data-toogle= "tooltip" data-placement="bottom" title="Click this button if your problem has solved" class="solved" name="solvedButton">Close Ticket</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#solvedModal" name="solvedButton">Close Ticket</button>
         </div>
         
         <div class="col-sm-9 mb-0">
@@ -278,6 +278,29 @@
     </div>
   </div>
 </div>-->
+
+<!-- Modal solvedButton -->
+<div class="modal fade" id="solvedModal" tabindex="-1" role="dialog" aria-labelledby="solvedModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="solvedModalLabel">Notice</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">
+          <a href="#">Yes</a>
+         </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
