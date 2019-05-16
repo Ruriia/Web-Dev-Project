@@ -12,7 +12,7 @@
   require "../admin/action/databasekey.php";
   $key = connection();
 
-  $sql1 = "SELECT question.ticketid, question.message, question.gambar, question.dari, question.sender,
+  $sql1 = "SELECT question.ticketid, question.message, question.dari, question.sender,
   msdata.nama AS namauser,
   question.date_sent AS date, question.time_sent AS time
   FROM question, msdata, ticket
@@ -200,7 +200,7 @@
         
         <div class="col-sm-9 mb-0">
                 <div class="row"> <!-- Membagi area chat view dan text box -->               
-                    <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll;"> <!-- Untuk chat view -->
+                    <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll; margin-left: 10px;"> <!-- Untuk chat view -->
                         <?php while($data = $result->fetch()): 
                             $tgl = $data['date'];
                             $tgl = new DateTime($tgl);

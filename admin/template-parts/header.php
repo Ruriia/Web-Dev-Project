@@ -78,7 +78,8 @@
                   <a href="masteradmin.php?page=accountsettings&iderror=0" class="btn btn-default btn-flat">Account Settings</a>
                 </div>
                 <div class="pull-right">
-                  <a data-target="#modalLogout" data-toggle="modal" class="btn btn-default btn-flat" id="navlogout" href="#modalLogout">Logout</a>
+                  <!--<a data-target="#modalLogout" data-toggle="modal" class="btn btn-default btn-flat" id="navlogout" href="#modalLogout">Logout</a>-->
+                  <button type="button" id="navlogout" class="btn btn-default btn-flat" onclick="sweetclick()">Logout</button>
                 </div>
               </li>
             </ul>
@@ -112,3 +113,35 @@
         </div>
   </div>  
 
+  <script>
+  function sweetclick(){
+    Swal.fire({
+    title: 'Are you sure you want to logout?',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes!'
+  }).then((result) => {
+    if (result.value) {
+      window.location.href = "../logout.php";
+    }
+  })
+  }
+  
+// When the user scrolls down 20px from the top of the document, slide down the navbar
+/*
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar1").style.top = "0";
+  } else {
+    document.getElementById("navbar1").style.top = "-70px";
+  }
+}
+*/
+
+</script>
+
+<script src="dist/sweetalert/sweetalert2.all.min.js"></script>

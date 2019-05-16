@@ -67,13 +67,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="col-md-12">
                 <?php
                   while($row2 = $stmt2->fetch()):
-                    if($row2['done'] == 1):
+                    if($row2['done'] == 2):
                 ?>
                       <h1 class="text-center"><strong><?= $row2['num']; ?></strong></h1>
                       <p class="text-center">Have solved.</p>
                 
                 <?php
-                    elseif($row2['done'] == 2):
+                    elseif($row2['done'] == 1):
                 ?>
                       <h1 class="text-center"><strong><?= $row2['num']; ?></strong></h1>
                       <p class="text-center">Still opened.</p>
