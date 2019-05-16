@@ -232,8 +232,8 @@ $(function () {
     //- PIE CHART -
     //-------------
     // Get context with jQuery - using jQuery's .get() method.
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieChart       = new Chart(pieChartCanvas)
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
+    var pieChart       = new Chart(pieChartCanvas);
     var PieData        = [
       {
         value    : <?= $low; ?>,
@@ -253,7 +253,7 @@ $(function () {
         highlight: '#f56954',
         label    : 'High'
       }
-    ]
+    ];
     var pieOptions     = {
       //Boolean - Whether we should show a stroke on each segment
       segmentShowStroke    : true,
@@ -277,49 +277,42 @@ $(function () {
       maintainAspectRatio  : true,
       //String - A legend template
       legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
+    };
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData, pieOptions)
+    pieChart.Doughnut(PieData, pieOptions);
 
-
-  })
-</script>
-
-<script>
-$(function () {
-
-    //- PIE CHART -
+    //- PIE CHART 2 -
     //-------------
     // Get context with jQuery - using jQuery's .get() method.
-    var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d')
-    var pieChart2       = new Chart(pieChartCanvas2)
+    var pieChartCanvas2 = $('#pieChart2').get(0).getContext('2d');
+    var pieChart2       = new Chart(pieChartCanvas2);
     var PieData2        = [
       {
         value    : <?= $c1; ?>,
-        color    : '#00a65a',
-        highlight: '#00a65a',
+        color    : '#6AAB9C',
+        highlight: '#6AAB9C',
         label    : 'Problem finding class'
       },
       {
         value    : <?= $c2; ?>,
-        color    : '#f39c12',
-        highlight: '#f39c12',
+        color    : '#FA9284',
+        highlight: '#FA9284',
         label    : 'About the Professor'
       },
       {
-        value    : <?= c3; ?>,
-        color    : '#f56954',
-        highlight: '#f56954',
+        value    : <?= $c3; ?>,
+        color    : '#E06C78',
+        highlight: '#E06C78',
         label    : 'About the Subject'
       },
       {
         value    : <?= $c4; ?>,
-        color    : '#f56954',
-        highlight: '#f56954',
+        color    : '#5874DC',
+        highlight: '#5874DC',
         label    : 'About the Schedule'
       }
-    ]
+    ];
     var pieOptions2     = {
       //Boolean - Whether we should show a stroke on each segment
       segmentShowStroke    : true,
@@ -343,14 +336,14 @@ $(function () {
       maintainAspectRatio  : true,
       //String - A legend template
       legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
+    };
     //Create pie or douhnut chart
     // You can switch between pie and douhnut using the method below.
-    pieChart.Doughnut(PieData2, pieOptions2)
-
-
+    pieChart2.Doughnut(PieData2, pieOptions2);
   })
 </script>
+
+
 
 </body>
 </html>

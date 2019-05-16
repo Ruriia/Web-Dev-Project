@@ -68,7 +68,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>Helpdesk KRS Website</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -94,8 +94,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tickets
-        <small>Optional description</small>
+        <strong>Tickets</strong>
+        <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -105,8 +105,10 @@
 
     <!-- Main content -->
     <section class="content container-fluid">
-      <div class="table-responsive mt-3">
-          <table class="table">
+    <div class="box">
+      <div class="box-body table-responsive">
+          <table class="table table-hover">
+          <tbody>
             <tr>
               <th>No. Ticket</th>
               <th>User's Email</th>
@@ -152,6 +154,7 @@
                   <strong>View</strong></a>
               </td>
             </tr>
+          </tbody>
           <?php endwhile; ?>
           <?php endwhile; ?>
           </table>
@@ -163,6 +166,7 @@
           <?php endwhile; ?>
          </ul>
       </div>
+    </div>
     </section>
   <!-- /.content-wrapper -->
 

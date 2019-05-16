@@ -350,7 +350,7 @@
             "styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image"
         ],
 
-        <?php if($row['status'] == 1): ?>
+        <?php if($row['status'] == 2): ?>
         readonly:1,
         <?php else: ?>
         readonly:0,

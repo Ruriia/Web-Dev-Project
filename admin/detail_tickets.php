@@ -9,7 +9,7 @@
 
   
 
-  $sql = "SELECT question.ticketid, question.message, question.gambar, question.dari, question.sender,
+  $sql = "SELECT question.ticketid, question.message, question.dari, question.sender,
             msdata.nama AS namauser,
             question.date_sent AS date, question.time_sent AS time
             FROM question, msdata, ticket
@@ -45,20 +45,22 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tickets
-        <small>Optional description</small>
+      <strong>Tickets</strong>
+        <small></small>
       </h1>
+      <!--
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
       </ol>
+      -->
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid" style="padding-bottom: 0; margin-bottom: 0;">
-        <div class="row" style="padding:10px;">
-            <div class="col-sm-3" style="background-color:white;border:solid;border-width:thin;border-radius:10px;"> <!-- Untuk Ticket Info -->
-                <h1 class="h3">Ticket Information</h1>
+        <div class="row" style="padding:10px; padding-bottom: 0;">
+            <div class="col-sm-3" style="background-color:white;border-radius:10px; max-height: 100%;"> <!-- Untuk Ticket Info -->
+                <h1 class="h3"><strong>Ticket Information</strong></h1>
                 <hr/>
                 <p>User: &ensp;<?= $row['namauser']; ?></p>
                 <p>Ticket no: &ensp;<?= $_GET['ticketid']; ?></p>
@@ -69,8 +71,8 @@
             </div>
 
             <div class="col-sm-9 mb-0">
-                <div class="row" style="padding:10px;"> <!-- Membagi area chat view dan text box -->               
-                    <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll;"> <!-- Untuk chat view -->
+                <div class="row" style="padding:10px; padding-bottom:0;"> <!-- Membagi area chat view dan text box -->               
+                    <div class="col-sm-12" id="chatview" style="height: 350px; overflow-y:scroll;"> <!-- Untuk chat view -->
                         <?php while($data = $result->fetch()): 
                             $tgl = $data['date'];
                             $tgl = new DateTime($tgl);
@@ -154,6 +156,13 @@
         toolbar: [
             "styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image"
         ],
+
+        
+        <?php if($row['status'] == 2): ?>
+        readonly:1,
+        <?php else: ?>
+        readonly:0,
+        <?php endif; ?>
 
         images_upload_url: 'uploadTiny.php',
         

@@ -40,21 +40,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
+        <strong>Dashboard</strong>
         <small></small>
       </h1>
+      <!--
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
       </ol>
+      -->
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid">
       <div class="row" style="margin-top:10px;">
         <div id="home-left" class="col-md-4">
-          <div class="col-md-6">
-            <h1 style="font-size: 85px;" class="text-center"><?= $row1['countticket']; ?></h1>           
+        <div class="box box-primary">
+        <div class="box-body">
+          <div class="col-md-6" style="border-right: 1.5px solid #aeaeae; ">
+            <h1 style="font-size: 95px;" class="text-center"><strong><?= $row1['countticket']; ?></strong></h1>           
             <p class="text-center">Tickets have opened.</p>
           </div>
 
@@ -65,13 +69,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   while($row2 = $stmt2->fetch()):
                     if($row2['done'] == 1):
                 ?>
-                      <h1 class="text-center"><?= $row2['num']; ?></h1>
+                      <h1 class="text-center"><strong><?= $row2['num']; ?></strong></h1>
                       <p class="text-center">Have solved.</p>
                 
                 <?php
                     elseif($row2['done'] == 2):
                 ?>
-                      <h1 class="text-center"><?= $row2['num']; ?></h1>
+                      <h1 class="text-center"><strong><?= $row2['num']; ?></strong></h1>
                       <p class="text-center">Still opened.</p>
                 <?php
                     endif;
@@ -80,7 +84,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
             </div>
           </div>
-          <a href="masteradmin.php?page=admin_tickets&cari=3&halaman=1"><button type="button" class="btn btn-primary btn-block">View tickets</button></a>
+          <a href="masteradmin.php?page=admin_tickets&cari=3&halaman=1"><button type="button" class="btn btn-primary btn-block" style="border-radius: 15px; margin-top: 25px;"><strong>View tickets</strong></button></a>
+        </div>
+        </div>
         </div>
 
         <div id="home-middle" class="col-md-4">
