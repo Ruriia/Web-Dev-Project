@@ -200,7 +200,7 @@
         
         <div class="col-sm-9 mb-0">
                 <div class="row"> <!-- Membagi area chat view dan text box -->               
-                    <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll;"> <!-- Untuk chat view -->
+                    <div class="col-sm-12" id="chatview" style="height: 300px; overflow-y:scroll; margin-left: 10px;"> <!-- Untuk chat view -->
                         <?php while($data = $result->fetch()): 
                             $tgl = $data['date'];
                             $tgl = new DateTime($tgl);
@@ -350,7 +350,7 @@
             "styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image"
         ],
 
-        <?php if($row['status'] == 1): ?>
+        <?php if($row['status'] == 2): ?>
         readonly:1,
         <?php else: ?>
         readonly:0,

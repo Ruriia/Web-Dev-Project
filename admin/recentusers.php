@@ -109,7 +109,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Recent Users<!--
+        <strong>Recent Users</strong><!--
         <small>Masukkan NIM atau Nama yang ingin dicari
         <form action="masteradmin.php?page=recentusers&authorize=1&halaman=1" method="post">
           <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $dicari; ?>">
@@ -126,8 +126,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <section class="content container-fluid">
-
-      <div class="table-responsive mt-3">
+    <div class="box">
+      <div class="box-body table-responsive">
+      <tbody>
         <table class="table">
           <tr>
             <th>No.</th>
@@ -167,8 +168,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
            <li><a href="masteradmin.php?page=recentusers&authorize=1&cari=1&halaman=<?= $x ?>&dicari=<?= $dicari?>"> <?= $x?></a></li>
           <?php endwhile; ?>
          </ul>
+      </tbody>
       </div>
-
+    </div>
     </section>
     <!-- /.content -->
   </div>

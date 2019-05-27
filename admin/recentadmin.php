@@ -123,8 +123,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <section class="content container-fluid">
-      <div class="table-responsive mt-3">
-        <table class="table">
+    <div class="box">
+      <div class="box-body table-responsive">
+        <table class="table table-hover">
+        <tbody>
           <tr>
             <th>No.</th>
             <th>NIKW</th>
@@ -167,8 +169,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         endwhile; ?>
         <li><a href="masteradmin.php?page=recentadmin&authorize=2&cari=2&halaman=<?= $x ?>&dicari=<?= $dicari?>">Last</a></li>
          </ul>
+        </tbody>
       </div>
-
+    </div>
     </section>
     <!-- /.content -->
   </div>
