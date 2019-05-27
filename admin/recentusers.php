@@ -34,11 +34,11 @@
   $result->execute([$_GET['authorize']]);
   
   }else{
-    $halaman = "SELECT count(*) as panjang FROM msdata
+    $hitung = "SELECT count(*) as panjang FROM msdata
     where authorize = ? and (nim = ? or nama like ? or nama like ? or nama like ? or 
     email like ? or email like ?) order by nim";
 
-    $result = $key->prepare($halaman);
+    $result = $key->prepare($hitung);
     $result->execute([
       $_GET['authorize'],
       $dicari,
@@ -109,7 +109,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <strong>Recent Users</strong><!--
+        <strong>All Users</strong><!--
         <small>Masukkan NIM atau Nama yang ingin dicari
         <form action="masteradmin.php?page=recentusers&authorize=1&halaman=1" method="post">
           <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $dicari; ?>">
@@ -162,11 +162,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
          <?php endwhile; ?>
         </table>
         <ul class="pagination pagination-sm inline" style="float: right;">
-          <?php $x = 0;
+        <!--<li><a href="masteradmin.php?page=recentusers&authorize=1&cari=1&halaman=<?= $x ?>&dicari=<?= $dicari?>"> <?= $x?></a></li>-->
+          
+          <li><a href="masteradmin.php?page=recentusers&authorize=1&cari=1&halaman=1&dicari=<?= $dicari?>"> First</a></li>
+
+        <?php 
+          $x = $halaman;
+          $halamanlimit = $x - 2;
+          $xi = $halamanlimit-1;
+          while($x > $halamanlimit):
+            $xi++;
+            $x--;
+            if($xi < 1) :
+              continue;
+            else :
+        ?>
+          <li><a href="masteradmin.php?page=recentusers&authorize=1&cari=1&halaman=<?= $xi;?>&dicari=<?= $dicari?>"> <?= $xi;?></a></li>
+
+        <?php
+        endif; 
+        endwhile;
+        $x = $halaman - 1;
+        $halamanlimit = $x + 4;
           while($x<$count): 
-            $x++; ?>
+            $x++;
+            if($x < $halamanlimit && $x <= $limit):?>
            <li><a href="masteradmin.php?page=recentusers&authorize=1&cari=1&halaman=<?= $x ?>&dicari=<?= $dicari?>"> <?= $x?></a></li>
-          <?php endwhile; ?>
+          <?php
+          endif;
+            
+        endwhile; ?>
+        <li><a href="masteradmin.php?page=recentusers&authorize=1&cari=1&halaman=<?= $x ?>&dicari=<?= $dicari?>">Last</a></li>
          </ul>
       </tbody>
       </div>

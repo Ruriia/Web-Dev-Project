@@ -33,11 +33,11 @@
   
   
   }else{
-    $halaman = "SELECT count(*) as panjang FROM msdata
+    $hitung = "SELECT count(*) as panjang FROM msdata
     where authorize = ? and (nim = ? or nama like ? or nama like ? or nama like ? or 
     email like ? or email like ?) order by nim";
 
-    $result = $key->prepare($halaman);
+    $result = $key->prepare($hitung);
     $result->execute([
       $_GET['authorize'],
       $dicari,
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Recent Admin<!--
+        <strong>All Admin</strong><!--
         <small>Masukkan NIKW atau Nama yang ingin dicari
         <form action="masteradmin.php?page=recentadmin&authorize=2&halaman=1" method="post">
           <input type="text" placeholder="Search" style="border-radius:5px;" name="search" value="<?= $dicari;?>">
@@ -123,10 +123,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <section class="content container-fluid">
-    <div class="box">
+      <div class="box">
       <div class="box-body table-responsive">
-        <table class="table table-hover">
-        <tbody>
+      <tbody>
+        <table class="table">
           <tr>
             <th>No.</th>
             <th>NIKW</th>
@@ -160,18 +160,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </table>
         <ul class="pagination pagination-sm inline" style="float: right;">
           <li><a href="masteradmin.php?page=recentadmin&authorize=2&cari=2&halaman=1&dicari=<?= $dicari?>"> First</a></li>
-          <?php $x = 0;
+
+        <?php 
+          $x = $halaman;
+          $halamanlimit = $x - 2;
+          $xi = $halamanlimit - 1;
+          while($x > $halamanlimit):
+            $xi++;
+            $x--;
+            if($xi < 1) :
+              continue;
+            else :
+        ?>
+          <li><a href="masteradmin.php?page=recentadmin&authorize=2&cari=2&halaman=<?= $xi;?>&dicari=<?= $dicari?>"> <?= $xi;?></a></li>
+
+        <?php
+        endif; 
+        endwhile;
+        $x = $halaman - 1;
+        $halamanlimit = $x + 4;
           while($x<$count): 
-            $x++; if($x < 4):?>
+            $x++;
+            if($x < $halamanlimit && $x <= $limit):?>
            <li><a href="masteradmin.php?page=recentadmin&authorize=2&cari=2&halaman=<?= $x ?>&dicari=<?= $dicari?>"> <?= $x?></a></li>
           <?php
-          endif;  
+          endif;
+            
         endwhile; ?>
         <li><a href="masteradmin.php?page=recentadmin&authorize=2&cari=2&halaman=<?= $x ?>&dicari=<?= $dicari?>">Last</a></li>
          </ul>
-        </tbody>
+       </tbody>
       </div>
-    </div>
+
     </section>
     <!-- /.content -->
   </div>

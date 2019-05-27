@@ -159,11 +159,37 @@
           <?php endwhile; ?>
           </table>
           <ul class="pagination pagination-sm inline" style="float: right;">
-          <?php $x = 0;
+          <!--<li><a href="masteradmin.php?page=admin_tickets&cari=3&halaman=<?= $x ?>&dicari=<?= $dicari; ?>"> <?= $x?></a></li>-->
+          
+          <li><a href="masteradmin.php?page=admin_tickets&cari=3&halaman=1&dicari=<?= $dicari?>"> First</a></li>
+
+        <?php 
+          $x = $halaman;
+          $halamanlimit = $x - 2;
+          $xi = $halamanlimit-1;
+          while($x > $halamanlimit):
+            $xi++;
+            $x--;
+            if($xi < 1) :
+              continue;
+            else :
+        ?>
+          <li><a href="masteradmin.php?page=admin_tickets&cari=3&halaman=<?= $xi;?>&dicari=<?= $dicari?>"> <?= $xi;?></a></li>
+
+        <?php
+        endif; 
+        endwhile;
+        $x = $halaman - 1;
+        $halamanlimit = $x + 4;
           while($x<$count): 
-            $x++; ?>
-           <li><a href="masteradmin.php?page=admin_tickets&cari=3&halaman=<?= $x ?>&dicari=<?= $dicari; ?>"> <?= $x?></a></li>
-          <?php endwhile; ?>
+            $x++;
+            if($x < $halamanlimit && $x <= $limit):?>
+           <li><a href="masteradmin.php?page=admin_tickets&cari=3&halaman=<?= $x ?>&dicari=<?= $dicari?>"> <?= $x?></a></li>
+          <?php
+          endif;
+            
+        endwhile; ?>
+        <li><a href="masteradmin.php?page=admin_tickets&cari=3&halaman=<?= $x ?>&dicari=<?= $dicari?>">Last</a></li>
          </ul>
       </div>
     </div>
