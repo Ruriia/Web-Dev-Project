@@ -157,11 +157,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
          <?php endwhile; ?>
         </table>
         <ul class="pagination pagination-sm inline" style="float: right;">
+          <li><a href="masteradmin.php?page=recentadmin&authorize=2&cari=2&halaman=1&dicari=<?= $dicari?>"> First</a></li>
           <?php $x = 0;
           while($x<$count): 
-            $x++; ?>
+            $x++; if($x < 4):?>
            <li><a href="masteradmin.php?page=recentadmin&authorize=2&cari=2&halaman=<?= $x ?>&dicari=<?= $dicari?>"> <?= $x?></a></li>
-          <?php endwhile; ?>
+          <?php
+          endif;  
+        endwhile; ?>
+        <li><a href="masteradmin.php?page=recentadmin&authorize=2&cari=2&halaman=<?= $x ?>&dicari=<?= $dicari?>">Last</a></li>
          </ul>
       </div>
 
